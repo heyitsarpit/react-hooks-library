@@ -1,0 +1,44 @@
+{
+  "name": "reacthooks",
+  "version": "0.0.1",
+  "description": "A collection of hooks and utilities for React",
+  "main": "index.js",
+  "author": "Arpit<https://github.com/onygami>",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "reacthooks"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "next": "11.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "16.0.1",
+    "@types/react": "17.0.13",
+    "@types/react-dom": "17.0.9",
+    "@typescript-eslint/eslint-plugin": "4.28.2",
+    "@typescript-eslint/parser": "4.28.2",
+    "autoprefixer": "^10.2.6",
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "postcss": "^8.3.5",
+    "prettier": "2.3.2",
+    "tailwindcss": "^2.2.4",
+    "typescript": "4.3.5"
+  }
+}

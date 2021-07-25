@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const useDebounce = <T>(value: T, timeout: number): T => {
+export function useDebounce<T>(value: T, timeout: number): T {
   // Save a local copy of `value` in this state which is local to our hook
   const [state, setState] = useState(value)
 

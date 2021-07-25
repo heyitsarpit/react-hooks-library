@@ -17,8 +17,8 @@
     "lint:fix": "eslint --fix .",
     "//////////": "package commands",
     "build:rollup": "rollup -c",
-    "clean": "rimraf packages/*/dist",
-    "build:full": "npm run clean && npm run build:rollup"
+    "clean": "rimraf dist packages/*/dist",
+    "build:full": "esno scripts/build.ts"
   },
   "dependencies": {
     "next": "11.0.1",
@@ -32,6 +32,7 @@
     "@typescript-eslint/eslint-plugin": "4.28.4",
     "@typescript-eslint/parser": "4.28.4",
     "autoprefixer": "^10.3.1",
+    "consola": "^2.15.3",
     "esbuild-register": "^2.6.0",
     "eslint": "^7.31.0",
     "eslint-config-next": "^11.0.1",
@@ -42,6 +43,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "esno": "^0.8.0",
+    "fast-glob": "^3.2.7",
     "postcss": "^8.3.6",
     "prettier": "2.3.2",
     "rimraf": "^3.0.2",

@@ -6,6 +6,16 @@
         "react",
         "reacthooks"
     ],
+    "exports": {
+        ".": {
+            "import": "./index.esm.js",
+            "require": "./index.cjs.js"
+        },
+        "./*": "./*"
+    },
+    "main": "./index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
     "license": "MIT",
     "author": "Arpit<https://github.com/onygami>",
     "devDependencies": {

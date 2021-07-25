@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2017",
     "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
@@ -20,21 +16,13 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "paths": {
-      "@reacthooks/core": [
-        "./packages/core/index.ts"
-      ]
+      "@reacthooks/core": ["./packages/core/index.ts"]
     },
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": [
-    "packages",
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/**/*.test.ts"
-  ]
+  "include": ["packages"],
+  "exclude": ["node_modules", "**/**/*.test.ts", "**/dist"]
 }

@@ -8,8 +8,9 @@ node_modules
 # testing
 coverage
 # next.js
-.next/
-out/
+.next
+out
+
 # production
 /build
 
@@ -30,5 +31,4 @@ yarn-error.log*
 
 # vercel
 .vercel
-
 dist

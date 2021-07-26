@@ -21,7 +21,6 @@
     "clean": "rimraf dist packages/*/dist",
     "build:full": "esno scripts/build.ts"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/node": "16.4.1",
     "@typescript-eslint/eslint-plugin": "4.28.4",

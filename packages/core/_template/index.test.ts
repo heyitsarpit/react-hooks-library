@@ -1,10 +1,20 @@
 import { act, renderHook } from '@testing-library/react-hooks'
+import fs from 'fs/promises'
+import { join } from 'path'
 
+import { testDocs } from '../../../scripts/utils/testMDX'
 import { useCounter } from '.'
 
-describe('useCounter', () => {
+const FunctionName = useCounter.name
+
+describe(FunctionName, () => {
   test('should be defined', () => {
     expect(useCounter).toBeDefined()
+  })
+
+  test('should have docs with appropriate meta data', async () => {
+    const source = await fs.readFile(join(__dirname, '/docs.mdx'), 'utf-8')
+    testDocs(FunctionName, source)
   })
 
   test('should update the counter', () => {

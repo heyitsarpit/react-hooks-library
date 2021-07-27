@@ -18,10 +18,8 @@
     "module": "./index.esm.js",
     "license": "MIT",
     "author": "Arpit<https://github.com/onygami>",
-    "devDependencies": {
-        "react": "^16.8.0"
-    },
+    "devDependencies": {},
     "peerDependencies": {
-        "react": "^16.8.0"
+        "react": ">=16.9.0"
     }
 }

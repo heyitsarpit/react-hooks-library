@@ -1,10 +1,11 @@
 {
-    "name": "@reacthooks/core",
+    "name": "@reactuse/core",
     "version": "0.0.1",
     "description": "A collection of hooks and utilities for React",
     "keywords": [
         "react",
-        "reacthooks"
+        "react hooks",
+        "reactuse"
     ],
     "exports": {
         ".": {
@@ -17,7 +18,7 @@
     "types": "./index.d.ts",
     "module": "./index.esm.js",
     "license": "MIT",
-    "author": "Arpit<https://github.com/onygami>",
+    "author": "Arpit<https://github.com/heyitsarpit>",
     "devDependencies": {},
     "peerDependencies": {
         "react": ">=16.9.0"

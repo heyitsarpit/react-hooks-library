@@ -62,7 +62,6 @@ export const getFunction = async (pkg: string, name: string) => {
   const folderPath = join(PACKAGES_DIR, pkg, name)
   const source = fs.readFileSync(join(folderPath, 'docs.mdx'), 'utf-8')
 
-  console.log({ folderPath })
   const { code, frontmatter } = await bundleMDX(source, {
     cwd: folderPath,
     xdmOptions(options) {

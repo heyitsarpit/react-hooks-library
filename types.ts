@@ -3,6 +3,7 @@ export interface FunctionMeta {
   category: string
   description: string
 
-  slug?: string
+  /** Package Name */
+  pkg?: string
   deprecated?: boolean
 }

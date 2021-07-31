@@ -1,11 +1,11 @@
 {
-    "name": "@reactuse/core",
+    "name": "@react-hooks-library/core",
     "version": "0.1.0",
     "description": "A collection of hooks and utilities for React",
     "keywords": [
         "react",
         "react hooks",
-        "reactuse"
+        "@react-hooks-library"
     ],
     "exports": {
         ".": {

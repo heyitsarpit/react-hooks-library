@@ -1,5 +1,5 @@
 {
-  "name": "reacthooks",
+  "name": "@react-hooks-library/packages",
   "version": "0.1.0",
   "private": true,
   "description": "A collection of hooks and utilities for React",
@@ -8,7 +8,8 @@
   "license": "MIT",
   "keywords": [
     "react",
-    "reacthooks"
+    "react hooks",
+    "@react-hooks-library"
   ],
   "workspaces": [
     "packages/*",

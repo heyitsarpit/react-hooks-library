@@ -17,7 +17,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  console.log('I Ran', { context })
   const pkg = context.params?.package as string
   const name = context.params?.function as string
 

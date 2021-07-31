@@ -59,12 +59,12 @@ export async function getAllFunctionsMeta() {
  * Get a single post content by slug
  */
 export const getFunction = async (pkg: string, name: string) => {
-  const source = fs.readFileSync(
-    join(PACKAGES_DIR, pkg, name, 'docs.mdx'),
-    'utf-8'
-  )
+  const folderPath = join(PACKAGES_DIR, pkg, name)
+  const source = fs.readFileSync(join(folderPath, 'docs.mdx'), 'utf-8')
 
+  console.log({ folderPath })
   const { code, frontmatter } = await bundleMDX(source, {
+    cwd: folderPath,
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options?.remarkPlugins ?? []),

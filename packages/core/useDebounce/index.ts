@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 /**
  * Used to debounce a quickly changing value.
- * Will return the latest value after a specific amount of time.
+ * Will return the latest value after a specified amount of time.
  *
  * @param {T} value
  * @param timeout

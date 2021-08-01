@@ -13,3 +13,7 @@ export function testDocs(name: string, source: string) {
 
   expect(meta.name).toBe(name)
 }
+
+export function sleep(time = 1000) {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}

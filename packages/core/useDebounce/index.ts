@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react'
 
-export function useDebounce<T>(value: T, timeout: number): T {
-  // Save a local copy of `value` in this state which is local to our hook
+/**
+ * Used to debounce a quickly changing value.
+ * Will return the latest value after a specific amount of time.
+ *
+ * @param {T} value
+ * @param timeout
+ * @returns {Readonly<T>} latest value
+ * @see https://react-hooks-library.vercel.app/core/useDebounce
+ */
+export function useDebounce<T>(value: T, timeout: number): Readonly<T> {
   const [state, setState] = useState(value)
 
   useEffect(() => {
-    // Set timeout to run after delay
-    const handler = setTimeout(() => setState(value), timeout)
+    const tick = setTimeout(() => setState(value), timeout)
 
-    // clear the setTimeout listener on unMount
-    return () => clearTimeout(handler)
+    return () => clearTimeout(tick)
   }, [value, timeout])
 
+  if (timeout <= 0) return value
   return state
 }

@@ -4,6 +4,38 @@ name: usePrevious
 description: Find previous value of a state
 ---
 
+import { Demo } from './demo.tsx'
+
+<Demo />
+
 # usePrevious
 
-Find previous value of state
+Returns the value of the argument from the previous render
+
+## Usage
+
+```typescript
+import { useState } from 'react'
+import { usePrevious } from '@react-hooks-library/core'
+
+export function Demo() {
+  const [count, setCount] = useState(0)
+  const previousCount = usePrevious(count)
+
+  return (
+    <div>
+      <div>Current Count is - {count}</div>
+      <div>Previous Count is - {previousCount}</div>
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+declare function usePrevious<T>(value: T): T | undefined;
+```
+
+## Source

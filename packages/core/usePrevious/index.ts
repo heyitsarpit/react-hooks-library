@@ -1,15 +1,17 @@
 import { useEffect, useRef } from 'react'
 
-export function usePrevious<T>(value: T) {
-  // The ref object is a generic container whose current property is mutable ...
-  // ... and can hold any value, similar to an instance property on a class
+/**
+ * Returns the value of the argument from the previous render
+ * @param {T} value
+ * @returns {T | undefined} previous value
+ * @see https://react-hooks-library.vercel.app/core/usePrevious
+ */
+export function usePrevious<T>(value: T): T | undefined {
   const ref = useRef<T>()
 
-  // Store current value in ref
   useEffect(() => {
     ref.current = value
-  }, [value]) // Only re-run if value changes
+  }, [value])
 
-  // Return previous value (happens before update in useEffect above)
   return ref.current
 }

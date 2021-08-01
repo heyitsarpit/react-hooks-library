@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks'
 import fs from 'fs/promises'
 import { join } from 'path'
 
-import { testDocs } from '../../../scripts/utils/testMDX'
+import { testDocs } from '../../../scripts/utils/testUtils'
 import { useCounter } from '.'
 
 const FunctionName = useCounter.name

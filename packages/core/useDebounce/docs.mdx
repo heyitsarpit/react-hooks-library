@@ -1,7 +1,7 @@
 ---
 category: core
 name: useDebounce
-description: A Debounce hook
+description: Used to debounce a quickly changing value. Will return the latest value after a specified amount of time.
 ---
 
 import { Demo } from './demo.tsx'
@@ -10,5 +10,39 @@ import { Demo } from './demo.tsx'
 
 # useDebounce
 
-Some words about debounce
-More words
+Used to debounce a quickly changing value. Will return the latest value after a specified amount of time.
+
+## Usage
+
+```typescript
+import { useState } from 'react'
+import { useDebounce } from '@react-hooks-library/core'
+
+export function Demo() {
+  const [text, setText] = useState('Hello World')
+  const debouncedText = useDebounce(text, 1000)
+
+  return (
+    <div>
+      <input
+        type="text"
+        onChange={(e) => setText(e.target.value)}
+        defaultValue={text}
+      />
+      <div>Debounced Value - {debouncedText}</div>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+declare function useDebounce<T>(value: T, timeout: number): Readonly<T>
+```
+
+## Recommended Reading
+
+- [Debounce Vs Throttle: Definitive Visual Guide](https://redd.one/blog/debounce-vs-throttle)
+
+## Source

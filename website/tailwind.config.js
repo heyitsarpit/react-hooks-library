@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./src/pages/**/*.{jsx,tsx}', './packages/**/*.{jsx,tsx}'],
+  purge: ['./src/pages/**/*.{jsx,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {}
@@ -8,5 +8,5 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [require('@tailwindcss/forms')]
 }

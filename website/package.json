@@ -1,6 +1,6 @@
 {
-  "name": "@reacthooks/website",
-  "version": "0.0.1",
+  "name": "@react-hooks-library/website",
+  "version": "0.1.0",
   "description": "Documentation website for react",
   "author": "Arpit<https://github.com/onygami>",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.3.3",
     "@types/node": "16.4.1",
     "@types/react": "17.0.14",
     "@types/react-dom": "17.0.9",

@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    --theme: 'dark';
+    --syntax-background: #1b1c24;
+    --syntax-comment: #6272a4;
+    --syntax-text: #f8f8f2;
+    --syntax-operator: #8be9fd;
+    --syntax-string: #50fa7b;
+    --syntax-number: #ffb86c;
+    --syntax-primary: #ff70c2;
+    --syntax-keyword: #bd93f9;
+    --syntax-html-tag: #ff5555;
+    --syntax-boolean: #f1fa8c;
+  }
+  
+  html,
+  body,
+  #__next {
+    @apply w-full h-full bg-black text-gray-200;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    font: 'monospace'
+  }
+
+  *::selection {
+    @apply text-white bg-black;
+  }
+
+  .link {
+    @apply text-pink-600 hover:underline no-underline;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply text-gray-800 font-semibold;
+  }
+
+  input{
+    @apply !bg-gray-800 !text-gray-300 focus:ring !rounded-lg outline-none;
+  }
+
+  h1{
+    @apply text-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+
+  strong {
+    @apply text-white;
+  }
+
+  :not(pre) > code {
+    background: var(--syntax-background);
+
+    font-family: 'Fira Code', monospace;
+    @apply rounded-sm mx-1 py-[2px] px-2 text-sm transition-colors duration-300;
+  }
+
+  blockquote {
+    @apply relative py-1 pl-[2ch] pr-[1ch] my-8 italic bg-[#8a63ad14];
+  }
+
+  blockquote::before {
+    content: '';
+    @apply w-2 h-full absolute top-0 left-0 inline-block bg-gray-500;
+  }
+
+  li {
+    @apply relative pl-7 my-3;
+  }
+
+   li::before {
+    content: '';
+    @apply absolute bg-gray-600 rounded-full w-1.5 h-1.5 left-1 top-2.5;
+  }
+}

@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { ThemeSwitch } from '../ui/ThemeSwitch'
 import { loadMdx } from '../utils/loadMDX'
 
-const Color = ({ className = '' }) => {
+const Color = ({ className = '', varName = '' }) => {
   const [color, setColor] = useState('')
   const ref = useRef()
 
@@ -14,14 +14,19 @@ const Color = ({ className = '' }) => {
     const color = getComputedStyle(ref.current).getPropertyValue(
       'background-color'
     )
-
-    console.log(color)
+    setColor(color)
   }, [])
 
   return (
-    <div
-      ref={ref}
-      className={`w-12 h-12 rounded-full ring-1 ring-trueGray-200 dark:ring-warmGray-800 ${className}`}></div>
+    <div className="flex items-center gap-5 font-mono text-sm">
+      <div
+        ref={ref}
+        className={`w-12 h-12 rounded-full ring-1 ring-trueGray-200 dark:ring-warmGray-800 ${className}`}></div>
+      <div>
+        <div>{varName}</div>
+        <div>{color}</div>
+      </div>
+    </div>
   )
 }
 
@@ -68,40 +73,26 @@ export default function Design({ code }: Props) {
         <h2>Colors</h2>
         <div>
           <h3>Brand</h3>
-          <div className="flex items-center gap-5">
-            <div>{'--brand'}</div>
-            <Color className="bg-brand"></Color>
-          </div>
+          <Color className="bg-brand" varName="--brand" />
         </div>
         <div>
           <h3>Background</h3>
-          <div className="flex items-center gap-5 mb-4">
-            <div>{'--bg-1'}</div>
-            <Color className="bg-bg-1"></Color>
-          </div>
-          <div className="flex items-center gap-5">
-            <div>{'--bg-2'}</div>
-            <Color className="bg-bg-2"></Color>
+          <div className="flex flex-col gap-4">
+            <Color className="bg-bg-1" varName="--bg-1" />
+            <Color className="bg-bg-2" varName="--bg-2" />
           </div>
         </div>
 
         <div>
           <h3>Foreground</h3>
-          <div className="flex items-center gap-5">
-            <div>{'--fg-1'}</div>
-            <Color className="bg-fg-1"></Color>
-          </div>
+          <Color className="bg-fg-1" varName="--fg-1" />
         </div>
 
         <div>
           <h3>Typography</h3>
-          <div className="flex items-center gap-5 mb-4">
-            <div>{'--txt-1'}</div>
-            <Color className="bg-txt-1"></Color>
-          </div>
-          <div className="flex items-center gap-5">
-            <div>{'--txt-2'}</div>
-            <Color className="bg-txt-2"></Color>
+          <div className="flex flex-col gap-4">
+            <Color className="bg-txt-1" varName="--txt-1" />
+            <Color className="bg-txt-2" varName="--txt-2" />
           </div>
         </div>
       </section>

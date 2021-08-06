@@ -1,13 +1,29 @@
 import { getMDXComponent } from 'mdx-bundler/client'
 import { InferGetStaticPropsType } from 'next'
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
+import { useEffect } from 'react'
 
+import { ThemeSwitch } from '../ui/ThemeSwitch'
 import { loadMdx } from '../utils/loadMDX'
 
-const Color = ({ className = '' }) => (
-  <div
-    className={`w-12 h-12 rounded-full ring-1 ring-trueGray-200 ${className}`}></div>
-)
+const Color = ({ className = '' }) => {
+  const [color, setColor] = useState('')
+  const ref = useRef()
+
+  useEffect(() => {
+    const color = getComputedStyle(ref.current).getPropertyValue(
+      'background-color'
+    )
+
+    console.log(color)
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className={`w-12 h-12 rounded-full ring-1 ring-trueGray-200 dark:ring-warmGray-800 ${className}`}></div>
+  )
+}
 
 export async function getStaticProps() {
   const mdxSource = `
@@ -45,32 +61,47 @@ export default function Design({ code }: Props) {
   const CodeComponent = useMemo(() => getMDXComponent(code), [code])
 
   return (
-    <div className="flex flex-col gap-8 px-8 mx-auto my-24 md:max-w-screen-md 2xl:max-w-screen-2xl">
+    <div className="flex flex-col w-full h-full gap-8 px-8 py-24 mx-auto md:max-w-screen-md 2xl:max-w-screen-2xl">
       <h1>Design System</h1>
+      <ThemeSwitch />
       <section className="flex flex-col gap-8">
         <h2>Colors</h2>
         <div>
           <h3>Brand</h3>
-          <Color className="bg-cyan-600"></Color>
+          <div className="flex items-center gap-5">
+            <div>{'--brand'}</div>
+            <Color className="bg-brand"></Color>
+          </div>
         </div>
         <div>
           <h3>Background</h3>
-          <div className="flex gap-2">
-            <Color className="bg-gray-50"></Color>
-            <Color className="bg-white"></Color>
+          <div className="flex items-center gap-5 mb-4">
+            <div>{'--bg-1'}</div>
+            <Color className="bg-bg-1"></Color>
+          </div>
+          <div className="flex items-center gap-5">
+            <div>{'--bg-2'}</div>
+            <Color className="bg-bg-2"></Color>
           </div>
         </div>
 
         <div>
           <h3>Foreground</h3>
-          <Color className="bg-warmGray-100"></Color>
+          <div className="flex items-center gap-5">
+            <div>{'--fg-1'}</div>
+            <Color className="bg-fg-1"></Color>
+          </div>
         </div>
 
         <div>
           <h3>Typography</h3>
-          <div className="flex gap-2">
-            <Color className="bg-gray-600"></Color>
-            <Color className="bg-trueGray-700"></Color>
+          <div className="flex items-center gap-5 mb-4">
+            <div>{'--txt-1'}</div>
+            <Color className="bg-txt-1"></Color>
+          </div>
+          <div className="flex items-center gap-5">
+            <div>{'--txt-2'}</div>
+            <Color className="bg-txt-2"></Color>
           </div>
         </div>
       </section>

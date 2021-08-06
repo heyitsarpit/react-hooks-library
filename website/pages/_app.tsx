@@ -3,10 +3,14 @@ import '../public/styles/prism.css'
 
 import { AppProps } from 'next/app'
 
+import { ThemeProvider } from '../ui/ThemeSwitch'
+
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }

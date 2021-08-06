@@ -1,8 +1,22 @@
+import React, { createContext } from 'react'
+import { useContext } from 'react'
 import { useLayoutEffect, useState } from 'react'
 
 type Theme = 'dark' | 'light'
 
-export function ThemeSwitch() {
+type ThemeContextProps = {
+  theme: Theme
+  switchTheme: () => void
+}
+const ThemeContext = createContext<ThemeContextProps>({
+  theme: 'dark',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  switchTheme: () => {}
+})
+
+type Props = { children: React.ReactNode }
+
+export function ThemeProvider({ children }: Props) {
   const [theme, setTheme] = useState<Theme>('dark')
   const [hasMounted, setHasMounted] = useState(false)
 
@@ -32,6 +46,20 @@ export function ThemeSwitch() {
   if (!hasMounted) {
     return null
   }
+
+  return (
+    <ThemeContext.Provider value={{ theme, switchTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  )
+}
+
+export const useTheme = () => {
+  return useContext(ThemeContext)
+}
+
+export function ThemeSwitch() {
+  const { switchTheme, theme } = useTheme()
 
   return (
     <button

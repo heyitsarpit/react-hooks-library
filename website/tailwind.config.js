@@ -9,7 +9,12 @@ module.exports = {
     extend: {
       colors: {
         // enable all tailwind colors (in jit mode)
-        ...colors
+        ...colors,
+        brand: 'var(--brand)',
+        'bg-1': 'var(--bg-1)',
+        'bg-2': 'var(--bg-2)',
+        'txt-1': 'var(--txt-1)',
+        'txt-2': 'var(--txt-2)'
       }
     }
   },

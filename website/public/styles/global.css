@@ -4,10 +4,36 @@
 
 @import url('https://rsms.me/inter/inter.css');
 
-
 @layer base {
-  html {
-    --theme: 'dark';
+  body.dark {
+    --brand: theme('colors.cyan.400');
+    --bg-1: theme('colors.trueGray.900');
+    --bg-2: #0F1011;
+    --fg-1: theme('colors.warmGray.800');
+    --txt-1: theme('colors.coolGray.300');
+    --txt-2: theme('colors.coolGray.200');
+
+    --syntax-background: #1b1c24;
+    --syntax-comment: #6272a4;
+    --syntax-text: #f8f8f2;
+    --syntax-operator: #8be9fd;
+    --syntax-string: #50fa7b;
+    --syntax-number: #ffb86c;
+    --syntax-primary: #ff70c2;
+    --syntax-keyword: #bd93f9;
+    --syntax-html-tag: #ff5555;
+    --syntax-boolean: #f1fa8c;
+  }
+
+  body.light {
+    --brand: theme('colors.cyan.600');
+    --bg-1: theme('colors.gray.50');
+    --bg-2: theme('colors.white');
+    --fg-1: theme('colors.warmGray.100');
+    --txt-1: theme('colors.gray.600');
+    --txt-2: theme('colors.trueGray.700');
+
+
     --syntax-background: #1b1c24;
     --syntax-comment: #6272a4;
     --syntax-text: #f8f8f2;
@@ -23,7 +49,7 @@
   html,
   body,
   #__next {
-    @apply text-gray-600 bg-gray-50;
+    @apply w-full h-full p-0 m-0 overflow-auto text-gray-600 bg-bg-1 dark:text-coolGray-300;
   }
 
   html {
@@ -46,7 +72,7 @@
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply mb-5 text-trueGray-700;
+    @apply mb-5 text-trueGray-700 dark:text-coolGray-200;
   }
 
   ::-moz-color-swatch{
@@ -54,12 +80,12 @@
   }
 
   input{
-    @apply block p-2 mt-1 transition-all duration-150 rounded-sm outline-none bg-warmGray-200;
+    @apply block p-2 mt-1 transition-all duration-150 rounded-sm outline-none bg-warmGray-200 dark:bg-warmGray-800;
   } 
 
   input:hover, input:focus{
     box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.1);
-    @apply bg-gray-50;
+    @apply bg-gray-50 dark:bg-[#0F1011];
   }
   input:focus{
     outline: 1px solid rgba(8, 145, 178, 0.3);

@@ -11,7 +11,7 @@ const Color = ({ className = '' }) => (
 
 export async function getStaticProps() {
   const mdxSource = `
-  \`\`\`typescript
+  \`\`\`tsx
   /**
    * Used to debounce a quickly changing value.
    * Will return the latest value after a specified amount of time.
@@ -36,7 +36,6 @@ export async function getStaticProps() {
   \`\`\`
 `
   const posts = await loadMdx(mdxSource)
-  console.log(posts)
   return { props: posts }
 }
 
@@ -46,7 +45,7 @@ export default function Design({ code }: Props) {
   const CodeComponent = useMemo(() => getMDXComponent(code), [code])
 
   return (
-    <div className="flex flex-col gap-8 px-8 mx-auto my-24 md:max-w-screen-md ">
+    <div className="flex flex-col gap-8 px-8 mx-auto my-24 md:max-w-screen-md 2xl:max-w-screen-2xl">
       <h1>Design System</h1>
       <section className="flex flex-col gap-8">
         <h2>Colors</h2>
@@ -163,6 +162,16 @@ export default function Design({ code }: Props) {
                   defaultChecked
                 />
                 <label htmlFor="ds-radio-1">Radio 1</label>
+              </div>
+              <div className="flex gap-3">
+                <input
+                  type="radio"
+                  id="ds-radio-2"
+                  name="ds-radio"
+                  value="Radio 2"
+                  defaultChecked
+                />
+                <label htmlFor="ds-radio-2">Radio 2</label>
               </div>
             </div>
           </div>

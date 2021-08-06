@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;600&display=swap');
+
 code[class*='language-'],
 pre[class*='language-'] {
   color: var(--syntax-primary);
 
   background: none;
-  font-family: 'Fira Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
 
   text-align: left;
@@ -34,10 +36,10 @@ code[class*='language-'] ::selection {
 pre[class*='language-'] {
   position: relative;
 
-  padding: 1em;
+  padding: 1.5em 1em;
   overflow: auto;
   margin: 1.5em 0;
-  border-radius: 6px;
+  border-radius: 20px;
 
   transition: 500ms;
   transition-property: background, color;

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://rsms.me/inter/inter.css');
+
+
 @layer base {
   html {
     --theme: 'dark';
@@ -26,8 +29,14 @@
   html {
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
+    font-family: 'Inter', sans-serif; 
+
   }
 
+  @supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+  }
+  
   *::selection {
     @apply text-cyan-600 bg-cyan-600/20;
   }

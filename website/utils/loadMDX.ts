@@ -56,14 +56,14 @@ export async function getAllFunctionsMeta() {
 }
 
 /**
- * Get a single post content by slug
+ *
+ * @param source source mdx file path
+ * @param cwd source mdx file path
+ * @returns bundled react component
  */
-export const getFunction = async (pkg: string, name: string) => {
-  const folderPath = join(PACKAGES_DIR, pkg, name)
-  const source = fs.readFileSync(join(folderPath, 'docs.mdx'), 'utf-8')
-
+export async function loadMdx(source: string, cwd?: string) {
   const { code, frontmatter } = await bundleMDX(source, {
-    cwd: folderPath,
+    cwd,
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options?.remarkPlugins ?? []),
@@ -79,6 +79,23 @@ export const getFunction = async (pkg: string, name: string) => {
     }
   })
 
-  const meta = { ...frontmatter, pkg, name } as FunctionMeta
+  const meta = { ...frontmatter } as FunctionMeta
   return { meta, code }
+}
+
+/**
+ * Get a single post content by slug
+ *
+ * @param pkg package name
+ * @param name function name
+ * @returns bundled react component and meta data
+ */
+export async function getFunction(pkg: string, name: string) {
+  const folderPath = join(PACKAGES_DIR, pkg, name)
+  const source = fs.readFileSync(join(folderPath, 'docs.mdx'), 'utf-8')
+
+  const { code, meta } = await loadMdx(source, folderPath)
+
+  const _meta = { ...meta, pkg, name } as FunctionMeta
+  return { meta: _meta, code }
 }

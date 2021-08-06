@@ -1,11 +1,50 @@
-import React from 'react'
+import { getMDXComponent } from 'mdx-bundler/client'
+import { InferGetStaticPropsType } from 'next'
+import React, { useMemo } from 'react'
+
+import { loadMdx } from '../utils/loadMDX'
 
 const Color = ({ className = '' }) => (
   <div
     className={`w-12 h-12 rounded-full ring-1 ring-trueGray-200 ${className}`}></div>
 )
 
-export default function Design() {
+export async function getStaticProps() {
+  const mdxSource = `
+  \`\`\`typescript
+  /**
+   * Used to debounce a quickly changing value.
+   * Will return the latest value after a specified amount of time.
+   *
+   * @param {T} value
+   * @param timeout
+   * @returns {Readonly<T>} latest value
+   * @see https://react-hooks-library.vercel.app/core/useDebounce
+   */
+  export function useDebounce<T>(value: T, timeout: number): Readonly<T> {
+    const [state, setState] = useState(value)
+  
+    useEffect(() => {
+      const tick = setTimeout(() => setState(value), timeout)
+  
+      return () => clearTimeout(tick)
+    }, [value, timeout])
+  
+    if (timeout <= 0) return value
+    return state
+  }
+  \`\`\`
+`
+  const posts = await loadMdx(mdxSource)
+  console.log(posts)
+  return { props: posts }
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+export default function Design({ code }: Props) {
+  const CodeComponent = useMemo(() => getMDXComponent(code), [code])
+
   return (
     <div className="flex flex-col gap-8 px-8 mx-auto my-24 md:max-w-screen-md ">
       <h1>Design System</h1>
@@ -121,13 +160,18 @@ export default function Design() {
                   id="ds-radio-1"
                   name="ds-radio"
                   value="Radio 1"
-                  checked
+                  defaultChecked
                 />
                 <label htmlFor="ds-radio-1">Radio 1</label>
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h2>Code Block</h2>
+        <CodeComponent />
       </section>
     </div>
   )

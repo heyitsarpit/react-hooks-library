@@ -3,19 +3,20 @@ import { InferGetStaticPropsType } from 'next'
 import React, { useMemo, useRef, useState } from 'react'
 import { useEffect } from 'react'
 
-import { ThemeSwitch } from '../ui/ThemeSwitch'
+import { ThemeSwitch, useTheme } from '../ui/ThemeSwitch'
 import { loadMdx } from '../utils/loadMDX'
 
 const Color = ({ className = '', varName = '' }) => {
   const [color, setColor] = useState('')
   const ref = useRef()
+  const { theme } = useTheme()
 
   useEffect(() => {
     const color = getComputedStyle(ref.current).getPropertyValue(
       'background-color'
     )
     setColor(color)
-  }, [])
+  }, [theme])
 
   return (
     <div className="flex items-center gap-5 font-mono text-sm">

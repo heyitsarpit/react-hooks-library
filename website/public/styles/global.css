@@ -20,49 +20,62 @@
   html,
   body,
   #__next {
-    @apply w-full h-full bg-black text-gray-200;
+    @apply w-full h-full text-gray-600 bg-gray-50;
   }
 
   html {
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
-    font: 'monospace'
   }
 
   *::selection {
-    @apply text-white bg-black;
+    @apply text-cyan-600 bg-cyan-600/20;
   }
 
   .link {
-    @apply text-pink-600 hover:underline no-underline;
+    @apply text-pink-600 no-underline hover:underline;
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply text-gray-800 font-semibold;
+    @apply mb-5 text-trueGray-700;
+  }
+
+  ::-moz-color-swatch{
+    border-color: transparent;
   }
 
   input{
-    @apply !bg-gray-800 !text-gray-300 focus:ring !rounded-lg outline-none;
+    @apply block p-2 mt-1 transition-all duration-150 rounded-sm outline-none bg-warmGray-200;
+  } 
+
+  input:hover, input:focus{
+    box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.1);
+    @apply bg-gray-50;
+  }
+  input:focus{
+    outline: 1px solid rgba(8, 145, 178, 0.3);
+    outline-offset: -1px;
+  }
+
+  :is(input[type="radio"], 
+  input[type="checkbox"]):focus {
+    outline: none;
   }
 
   h1{
-    @apply text-3xl font-bold;
+    @apply text-3xl font-extrabold;
   }
 
   h2 {
-    @apply text-2xl;
+    @apply text-2xl font-bold;
   }
 
   h3 {
-    @apply text-xl;
+    @apply text-xl font-semibold;
   }
 
   h4 {
-    @apply text-lg;
-  }
-
-  strong {
-    @apply text-white;
+    @apply text-lg font-semibold;
   }
 
   :not(pre) > code {
@@ -72,21 +85,22 @@
     @apply rounded-sm mx-1 py-[2px] px-2 text-sm transition-colors duration-300;
   }
 
-  blockquote {
-    @apply relative py-1 pl-[2ch] pr-[1ch] my-8 italic bg-[#8a63ad14];
-  }
-
-  blockquote::before {
-    content: '';
-    @apply w-2 h-full absolute top-0 left-0 inline-block bg-gray-500;
+  ol{
+    counter-reset: count;
   }
 
   li {
-    @apply relative pl-7 my-3;
+    @apply relative pl-6 my-3;
+  }
+  
+  ol li::before {
+    counter-increment: count;
+    content: counter(count);
+    @apply absolute font-mono text-sm left-1 text-trueGray-400 top-[2.8px];
   }
 
-   li::before {
+  ul li::before {
     content: '';
-    @apply absolute bg-gray-600 rounded-full w-1.5 h-1.5 left-1 top-2.5;
+    @apply absolute bg-trueGray-400 rounded-full w-1.5 h-1.5 left-1 top-2.5;
   }
 }

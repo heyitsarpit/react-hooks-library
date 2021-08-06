@@ -1,12 +1,20 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   mode: 'jit',
-  purge: ['./src/pages/**/*.{jsx,tsx}'],
+  purge: ['./pages/**/*.{jsx,tsx}', './ui/**/*.{jsx,tsx}'],
   darkMode: 'class',
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        // enable all tailwind colors (in jit mode)
+        ...colors
+      }
+    }
   },
   variants: {
     extend: {}
   },
-  plugins: [require('@tailwindcss/forms')]
+  plugins: []
 }

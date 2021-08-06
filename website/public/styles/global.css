@@ -23,7 +23,7 @@
   html,
   body,
   #__next {
-    @apply w-full h-full text-gray-600 bg-gray-50;
+    @apply text-gray-600 bg-gray-50;
   }
 
   html {
@@ -71,6 +71,25 @@
     outline: none;
   }
 
+  .pill{
+    @apply px-2 py-1 rounded-lg w-max;
+  }
+  .pill.active{
+    @apply text-cyan-600 bg-cyan-600/20;
+  }
+  .pill.info{
+    @apply text-sky-600 bg-sky-600/20;
+  }
+  .pill.danger{
+    @apply text-red-600 bg-red-600/20;
+  }
+  .pill.warning{
+    @apply text-yellow-600 bg-yellow-600/20;
+  }
+  .pill.success{
+    @apply text-green-600 bg-green-600/20;
+  }
+  
   h1{
     @apply text-3xl font-extrabold;
   }

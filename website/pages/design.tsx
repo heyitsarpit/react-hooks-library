@@ -78,21 +78,11 @@ export default function Design({ code }: Props) {
       <section>
         <h2>Pill</h2>
         <div className="flex gap-3">
-          <div className="px-2 py-1 rounded-lg text-cyan-600 bg-cyan-600/20 w-max">
-            active
-          </div>
-          <div className="px-2 py-1 rounded-lg text-sky-600 bg-sky-600/20 w-max">
-            info
-          </div>
-          <div className="px-2 py-1 text-red-600 rounded-lg bg-red-600/20 w-max">
-            danger
-          </div>
-          <div className="px-2 py-1 text-yellow-600 rounded-lg bg-yellow-600/20 w-max">
-            warning
-          </div>
-          <div className="px-2 py-1 text-green-600 rounded-lg bg-green-600/20 w-max">
-            success
-          </div>
+          <div className="pill active">active</div>
+          <div className="pill info">info</div>
+          <div className="pill danger">danger</div>
+          <div className="pill warning">warning</div>
+          <div className="pill success">success</div>
         </div>
       </section>
 

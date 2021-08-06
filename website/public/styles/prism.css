@@ -39,7 +39,7 @@ pre[class*='language-'] {
   padding: 1.5em 1em;
   overflow: auto;
   margin: 1.5em 0;
-  border-radius: 20px;
+  border-radius: 14px;
 
   transition: 500ms;
   transition-property: background, color;

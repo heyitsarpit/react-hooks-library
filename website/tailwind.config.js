@@ -13,6 +13,7 @@ module.exports = {
         brand: 'var(--brand)',
         'bg-1': 'var(--bg-1)',
         'bg-2': 'var(--bg-2)',
+        'fg-1': 'var(--fg-1)',
         'txt-1': 'var(--txt-1)',
         'txt-2': 'var(--txt-2)'
       }

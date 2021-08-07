@@ -10,8 +10,9 @@
   ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "npm run build:routes && next build",
+    "start": "next start",
+    "build:routes": "esno ./scripts/buildRoutes.ts"
   },
   "dependencies": {
     "next": "11.0.1",

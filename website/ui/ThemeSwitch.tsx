@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import { useContext } from 'react'
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Theme = 'dark' | 'light'
 
@@ -20,13 +20,13 @@ export function ThemeProvider({ children }: Props) {
   const [theme, setTheme] = useState<Theme>('dark')
   const [hasMounted, setHasMounted] = useState(false)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const theme = (document.body.getAttribute('class') as Theme) || 'dark'
     setHasMounted(true)
     setTheme(theme)
   }, [])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const bodyClass = document.body.classList
 
     if (theme === 'dark') {

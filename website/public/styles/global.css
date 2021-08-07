@@ -13,6 +13,10 @@
     --txt-1: theme('colors.coolGray.300');
     --txt-2: theme('colors.coolGray.200');
 
+    --sc-bg: #111;
+    --sc-divider-light:rgba(200, 200, 200, .12);
+    --sc-divider-dark:rgba(200, 200, 200, .48);
+
     --syntax-background: #1b1c24;
     --syntax-comment: #6272a4;
     --syntax-text: #f8f8f2;
@@ -33,6 +37,9 @@
     --txt-1: theme('colors.gray.600');
     --txt-2: theme('colors.trueGray.700');
 
+    --sc-bg: #f1f1f1;
+    --sc-divider-light:rgba(140, 140, 140, .42);
+    --sc-divider-dark:rgba(140, 140, 140, 1);;
 
     --syntax-background: #1b1c24;
     --syntax-comment: #6272a4;
@@ -56,7 +63,29 @@
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     font-family: 'Inter', sans-serif; 
+    --sc-width: 6px;
+  }
 
+  * {
+    scrollbar-color: var(--sc-divider-light) var(--sc-bg);
+  }
+
+  ::-webkit-scrollbar {
+    width: var(--sc-width);
+  }
+  ::-webkit-scrollbar:horizontal {
+    height: var(--sc-width);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--sc-bg);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--sc-divider-light);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--sc-divider-dark);
   }
 
   @supports (font-variation-settings: normal) {
@@ -64,7 +93,7 @@
   }
   
   *::selection {
-    @apply text-cyan-600 bg-cyan-600/20;
+    @apply text-brand bg-cyan-600/20;
   }
 
   .link {

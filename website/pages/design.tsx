@@ -3,7 +3,7 @@ import { InferGetStaticPropsType } from 'next'
 import React, { useMemo, useRef, useState } from 'react'
 import { useEffect } from 'react'
 
-import { ThemeSwitch, useTheme } from '../ui/ThemeSwitch'
+import { useTheme } from '../ui/ThemeSwitch'
 import { loadMdx } from '../utils/loadMDX'
 
 const Color = ({ className = '', varName = '' }) => {
@@ -69,7 +69,6 @@ export default function Design({ code }: Props) {
   return (
     <div className="flex flex-col w-full h-full gap-8 px-8 py-24 mx-auto md:max-w-screen-md 2xl:max-w-screen-2xl">
       <h1>Design System</h1>
-      <ThemeSwitch />
       <section className="flex flex-col gap-8">
         <h2>Colors</h2>
         <div>

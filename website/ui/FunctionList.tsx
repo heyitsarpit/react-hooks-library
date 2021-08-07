@@ -19,7 +19,7 @@ routes.forEach((route) => {
 export function FunctionList() {
   const router = useRouter()
   const isActive = (route: string) =>
-    router.asPath.includes(route) ? 'active rounded-lg' : ''
+    router.asPath.includes(route) ? 'active rounded-lg font-semibold' : ''
 
   return (
     <>

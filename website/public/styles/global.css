@@ -72,6 +72,8 @@
     text-rendering: optimizeLegibility;
     font-family: 'Inter', sans-serif; 
     --sc-width: 6px;
+    --sidebar-width: 14rem;
+    --header-height: 3.5rem;
   }
 
   * {

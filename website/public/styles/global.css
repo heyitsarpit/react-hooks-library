@@ -7,9 +7,9 @@
 @layer base {
   body.dark {
     --brand: theme('colors.cyan.400');
-    --bg-1: theme('colors.trueGray.900');
+    --bg-1: #0C0C0C;
     --bg-2: #0F1011;
-    --fg-1: theme('colors.warmGray.800');
+    --fg-1: #1b1b1e;
     --txt-1: theme('colors.coolGray.300');
     --txt-2: theme('colors.coolGray.200');
 
@@ -17,16 +17,20 @@
     --sc-divider-light:rgba(200, 200, 200, .12);
     --sc-divider-dark:rgba(200, 200, 200, .48);
 
-    --syntax-background: #1b1c24;
-    --syntax-comment: #6272a4;
-    --syntax-text: #f8f8f2;
-    --syntax-operator: #8be9fd;
-    --syntax-string: #50fa7b;
-    --syntax-number: #ffb86c;
-    --syntax-primary: #ff70c2;
-    --syntax-keyword: #bd93f9;
-    --syntax-html-tag: #ff5555;
-    --syntax-boolean: #f1fa8c;
+    --stx-primary: #c0caf5;
+    --stx-key: #5ed2ff;
+    --stx-bg: #111115;
+    --stx-cmnt: #565f89;
+    --stx-txt: #afc5ee;
+    --stx-punct: #90bdf8;
+    --stx-oprtr: #0be0e8;
+    --stx-func: #00bcdc;
+    --stx-str: #6cc454;
+    --stx-num: #fb4399;
+    --stx-tag: #f74c9c;
+    --stx-bool: #ff8164;
+    --stx-type: #7dcfff;
+    --stx-attr: #7f77e3;
   }
 
   body.light {
@@ -41,16 +45,20 @@
     --sc-divider-light:rgba(140, 140, 140, .42);
     --sc-divider-dark:rgba(140, 140, 140, 1);;
 
-    --syntax-background: #1b1c24;
-    --syntax-comment: #6272a4;
-    --syntax-text: #f8f8f2;
-    --syntax-operator: #8be9fd;
-    --syntax-string: #50fa7b;
-    --syntax-number: #ffb86c;
-    --syntax-primary: #ff70c2;
-    --syntax-keyword: #bd93f9;
-    --syntax-html-tag: #ff5555;
-    --syntax-boolean: #f1fa8c;
+    --stx-primary: #a44065;
+    --stx-key: #266888;
+    --stx-bg: var(--fg-1);
+    --stx-cmnt: #70869c;
+    --stx-txt: #394252;
+    --stx-punct: #14627b;
+    --stx-oprtr: #02777b;
+    --stx-func: #14627b;
+    --stx-str: #176a1e;
+    --stx-num: #a44065;
+    --stx-tag: #802b2b;
+    --stx-bool: #1b7591;
+    --stx-type: #0c6997;
+    --stx-attr: #133d73;
   }
   
   html,
@@ -162,7 +170,7 @@
   }
 
   :not(pre) > code {
-    background: var(--syntax-background);
+    background: var(--stx-bg);
 
     font-family: 'Fira Code', monospace;
     @apply rounded-sm mx-1 py-[2px] px-2 text-sm transition-colors duration-300;

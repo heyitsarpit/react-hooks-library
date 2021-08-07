@@ -2,7 +2,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: var(--syntax-primary);
+  color: var(--stx-primary);
 
   background: none;
   font-family: 'JetBrains Mono', monospace;
@@ -58,7 +58,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: var(--syntax-background);
+  background: var(--stx-bg);
 }
 
 /* Inline code */
@@ -72,49 +72,46 @@ pre[class*='language-'] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: var(--syntax-comment);
+  color: var(--stx-cmnt);
 }
 
 .token.punctuation {
-  color: var(--syntax-keyword);
+  color: var(--stx-punct);
   font-weight: 500;
 }
 
 .token.plain-text {
-  color: var(--syntax-text);
+  color: var(--stx-txt);
 }
 
 .token.selector,
 .token.tag {
-  color: var(--syntax-html-tag);
+  color: var(--stx-tag);
 }
 
 .token.property {
-  color: var(--syntax-operator);
+  color: var(--stx-oprtr);
 }
 
 .token.number {
-  color: var(--syntax-number);
+  color: var(--stx-num);
 }
 
 .token.boolean {
-  color: var(--syntax-boolean);
+  color: var(--stx-bool);
 }
 
-.token.constant,
 .token.symbol,
 .token.attr-name,
 .token.deleted {
-  color: var(--syntax-number);
-  font-style: italic;
+  color: var(--stx-attr);
 }
 
 .token.string,
 .token.char,
 .token.attr-value,
-.token.builtin,
 .token.inserted {
-  color: var(--syntax-string);
+  color: var(--stx-str);
 }
 
 .token.operator,
@@ -122,28 +119,32 @@ pre[class*='language-'] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: var(--syntax-operator);
+  color: var(--stx-oprtr);
 }
 
 .token.operator {
   font-weight: 500;
 }
 
+.token.maybe-class-name, .token.builtin, .token.constant {
+  color: var(--stx-type);
+}
+
 .token.atrule,
 .token.keyword {
-  color: var(--syntax-keyword);
+  color: var(--stx-key);
   font-weight: 500;
 }
 
 .token.function {
-  color: var(--syntax-operator);
+  color: var(--stx-func);
   font-weight: bold;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: var(--syntax-keyword);
+  color: var(--stx-key);
 }
 
 .token.important,
@@ -161,7 +162,7 @@ pre[class*='language-'] {
 
 .mdx-marker {
   background: #303240;
-  border-left: 3px solid var(--syntax-operator);
+  border-left: 3px solid var(--stx-oprtr);
   margin-left: calc(-1em - 0.149%);
   margin-right: calc(-1em - 2%);
 }
@@ -196,7 +197,7 @@ pre.line-numbers > code {
 
 .line-numbers-rows > span:before {
   content: counter(linenumber);
-  color: var(--syntax-comment);
+  color: var(--stx-cmnt);
   display: block;
   padding-right: 0.8em;
   text-align: right;

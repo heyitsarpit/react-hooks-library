@@ -18,18 +18,18 @@
     --sc-divider-dark:rgba(200, 200, 200, .48);
 
     --stx-primary: #c0caf5;
-    --stx-key: #5ed2ff;
+    --stx-key: #5ed2ff; 
     --stx-bg: #111115;
     --stx-cmnt: #565f89;
     --stx-txt: #afc5ee;
     --stx-punct: #90bdf8;
     --stx-oprtr: #0be0e8;
-    --stx-func: #00bcdc;
+    --stx-func: #00a8dc;
     --stx-str: #6cc454;
     --stx-num: #fb4399;
     --stx-tag: #f74c9c;
     --stx-bool: #ff8164;
-    --stx-type: #7dcfff;
+    --stx-type: #23b1d2;
     --stx-attr: #7f77e3;
   }
 
@@ -117,7 +117,7 @@
   }
 
   input{
-    @apply block p-2 mt-1 transition-all duration-150 rounded-sm outline-none bg-warmGray-200 dark:bg-warmGray-800;
+    @apply block p-2 mt-1 transition-all duration-150 rounded-sm outline-none bg-fg-1;
   } 
 
   input:hover, input:focus{
@@ -187,11 +187,11 @@
   ol li::before {
     counter-increment: count;
     content: counter(count);
-    @apply absolute font-mono text-sm left-1 text-trueGray-400 dark:text-warmGray-500 top-[2.8px];
+    @apply absolute font-mono text-sm left-1 text-coolGray-400 dark:text-coolGray-500 top-[2.8px];
   }
 
   ul li::before {
     content: '';
-    @apply absolute bg-trueGray-400 dark:bg-warmGray-500  rounded-full w-1.5 h-1.5 left-1 top-2.5;
+    @apply absolute bg-coolGray-400 dark:bg-coolGray-500  rounded-full w-1.5 h-1.5 left-1 top-2.5;
   }
 }

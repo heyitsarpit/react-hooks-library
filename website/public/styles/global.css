@@ -120,6 +120,16 @@
     border-color: transparent;
   }
 
+  button{
+    @apply px-2 py-1 rounded bg-brand text-bg-2 hover:opacity-70;
+  }
+  button:disabled{
+    @apply pointer-events-none bg-brand opacity-70;
+  }
+  a{
+    @apply text-brand hover:underline;
+  }
+
   input{
     @apply block p-2 mt-1 transition-all duration-150 rounded-sm outline-none bg-fg-1;
   } 

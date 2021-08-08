@@ -30,7 +30,9 @@ export function FunctionList() {
               className={`w-full py-1 before:hidden ${isActive(route)}`}
               key={route}>
               <Link href={route}>
-                <a className="block hover:text-brand">{name}</a>
+                <a className="block hover:text-brand hover:no-underline">
+                  {name}
+                </a>
               </Link>
             </li>
           ))}

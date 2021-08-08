@@ -139,6 +139,17 @@ export default function Design({ code }: Props) {
       </section>
 
       <section>
+        <h2>Buttons</h2>
+        <button className="mr-5">Submit</button>
+        <button disabled>Disabled</button>
+      </section>
+
+      <section>
+        <h2>Link</h2>
+        <a href="/">Home</a>
+      </section>
+
+      <section>
         <h2>Lists</h2>
         <ul className="mb-6">
           <li>Charmander</li>

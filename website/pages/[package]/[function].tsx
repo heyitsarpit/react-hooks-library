@@ -30,5 +30,5 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export default function Functions({ meta, code }: Props) {
   const Component = useMemo(() => getMDXComponent(code), [code])
-  return <Component components={mdxComponents} />
+  return <Component components={mdxComponents as any} />
 }

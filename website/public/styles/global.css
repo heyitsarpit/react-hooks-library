@@ -79,6 +79,7 @@
 
   * {
     scrollbar-color: var(--sc-divider-light) var(--sc-bg);
+    font-variant-numeric: tabular-nums;
   }
 
   ::-webkit-scrollbar {

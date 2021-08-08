@@ -2,6 +2,7 @@ import { getMDXComponent } from 'mdx-bundler/client'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useMemo } from 'react'
 
+import { mdxComponents } from '../../ui/docs/mdxComponents'
 import { getAllFunctionsMeta, getFunction } from '../../utils/loadMDX'
 
 export async function getStaticPaths() {
@@ -29,5 +30,5 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export default function Functions({ meta, code }: Props) {
   const Component = useMemo(() => getMDXComponent(code), [code])
-  return <Component />
+  return <Component components={mdxComponents} />
 }

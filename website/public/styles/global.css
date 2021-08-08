@@ -76,6 +76,7 @@
     --header-height: 3.5rem;
   }
 
+
   * {
     scrollbar-color: var(--sc-divider-light) var(--sc-bg);
   }
@@ -134,6 +135,12 @@
   :is(input[type="radio"], 
   input[type="checkbox"]):focus {
     outline: none;
+  }
+
+  .playground{
+    --width: calc(100vw - var(--sidebar-width));
+    --content-width: min(47rem, var(--width));
+    --margin-left: calc( calc(calc(var(--content-width) - var(--width)) / 2) - 2rem);
   }
 
   .pill{

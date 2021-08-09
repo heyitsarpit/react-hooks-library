@@ -30,7 +30,7 @@ function ListItem({ name, route, isActive }: ItemProps) {
           className="absolute w-full h-full active pill"
         />
       ) : null}
-      <Link href={route} passHref>
+      <Link href={route} passHref scroll={false}>
         <a
           className={`block w-full pl-4 hover:text-brand hover:no-underline ${
             isActive ? 'font-semibold' : ''

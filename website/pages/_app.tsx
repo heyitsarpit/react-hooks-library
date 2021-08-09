@@ -17,9 +17,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
         <AnimatePresence initial={false} exitBeforeEnter>
           <motion.main
             key={router.asPath}
-            initial={{ x: '-50vw' }}
+            initial={{ x: '-50vw', transitionDuration: '100ms' }}
             animate={{ x: 0 }}
-            className="ml-0 md:ml-[var(--sidebar-width)] mt-[var(--header-height)] duration-100">
+            className="ml-0 md:ml-[var(--sidebar-width)] mt-[var(--header-height)]">
             <div className="mx-auto max-w-[75ch] p-8">
               <Component {...pageProps} />
             </div>

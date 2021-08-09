@@ -19,7 +19,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
             key={router.asPath}
             initial={{ x: '-50vw' }}
             animate={{ x: 0 }}
-            exit={{ x: '90vw' }}
             className="ml-0 md:ml-[var(--sidebar-width)] mt-[var(--header-height)] duration-100">
             <div className="mx-auto max-w-[75ch] p-8">
               <Component {...pageProps} />

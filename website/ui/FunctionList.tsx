@@ -50,16 +50,19 @@ export function FunctionList() {
     <AnimateSharedLayout>
       <motion.div layout>
         {Object.keys(groupedRoutes).map((category) => (
-          <ul className="list-none" key={category}>
-            {groupedRoutes[category].map(({ name, route }) => (
-              <ListItem
-                key={name}
-                name={name}
-                route={route}
-                isActive={isActive(route)}
-              />
-            ))}
-          </ul>
+          <>
+            <p className="text-lg font-bold capitalize">{category}</p>
+            <ul className="list-none" key={category}>
+              {groupedRoutes[category].map(({ name, route }) => (
+                <ListItem
+                  key={name}
+                  name={name}
+                  route={route}
+                  isActive={isActive(route)}
+                />
+              ))}
+            </ul>
+          </>
         ))}
       </motion.div>
     </AnimateSharedLayout>

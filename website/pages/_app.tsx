@@ -6,7 +6,7 @@ import { AppProps } from 'next/app'
 
 import { Header } from '../ui/Header'
 import { SideBar } from '../ui/SideBar'
-import { ThemeProvider } from '../ui/ThemeSwitch'
+import { ThemeProvider } from '../ui/ThemeProvider'
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
   return (

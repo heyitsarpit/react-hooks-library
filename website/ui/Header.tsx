@@ -8,7 +8,7 @@ export function Header() {
         <img
           src="/logo.svg"
           alt="React Hooks Library Logo"
-          className="py-2 pl-6 pr-1 h-[var(--header-height)]"
+          className="py-2 ml-2 h-[var(--header-height)]"
         />
         <ThemeSwitch />
       </div>

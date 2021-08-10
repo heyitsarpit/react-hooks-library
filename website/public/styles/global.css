@@ -13,10 +13,6 @@
     --txt-1: theme('colors.coolGray.300');
     --txt-2: theme('colors.coolGray.200');
 
-    --sc-bg: #111;
-    --sc-divider-light:rgba(200, 200, 200, .12);
-    --sc-divider-dark:rgba(200, 200, 200, .48);
-
     --stx-primary: #c0caf5;
     --stx-key: #5ed2ff; 
     --stx-bg: #111115;
@@ -40,10 +36,6 @@
     --fg-1: theme('colors.warmGray.100');
     --txt-1: theme('colors.gray.600');
     --txt-2: theme('colors.trueGray.700');
-
-    --sc-bg: #f1f1f1;
-    --sc-divider-light:rgba(140, 140, 140, .42);
-    --sc-divider-dark:rgba(140, 140, 140, 1);;
 
     --stx-primary: #a44065;
     --stx-key: #266888;
@@ -71,7 +63,6 @@
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     font-family: 'Inter', sans-serif; 
-    --sc-width: 6px;
     --sidebar-width: 14rem;
     --header-height: 3.5rem;
   }
@@ -80,24 +71,6 @@
   * {
     scrollbar-color: var(--sc-divider-light) var(--sc-bg);
     font-variant-numeric: tabular-nums;
-  }
-
-  ::-webkit-scrollbar {
-    width: var(--sc-width);
-  }
-  ::-webkit-scrollbar:horizontal {
-    height: var(--sc-width);
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--sc-bg);
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--sc-divider-light);
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--sc-divider-dark);
   }
 
   @supports (font-variation-settings: normal) {
@@ -123,9 +96,11 @@
   button{
     @apply px-2 py-1 rounded bg-brand text-bg-2 hover:opacity-70;
   }
+
   button:disabled{
     @apply pointer-events-none bg-brand opacity-70;
   }
+  
   a{
     @apply text-brand hover:underline;
   }
@@ -138,6 +113,7 @@
     box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.1);
     @apply bg-gray-50 dark:bg-[#0F1011];
   }
+  
   input:focus{
     outline: 1px solid rgba(8, 145, 178, 0.3);
     outline-offset: -1px;
@@ -157,10 +133,9 @@
   body.dark .polka{
     background-image: radial-gradient(#202020 1px,transparent 0);
   }
-  .playground{
-    --width: calc(100vw - var(--sidebar-width));
-    --content-width: min(47rem, var(--width));
-    --margin-left: calc( calc(calc(var(--content-width) - var(--width)) / 2) - 2rem);
+  
+  .bleed{
+    @apply relative -mx-8 md:mx-[calc(-50vw+50%+calc(var(--sidebar-width)/2))];
   }
 
   .pill{

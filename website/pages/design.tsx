@@ -3,7 +3,7 @@ import { InferGetStaticPropsType } from 'next'
 import React, { useMemo, useRef, useState } from 'react'
 import { useEffect } from 'react'
 
-import { useTheme } from '../ui/ThemeSwitch'
+import { useTheme } from '../ui/ThemeProvider'
 import { loadMdx } from '../utils/loadMDX'
 
 const Color = ({ className = '', varName = '' }) => {

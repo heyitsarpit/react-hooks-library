@@ -173,10 +173,8 @@
   }
 
   :not(pre) > code {
-    background: var(--stx-bg);
-
-    font-family: 'Fira Code', monospace;
-    @apply rounded-sm mx-1 py-[2px] px-2 text-sm transition-colors duration-300;
+    font-family: 'JetBrains Mono', monospace;
+    @apply rounded mx-1 py-[2px] px-2 text-sm bg-cyan-600/10 dark:bg-cyan-600/20;
   }
 
   ol{

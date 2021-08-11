@@ -33,9 +33,6 @@ pre[class*='language-'] {
   overflow: auto;
   margin: 1.5em 0;
   border-radius: 14px;
-
-  transition: 500ms;
-  transition-property: background, color;
 }
 
 @media screen and (max-width: 700px) {

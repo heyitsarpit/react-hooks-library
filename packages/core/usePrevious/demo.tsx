@@ -10,7 +10,9 @@ export function Demo() {
     <div>
       <div>Current Count is - {count}</div>
       <div>Previous Count is - {previousCount}</div>
-      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <button onClick={() => setCount((c) => c + 1)} className="mt-4">
+        Increment
+      </button>
     </div>
   )
 }

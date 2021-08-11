@@ -9,27 +9,30 @@ export function Demo() {
   const debouncedText = useDebounce(text, delay)
 
   return (
-    <div>
-      <input
-        type="text"
-        onChange={(e) => setText(e.target.value)}
-        defaultValue={text}
-      />
-      <span>
+    <div className="flex flex-col">
+      <div>
+        <input
+          type="text"
+          onChange={(e) => setText(e.target.value)}
+          defaultValue={text}
+        />
         <span>
-          Delay -{' '}
-          <input
-            type="number"
-            defaultValue={delay}
-            min="0"
-            max="10000"
-            step="100"
-            onChange={(e) => setDelay(Number(e.target.value))}
-          />
-          ms
+          <span>
+            Delay(ms)
+            <input
+              type="number"
+              defaultValue={delay}
+              min="0"
+              max="10000"
+              step="100"
+              onChange={(e) => setDelay(Number(e.target.value))}
+            />
+          </span>
         </span>
-      </span>
-      <div>Debounced Value - {debouncedText}</div>
+      </div>
+      <div>
+        Debounced Value - <div className="text-lg">{debouncedText}</div>
+      </div>
     </div>
   )
 }

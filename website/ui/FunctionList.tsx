@@ -1,6 +1,7 @@
 import { AnimateSharedLayout, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Fragment } from 'react'
 
 import type { Route } from '../routes'
 import { routes } from '../routes'
@@ -50,11 +51,11 @@ export function FunctionList() {
     <AnimateSharedLayout>
       <motion.div layout>
         {Object.keys(groupedRoutes).map((category) => (
-          <>
+          <Fragment key={category}>
             <p className="text-lg font-bold capitalize text-txt-2">
               {category}
             </p>
-            <ul className="list-none" key={category}>
+            <ul className="list-none">
               {groupedRoutes[category].map(({ name, route }) => (
                 <ListItem
                   key={name}
@@ -64,7 +65,7 @@ export function FunctionList() {
                 />
               ))}
             </ul>
-          </>
+          </Fragment>
         ))}
       </motion.div>
     </AnimateSharedLayout>

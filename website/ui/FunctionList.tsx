@@ -33,7 +33,7 @@ function ListItem({ name, route, isActive }: ItemProps) {
       <Link href={route} passHref scroll={false}>
         <a
           className={`block w-full pl-4 hover:text-brand hover:no-underline ${
-            isActive ? 'font-semibold' : ''
+            isActive ? 'font-semibold text-brand' : 'text-txt-1'
           }`}>
           {name}
         </a>
@@ -51,7 +51,9 @@ export function FunctionList() {
       <motion.div layout>
         {Object.keys(groupedRoutes).map((category) => (
           <>
-            <p className="text-lg font-bold capitalize">{category}</p>
+            <p className="text-lg font-bold capitalize text-txt-2">
+              {category}
+            </p>
             <ul className="list-none" key={category}>
               {groupedRoutes[category].map(({ name, route }) => (
                 <ListItem

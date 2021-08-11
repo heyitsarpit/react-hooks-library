@@ -8,7 +8,7 @@ export function ThemeSwitch() {
   return (
     <button
       onClick={switchTheme}
-      className="flex items-center justify-center w-10 h-10 bg-transparent hover:opacity-100 hover:bg-fg-1 text-txt-1 hover:text-txt-1">
+      className="flex items-center justify-center w-10 h-10 bg-transparent text-txt-1 hover:opacity-100 hover:bg-fg-1 hover:text-txt-2">
       <AnimatePresence initial={false} exitBeforeEnter>
         <motion.svg
           key={theme}

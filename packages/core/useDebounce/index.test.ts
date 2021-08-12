@@ -17,14 +17,28 @@ describe(FunctionName, () => {
     testDocs(FunctionName, source)
   })
 
-  // TODO: Add more test cases
-  test('should update the counter', () => {
-    const value = 'Hello World'
-    const delay = 1000
+  test('should update the value', async () => {
+    let value = 'Hello World'
+    let delay = 1000
     const { result, rerender, waitForValueToChange } = renderHook(() =>
       useDebounce(value, delay)
     )
 
     expect(result.current).toBe('Hello World')
+
+    value = 'Goodbye World'
+    rerender()
+
+    expect(result.current).toBe('Hello World')
+    await waitForValueToChange(() => result.current, { timeout: delay + 10 })
+    expect(result.current).toBe('Goodbye World')
+
+    value = 'Hello Again'
+    delay = 100
+    rerender()
+
+    expect(result.current).toBe('Goodbye World')
+    await waitForValueToChange(() => result.current, { timeout: delay + 10 })
+    expect(result.current).toBe('Hello Again')
   })
 })

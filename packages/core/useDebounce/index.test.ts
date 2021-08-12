@@ -21,7 +21,9 @@ describe(FunctionName, () => {
   test('should update the counter', () => {
     const value = 'Hello World'
     const delay = 1000
-    const { result } = renderHook(() => useDebounce(value, delay))
+    const { result, rerender, waitForValueToChange } = renderHook(() =>
+      useDebounce(value, delay)
+    )
 
     expect(result.current).toBe('Hello World')
   })

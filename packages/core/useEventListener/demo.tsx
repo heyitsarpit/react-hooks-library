@@ -21,7 +21,7 @@ export function Demo() {
       <div className="mt-4">
         <div>press any key - </div>
         <div className="mt-4">
-          last pressed: <span className="p-1 border">{lastPressed}</span>
+          last pressed: <span className="text-brand">{lastPressed}</span>
         </div>
       </div>
     </div>

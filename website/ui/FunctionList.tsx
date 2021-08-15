@@ -11,9 +11,11 @@ const groupedRoutes: {
 } = {}
 
 routes.forEach((route) => {
-  groupedRoutes[route.category]
-    ? groupedRoutes[route.category].push(route)
-    : (groupedRoutes[route.category] = [route])
+  const category = route.category.toLowerCase()
+
+  groupedRoutes[category]
+    ? groupedRoutes[category].push(route)
+    : (groupedRoutes[category] = [route])
 })
 
 type ItemProps = {
@@ -45,7 +47,9 @@ function ListItem({ name, route, isActive }: ItemProps) {
 
 export function FunctionList() {
   const router = useRouter()
-  const isActive = (route: string) => router.asPath.includes(route)
+  console.log(router)
+  const isActive = (route: string) =>
+    router.asPath.replace(/#.*/g, '') === route
 
   return (
     <AnimateSharedLayout>

@@ -1,0 +1,23 @@
+{
+    "name": "@react-hooks-library/shared",
+    "version": "0.1.0",
+    "description": "A collection of hooks and utilities for React",
+    "keywords": [
+        "react",
+        "react hooks",
+        "@react-hooks-library"
+    ],
+    "exports": {
+        ".": {
+            "import": "./index.esm.js",
+            "require": "./index.cjs.js"
+        },
+        "./*": "./*"
+    },
+    "main": "./index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "license": "MIT",
+    "author": "Arpit<https://github.com/heyitsarpit>",
+    "devDependencies": {}
+}

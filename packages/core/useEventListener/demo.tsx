@@ -5,10 +5,10 @@ import { useEventListener } from '.'
 export function Demo() {
   const buttonRef = useRef<HTMLButtonElement | null>(null)
   const [clickCount, setClickCount] = useState(0)
-  const [lastClicked, setLastClicked] = useState('null')
+  const [lastPressed, setLastPressed] = useState('null')
 
   useEventListener('keyup', (ev) => {
-    setLastClicked(ev.key)
+    setLastPressed(ev.key)
   })
 
   useEventListener(buttonRef, 'click', () => {
@@ -17,11 +17,11 @@ export function Demo() {
 
   return (
     <div>
-      <button ref={buttonRef}>Button Clicked {clickCount} times!</button>
+      <button ref={buttonRef}>button clicked {clickCount} times!</button>
       <div className="mt-4">
-        <div>Click any button - </div>
+        <div>press any key - </div>
         <div className="mt-4">
-          Last clicked: <span className="p-1 border">{lastClicked}</span>
+          last pressed: <span className="p-1 border">{lastPressed}</span>
         </div>
       </div>
     </div>

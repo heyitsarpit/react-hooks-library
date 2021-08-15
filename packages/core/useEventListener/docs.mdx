@@ -1,0 +1,59 @@
+---
+category: browser
+name: useEventListener
+description: Register listener using addEventListener when mounting, and removeEventListener automatically when un-mounting.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useEventListener
+
+Register listener using addEventListener when mounting, and removeEventListener automatically when un-mounting.
+
+## Usage
+
+```tsx
+import { useRef, useState } from 'react'
+import { useEventListener } from '@react-hooks-library/core'
+
+export function Demo() {
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+  const [clickCount, setClickCount] = useState(0)
+  const [lastClicked, setLastClicked] = useState('null')
+
+  useEventListener('keyup', (ev) => {
+    setLastClicked(ev.key)
+  })
+
+  useEventListener(buttonRef, 'click', () => {
+    setClickCount((c) => c + 1)
+  })
+
+  return (
+    <div>
+      <button ref={buttonRef}>Button Clicked {clickCount} times!</button>
+      <div>
+        <div>Click any button</div>
+        <div>Last clicked: {lastClicked}</div>
+      </div>
+    </div>
+  )
+}
+
+```
+
+## Type Declarations
+
+```typescript
+declare function useDebounce<T>(value: T, timeout: number): Readonly<T>
+```
+
+## Recommended Reading
+
+## Source
+
+<Source name="useEventListener" pkg="core"/>

@@ -2,6 +2,11 @@
 
 export const isClient = typeof window !== 'undefined'
 
+export const isRef = (obj: unknown): boolean =>
+  obj !== null &&
+  typeof obj === 'object' &&
+  Object.prototype.hasOwnProperty.call(obj, 'current')
+
 const toString = Object.prototype.toString
 
 export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'

@@ -1,0 +1,38 @@
+---
+category: lifecycle
+name: useUnMount
+description: Run a function when component is unmounted.
+---
+
+# useUnMount
+
+Run a function when component is unmounted.
+
+## Usage
+
+```tsx
+import { useUnMount } from '@react-hooks-library/core'
+
+function Demo() {
+  useUnMount(() => {
+    alert('I have been unMounted')
+  })
+
+  return <div></div>
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Run a function when component is unmounted.
+ *
+ * @param callback function to be executed
+ */
+declare function useUnMount(func: Fn): void;
+```
+
+## Source
+
+<Source name="useUnMount" pkg="core" />

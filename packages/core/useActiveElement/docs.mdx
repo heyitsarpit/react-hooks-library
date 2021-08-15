@@ -1,0 +1,44 @@
+---
+category: browser
+name: useActiveElement
+description: Reactive document.activeElement
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# usePrevious
+
+Reactive document.activeElement, returns a reference to current active element, the DOM node.
+
+## Usage
+
+```tsx
+import { useActiveElement } from '@react-hooks-library/core'
+
+export function Demo() {
+  const { activeElement } = useActiveElement()
+
+  return <div>{activeElement?.tagName}</div>
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Reactive document.activeElement, returns a reference to current active element
+ *
+ * @returns current active element (DOM node)
+ **/
+declare function useActiveElement(): {
+    activeElement: Element | null;
+};
+```
+
+## Source
+
+<Source name="useActiveElement" pkg="core" />

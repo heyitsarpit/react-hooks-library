@@ -4,6 +4,11 @@ export type Route = { name: string; category: string; route: string }
 
 export const routes: Route[] = [
   {
+    "name": "useActiveElement",
+    "category": "browser",
+    "route": "/core/useActiveElement"
+  },
+  {
     "name": "useDebounce",
     "category": "utilities",
     "route": "/core/useDebounce"

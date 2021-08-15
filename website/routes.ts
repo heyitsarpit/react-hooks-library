@@ -5,12 +5,22 @@ export type Route = { name: string; category: string; route: string }
 export const routes: Route[] = [
   {
     "name": "useDebounce",
-    "category": "core",
+    "category": "utilities",
     "route": "/core/useDebounce"
   },
   {
+    "name": "useEventListener",
+    "category": "browser",
+    "route": "/core/useEventListener"
+  },
+  {
     "name": "usePrevious",
-    "category": "core",
+    "category": "state",
     "route": "/core/usePrevious"
+  },
+  {
+    "name": "utils",
+    "category": "shared",
+    "route": "/shared/utils"
   }
 ]

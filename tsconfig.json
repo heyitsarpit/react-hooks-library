@@ -15,9 +15,7 @@
     "jsx": "preserve",
     "skipLibCheck": true,
     "noUnusedLocals": true,
-    "paths": {
-      "@reactuse/core": ["./packages/core/index.ts"]
-    },
+    "paths": {},
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

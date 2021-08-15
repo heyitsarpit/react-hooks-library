@@ -19,9 +19,24 @@ export const routes: Route[] = [
     "route": "/core/useEventListener"
   },
   {
+    "name": "useMount",
+    "category": "lifecycle",
+    "route": "/core/useMount"
+  },
+  {
+    "name": "useMountSync",
+    "category": "lifecycle",
+    "route": "/core/useMountSync"
+  },
+  {
     "name": "usePrevious",
     "category": "state",
     "route": "/core/usePrevious"
+  },
+  {
+    "name": "useUnMount",
+    "category": "lifecycle",
+    "route": "/core/useUnMount"
   },
   {
     "name": "utils",

@@ -1,0 +1,46 @@
+---
+category: lifecycle
+name: useMountSync
+description: Run a function synchronously when a component is mounted but after DOM is painted. 
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useMountSync
+
+Run a function synchronously when a component is mounted and after DOM is painted.
+Useful when accessing the DOM or creating event listeners.
+
+## Usage
+
+```tsx
+import { useMountSync } from '@react-hooks-library/core'
+
+function Demo() {
+  useMountSync(() => {
+    const el = document.querySelector('#mount-sync')
+    alert(`I have been mounted. I am a <${el?.tagName}> tag`)
+  })
+
+  return <strong id="mount-sync"></strong>
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Run a function synchronously when a component is mounted and after DOM is painted.
+ *
+ * @param callback function to be executed
+ */
+declare function useMountSync(callback: Fn): void;
+```
+
+## Source
+
+<Source name="useMountSync" pkg="core" />

@@ -1,0 +1,45 @@
+---
+category: lifecycle
+name: useMount
+description: Run a function when a component is mounted. 
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useMount
+
+Run a function when a component is mounted.
+
+## Usage
+
+```tsx
+import { useMount } from '@react-hooks-library/core'
+
+function Demo() {
+  useMount(() => {
+    alert('I have been mounted')
+  })
+
+  return <div></div>
+}
+
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Run a function when a component is mounted.
+ *
+ * @param callback function to be executed
+ */
+declare function useMount(callback: Fn): void;
+```
+
+## Source
+
+<Source name="useMount" pkg="core" />

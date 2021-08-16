@@ -47,9 +47,10 @@ function ListItem({ name, route, isActive }: ItemProps) {
 
 export function FunctionList() {
   const router = useRouter()
-  console.log(router)
-  const isActive = (route: string) =>
-    router.asPath.replace(/#.*/g, '') === route
+
+  const isActive = (name: string) => {
+    return router.query.function === name
+  }
 
   return (
     <AnimateSharedLayout>
@@ -65,7 +66,7 @@ export function FunctionList() {
                   key={name}
                   name={name}
                   route={route}
-                  isActive={isActive(route)}
+                  isActive={isActive(name)}
                 />
               ))}
             </ul>

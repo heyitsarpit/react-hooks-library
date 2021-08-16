@@ -93,7 +93,7 @@
   }
 
   button{
-    @apply px-2 py-1 rounded bg-brand text-bg-2 hover:opacity-70;
+    @apply px-2 py-1 rounded bg-brand text-bg-2 hover:opacity-80 active:opacity-100;
   }
 
   button:disabled{

@@ -19,11 +19,21 @@ Reactive media query hook that returns the truthy value of the media query.
 ```tsx
 import { useMediaQuery } from '@react-hooks-library/core'
 
-export function Demo() {
+function Demo() {
   const isLargeScreen = useMediaQuery('(min-width: 1024px)')
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
 }
 
+return (
+  <>
+    <div>
+      {isLargeScreen ? 'The screen is large' : 'The screen is small'}
+    </div>
+    <div>
+      {prefersDark ? 'User prefers dark mode' : 'User prefers light mode'}
+    </div>
+  </>
+)
 ```
 
 ## Type Declarations
@@ -46,4 +56,4 @@ declare function useMediaQuery(query: string): boolean
 
 ## Source
 
-<Source name="useMediaQuery" pkg="core"/>
+<Source name="useMediaQuery" pkg="core" />

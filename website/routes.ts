@@ -4,6 +4,11 @@ export type Route = { name: string; category: string; route: string }
 
 export const routes: Route[] = [
   {
+    "name": "BreakPointHooks",
+    "category": "browser",
+    "route": "/core/BreakPointHooks"
+  },
+  {
     "name": "useActiveElement",
     "category": "browser",
     "route": "/core/useActiveElement"
@@ -17,6 +22,11 @@ export const routes: Route[] = [
     "name": "useEventListener",
     "category": "browser",
     "route": "/core/useEventListener"
+  },
+  {
+    "name": "useMediaQuery",
+    "category": "browser",
+    "route": "/core/useMediaQuery"
   },
   {
     "name": "useMount",

@@ -1,0 +1,49 @@
+---
+category: browser
+name: useMediaQuery
+description: Reactive media query hook that returns the truthy value of the media query.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useMediaQuery
+
+Reactive media query hook that returns the truthy value of the media query.
+
+## Usage
+
+```tsx
+import { useMediaQuery } from '@react-hooks-library/core'
+
+export function Demo() {
+  const isLargeScreen = useMediaQuery('(min-width: 1024px)')
+  const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
+}
+
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Reactive media query hook that returns the truthy value of the media query.
+ *
+ * @param {string} query
+ * @returns {boolean} boolean value of the query
+ *
+ * @see https://react-hooks-library.vercel.app/core/useMediaQuery
+ */
+declare function useMediaQuery(query: string): boolean
+```
+
+## Recommended Reading
+
+- [Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+
+## Source
+
+<Source name="useMediaQuery" pkg="core"/>

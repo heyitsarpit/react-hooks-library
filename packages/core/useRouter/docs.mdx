@@ -1,0 +1,64 @@
+---
+category: browser
+name: useRouter
+description: Reactive browser location.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useRouter
+
+Reactive browser location.
+
+## Usage
+
+```tsx
+import { useRouter } from '@react-hooks-library/core'
+
+export function Demo() {
+  const router = useRouter()
+
+  return (
+    <div>
+      <pre>
+        <code>{JSON.stringify(router, null, 2)}</code>
+      </pre>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+interface Router {
+  trigger: string
+  state?: any
+  length?: number
+  hash?: string
+  host?: string
+  hostname?: string
+  href?: string
+  origin?: string
+  pathname?: string
+  port?: string
+  protocol?: string
+  search?: string
+}
+
+/**
+ * Reactive browser location.
+ *
+ * @see https://react-hooks-library.vercel.app/core/useRouter
+ *
+ */
+declare function useRouter(): Router
+```
+
+## Source
+
+<Source name="useRouter" pkg="core" />

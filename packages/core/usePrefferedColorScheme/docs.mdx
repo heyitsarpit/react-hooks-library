@@ -1,0 +1,45 @@
+---
+category: browser
+name: usePreferredColorScheme
+description: Reactive prefers color scheme.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useRouter
+
+Reactive prefers color scheme.
+
+## Usage
+
+```tsx
+import { usePreferredColorScheme } from '@react-hooks-library/core'
+
+export function Demo() {
+  const colorScheme = usePreferredColorScheme()
+
+  return <div>Color Scheme is - {colorScheme}</div>
+}
+```
+
+## Type Declarations
+
+```typescript
+declare type ColorSchemeType = 'dark' | 'light'
+
+/**
+ * Reactive prefers-color-scheme media query.
+ *
+ * @see https://react-hooks-library.vercel.app/core/usePreferredColorScheme
+ */
+declare function usePreferredColorScheme(): "dark" | "light"
+
+```
+
+## Source
+
+<Source name="usePreferredColorScheme" pkg="core" />

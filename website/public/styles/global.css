@@ -63,7 +63,7 @@
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     font-family: 'Inter', sans-serif; 
-    --sidebar-width: 14rem;
+    --sidebar-width: 17rem;
     --header-height: 3.5rem;
   }
 

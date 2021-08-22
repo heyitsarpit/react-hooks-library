@@ -39,6 +39,11 @@ export const routes: Route[] = [
     "route": "/core/useMountSync"
   },
   {
+    "name": "usePrefferedColorScheme",
+    "category": "browser",
+    "route": "/core/usePrefferedColorScheme"
+  },
+  {
     "name": "usePrevious",
     "category": "state",
     "route": "/core/usePrevious"

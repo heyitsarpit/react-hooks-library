@@ -38,7 +38,7 @@ const { useGreater, useBetween, isSmaller } = BreakPointHooks(breakpointsTailwin
 // Non reactive check, can be used outside react components
 const smaller = isSmaller('xl')
 
-export function Demo() {
+function Demo() {
   // Greater than md
   const greater = useGreater('md')
 
@@ -48,6 +48,14 @@ export function Demo() {
   // smaller than 2xl
   const smaller = useSmaller('2xl')
 }
+
+return (
+  <div>
+   {greater && 'Greater than md'}
+   {between && 'Between md & lg'}
+   {smaller && 'Smaller than 2xl'}
+  </div>
+)
 ```
 
 ```tsx
@@ -62,7 +70,7 @@ const breakpoints = {
 
 const { useGreater, useBetween } = BreakPointHooks(breakpoints)
 
-export function Demo() {
+function Demo() {
   // Greater than mobile
   const greater = useGreater('mobile')
 

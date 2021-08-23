@@ -39,6 +39,11 @@ export const routes: Route[] = [
     "route": "/core/useMountSync"
   },
   {
+    "name": "useMutationObserver",
+    "category": "browser",
+    "route": "/core/useMutationObserver"
+  },
+  {
     "name": "usePrefferedColorScheme",
     "category": "browser",
     "route": "/core/usePrefferedColorScheme"

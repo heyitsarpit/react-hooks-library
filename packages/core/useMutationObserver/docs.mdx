@@ -1,0 +1,106 @@
+---
+category: browser
+name: useMutationObserver
+description: Watch for changes being made to the DOM tree.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useMutationObserver
+
+Watch for changes being made to the DOM tree. Reactive [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+
+You can observer react refs or DOM nodes directtly. 
+Automatically stops observering when unmounted but returns a manual stop obsering method.
+
+## Usage
+
+```tsx
+import { useRef, useState } from 'react'
+import { useMutationObserver } from '@react-hooks-library/core'
+
+export function Demo() {
+  const ref = useRef<HTMLButtonElement | null>(null)
+  const [observed, setObserved] = useState(false)
+
+  useMutationObserver(
+    ref,
+    (mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'attributes') {
+          setObserved(true)
+        }
+      }
+    },
+    { attributes: true }
+  )
+
+  const addAttribute = () => {
+    if (!ref.current) return
+
+    ref.current.setAttribute('data-mut', 'hello world')
+  }
+
+  return (
+    <div>
+      <div>
+        {observed
+          ? 'Observed attribute change to node'
+          : 'No changes observed yet'}
+      </div>
+
+      <button ref={ref} onClick={addAttribute} disabled={observed}>
+        {observed ? 'Added Attribute To Node' : 'Add Attribute To Node'}
+      </button>
+    </div>
+  )
+}
+
+```
+
+```tsx
+import { useMutationObserver } from '@react-hooks-library/core'
+
+export function Demo() {
+
+  const { isSupported, stop } = useMutationObserver(
+    document.querySelector('#my-element'),
+    (mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'childList') {
+          console.log("Observer change to child nodes")
+        }
+      }
+    },
+    { childList: true }
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Watch for changes being made to the DOM tree.
+ *
+ * @param target - React ref or DOM node
+ * @param callback - callback to execute when mutations are observed
+ * @param options - Options passed to mutation observer
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver MutationObserver MDN
+ * @see https://react-hooks-library.vercel.app/core/useMutationObserver
+ */
+declare function useMutationObserver(
+    target: MaybeRef<HTMLElement | null>, 
+    callback: MutationCallback, 
+    options?: MutationObserverInit):  { isSupported: boolean, stop: () => void } 
+    )
+```
+
+## Source
+
+<Source name="useMutationObserver" pkg="core" />

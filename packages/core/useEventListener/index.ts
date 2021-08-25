@@ -1,12 +1,12 @@
 import {
   Fn,
   isClient,
-  isRef,
   isString,
   MaybeRef,
-  noop
+  noop,
+  unRef
 } from '@react-hooks-library/shared'
-import { MutableRefObject, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 interface InferEventTarget<Events> {
   addEventListener(event: Events, fn?: any, options?: any): any
@@ -135,26 +135,24 @@ export function useEventListener(...args: any[]) {
     : ([target, event, listener, options] = args)
 
   const savedListener = useRef<EventListener>(listener)
-  let cleanup = noop
+  const cleanup = useRef(noop)
 
   useEffect(() => {
     savedListener.current = listener
   }, [listener])
 
   useEffect(() => {
-    if (!isClient && !target) return
+    const el = unRef(target)
 
-    const el = isRef(target)
-      ? (target as MutableRefObject<EventTarget>).current
-      : (target as EventTarget)
+    if (!isClient || !el) return
 
     el.addEventListener(event, savedListener.current, options)
-    cleanup = () => {
+    cleanup.current = () => {
       el.removeEventListener(event, savedListener.current, options)
     }
 
-    return cleanup
+    return cleanup.current
   }, [event, target, options])
 
-  return cleanup
+  return cleanup.current
 }

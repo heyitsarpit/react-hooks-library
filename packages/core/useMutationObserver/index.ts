@@ -1,5 +1,5 @@
-import { isClient, isRef, MaybeRef } from '@react-hooks-library/shared'
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react'
+import { isClient, MaybeRef, unRef } from '@react-hooks-library/shared'
+import { useCallback, useEffect, useRef } from 'react'
 
 import { useUnMount } from '../useUnMount'
 
@@ -33,9 +33,7 @@ export function useMutationObserver(
   useUnMount(stop)
 
   useEffect(() => {
-    const el = isRef(target)
-      ? (target as MutableRefObject<HTMLElement | null>).current
-      : (target as HTMLElement | null)
+    const el = unRef(target)
 
     if (!(isSupported.current && el)) return
 

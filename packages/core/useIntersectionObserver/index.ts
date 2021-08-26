@@ -24,8 +24,8 @@ export interface IntersectionObserverOptions {
  * Reactive intersection observer.
  *
  * @param target - React ref or DOM node
- * @param callback - callback to execute when mutations are observed
  * @param options - Options passed to mutation observer
+ * @param callback - callback to execute when mutations are observed
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver IntersectionObserver MDN
  * @see https://react-hooks-library.vercel.app/core/useIntersectionObserver
@@ -38,6 +38,7 @@ export function useIntersectionObserver(
   const { root = document, rootMargin = '0px', threshold = 0 } = options
 
   const [inView, setInView] = useState(false)
+  const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null)
 
   const observer = useRef<IntersectionObserver | null>(null)
   const isSupported = useRef<boolean>(
@@ -64,8 +65,17 @@ export function useIntersectionObserver(
         entries: IntersectionObserverEntry[],
         observer: IntersectionObserver
       ) => {
+        const thresholds = Array.isArray(threshold) ? threshold : [threshold]
+
+        entries.forEach((entry) => {
+          const inView =
+            entry.isIntersecting &&
+            thresholds.some((threshold) => entry.intersectionRatio >= threshold)
+
+          setInView(inView)
+          setEntry(entry)
+        })
         callback(entries, observer)
-        setInView(true)
       },
       {
         root: rootEl,
@@ -73,6 +83,7 @@ export function useIntersectionObserver(
         threshold
       }
     )
+
     observer.current?.observe(el)
 
     return stop
@@ -81,6 +92,7 @@ export function useIntersectionObserver(
   return {
     isSupported: isSupported.current,
     stop,
-    inView
+    inView,
+    entry
   }
 }

@@ -24,6 +24,11 @@ export const routes: Route[] = [
     "route": "/core/useEventListener"
   },
   {
+    "name": "useIntersectionObserver",
+    "category": "browser",
+    "route": "/core/useIntersectionObserver"
+  },
+  {
     "name": "useMediaQuery",
     "category": "browser",
     "route": "/core/useMediaQuery"
@@ -44,9 +49,9 @@ export const routes: Route[] = [
     "route": "/core/useMutationObserver"
   },
   {
-    "name": "usePrefferedColorScheme",
+    "name": "usePreferredColorScheme",
     "category": "browser",
-    "route": "/core/usePrefferedColorScheme"
+    "route": "/core/usePreferredColorScheme"
   },
   {
     "name": "usePrevious",

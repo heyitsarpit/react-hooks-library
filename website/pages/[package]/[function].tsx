@@ -1,9 +1,8 @@
 import { getMDXComponent } from 'mdx-bundler/client'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useMemo } from 'react'
-
-import { mdxComponents } from '../../ui/docs/mdxComponents'
-import { getAllFunctionsMeta, getFunction } from '../../utils/loadMDX'
+import { mdxComponents } from 'ui/docs/mdxComponents'
+import { getAllFunctionsMeta, getFunction } from 'utils/loadMDX'
 
 export async function getStaticPaths() {
   const posts = await getAllFunctionsMeta()

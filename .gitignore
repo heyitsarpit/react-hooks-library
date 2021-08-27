@@ -32,3 +32,6 @@ yarn-error.log*
 # vercel
 .vercel
 dist
+
+website/public/*.js
+website/public/*.js.map

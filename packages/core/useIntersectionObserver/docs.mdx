@@ -108,17 +108,25 @@ export function Demo() {
 ## Type Declarations
 
 ```typescript
-interface IntersectionObserverOptions {
+export interface IntersectionObserverOptions {
   /**
    * The Element or Document whose bounds are used as the bounding box when testing for intersection.
+   *
+   * @default document
    */
   root?: MaybeRef<Element | Document | undefined | null>
+
   /**
    * A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections.
+   *
+   * @default '0px'
    */
   rootMargin?: string
+
   /**
    * Either a single number or an array of numbers between 0.0 and 1.
+   *
+   * @default 0
    */
   threshold?: number | number[]
 }

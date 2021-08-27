@@ -1,0 +1,149 @@
+---
+category: browser
+name: useIntersectionObserver
+description: Reactive intersection observer.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useIntersectionObserver
+
+Reactive [intersection observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+
+## Usage
+
+```tsx
+import { useRef } from 'react'
+import { useIntersectionObserver } from '@react-hooks-library/core'
+
+export function Demo() {
+  const inner = useRef(null)
+
+  const { inView } = useIntersectionObserver(inner)
+
+  return (
+    <div>
+      <div>{inView ? 'Visible' : 'Not Visible'}</div>
+      <div>
+        <div ref={inner}>Inner Box</div>
+      </div>
+    </div>
+  )
+}
+```
+
+```tsx
+export function Demo() {
+  const outer = useRef(null)
+  const inner = useRef(null)
+
+  const { inView, entry, stop } = useIntersectionObserver(
+    inner,
+    {
+      root: outer,
+      threshold: 0.5
+    },
+    (entries) => {
+      console.log(entries)
+    }
+  )
+
+  return (
+    <div ref={outer}>
+      <div>{inView ? 'Visible' : 'Not Visible'}</div>
+      <div>
+        <div ref={inner}>Inner Box</div>
+      </div>
+    </div>
+  )
+}
+```
+
+### Params
+
+- `target` (required)
+
+  The element we wish to observe, it can be either a **react ref** or a **DOM node**
+
+- `options` (optional)
+
+  - `root` (optional | default - `document`)
+
+    The Element or Document whose bounds are used as the bounding box when testing for intersection, it can be either a **react ref** or a **DOM node**
+
+  - `rootMargin` (optional | default - `'0px'`)
+
+    A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections
+
+  - `threshold` (optional | default - `0`)
+
+    Either a single number or an array of numbers between 0.0 and 1
+
+- `callback` (optional)
+
+  A callback function which is called whenever the intersection observer detects an intersection
+
+### Returns
+
+- `inView`
+
+  Whether the element is in view or not
+
+- `entry`
+
+  The entry object for the current intersection
+
+- `isSupported`
+
+  Whether the browser supports the intersection observer API
+
+- `stop`
+
+  Manually stop the observer, usually not needed as it will stop automatically be called when the component is unmounted
+
+## Type Declarations
+
+```typescript
+interface IntersectionObserverOptions {
+  /**
+   * The Element or Document whose bounds are used as the bounding box when testing for intersection.
+   */
+  root?: MaybeRef<Element | Document | undefined | null>
+  /**
+   * A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections.
+   */
+  rootMargin?: string
+  /**
+   * Either a single number or an array of numbers between 0.0 and 1.
+   */
+  threshold?: number | number[]
+}
+/**
+ * Reactive intersection observer.
+ *
+ * @param target - React ref or DOM node
+ * @param options - Options passed to mutation observer
+ * @param callback - callback to execute when mutations are observed
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver IntersectionObserver MDN
+ * @see https://react-hooks-library.vercel.app/core/useIntersectionObserver
+ */
+declare function useIntersectionObserver(
+  target: MaybeRef<Element | undefined | null>,
+  options?: IntersectionObserverOptions,
+  callback?: IntersectionObserverCallback
+): {
+  isSupported: boolean
+  stop: () => void
+  inView: boolean
+  entry: IntersectionObserverEntry | null
+}
+```
+
+## Source
+
+<Source name="useIntersectionObserver" pkg="core" />

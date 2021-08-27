@@ -1,12 +1,11 @@
-import '../public/styles/global.css'
-import '../public/styles/prism.css'
+import 'public/styles/global.css'
+import 'public/styles/prism.css'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { AppProps } from 'next/app'
-
-import { Header } from '../ui/Header'
-import { SideBar } from '../ui/SideBar'
-import { ThemeProvider } from '../ui/ThemeProvider'
+import { Header } from 'ui/Header'
+import { SideBar } from 'ui/SideBar'
+import { ThemeProvider } from 'ui/ThemeProvider'
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
   return (

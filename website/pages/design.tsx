@@ -1,35 +1,8 @@
 import { getMDXComponent } from 'mdx-bundler/client'
 import { InferGetStaticPropsType } from 'next'
-import React, { useMemo, useRef, useState } from 'react'
-import { useEffect } from 'react'
-
-import { useTheme } from '../ui/ThemeProvider'
-import { loadMdx } from '../utils/loadMDX'
-
-const Color = ({ className = '', varName = '' }) => {
-  const [color, setColor] = useState('')
-  const ref = useRef()
-  const { theme } = useTheme()
-
-  useEffect(() => {
-    const color = getComputedStyle(ref.current).getPropertyValue(
-      'background-color'
-    )
-    setColor(color)
-  }, [theme])
-
-  return (
-    <div className="flex items-center gap-5 font-mono text-sm">
-      <div
-        ref={ref}
-        className={`w-12 h-12 rounded-full ring-1 ring-trueGray-200 dark:ring-warmGray-800 ${className}`}></div>
-      <div>
-        <div>{varName}</div>
-        <div>{color}</div>
-      </div>
-    </div>
-  )
-}
+import React, { useMemo } from 'react'
+import { Color } from 'ui/Color'
+import { loadMdx } from 'utils/loadMDX'
 
 export async function getStaticProps() {
   const mdxSource = `
@@ -56,6 +29,23 @@ export async function getStaticProps() {
     return state
   }
   \`\`\`
+
+  \`\`\`tsx
+  import { useRouter } from '.'
+
+  export function Demo() {
+    const router = useRouter()
+  
+    return (
+      <div>
+        <pre className="text-sm whitespace-pre-wrap">
+          <code>{JSON.stringify(router, null, 2)}</code>
+        </pre>
+      </div>
+    )
+  }  
+\`\`\`
+
 `
   const posts = await loadMdx(mdxSource)
   return { props: posts }
@@ -67,7 +57,7 @@ export default function Design({ code }: Props) {
   const CodeComponent = useMemo(() => getMDXComponent(code), [code])
 
   return (
-    <div className="flex flex-col w-full h-full gap-8 px-8 py-24 mx-auto md:max-w-screen-md 2xl:max-w-screen-2xl">
+    <div className="flex flex-col w-full h-full gap-8 mx-auto md:max-w-screen-md 2xl:max-w-screen-2xl">
       <h1>Design System</h1>
       <section className="flex flex-col gap-8">
         <h2>Colors</h2>

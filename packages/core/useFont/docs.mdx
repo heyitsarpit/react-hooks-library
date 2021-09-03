@@ -1,0 +1,71 @@
+---
+category: browser
+name: useFont
+description: React FontFace, a hook to load fonts asynchronously
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useFont
+
+React [FontFace](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/FontFace), a hook to load fonts asynchronously.
+
+## Usage
+
+```tsx
+import { useFont } from '@react-hooks-library/core'
+
+export function Demo() {
+  const fontName = 'JetBrains Mono Custom'
+  const { error, loaded, font } = useFont(
+    fontName,
+    '/fonts/JetBrainsMono-Thin.woff2'
+  )
+
+  if (error) {
+    return <div>Error loading font</div>
+  }
+
+  if (!loaded) {
+    return <div>Loading Font</div>
+  }
+
+  return (
+    <div>
+      <div style={{ fontFamily: fontName }}>New Font Loaded!!!</div>
+      <div>Font Family - {font?.family}</div>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * React FontFace, a hook to load fonts asynchronously
+ *
+ * @param family
+ * @param source
+ * @param descriptors
+ *
+ * @see https://react-hooks-library.vercel.app/core/useFont
+ */
+declare function useFont(
+  family: string,
+  source: string | Blob,
+  descriptors?: FontFaceDescriptors
+): {
+  loaded: boolean
+  error: boolean
+  font: FontFace | null
+}
+```
+
+## Source
+
+<Source name="useFont" pkg="core" />

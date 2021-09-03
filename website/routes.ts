@@ -69,6 +69,11 @@ export const routes: Route[] = [
     "route": "/core/useRouter"
   },
   {
+    "name": "useTitle",
+    "category": "browser",
+    "route": "/core/useTitle"
+  },
+  {
     "name": "useUnMount",
     "category": "lifecycle",
     "route": "/core/useUnMount"

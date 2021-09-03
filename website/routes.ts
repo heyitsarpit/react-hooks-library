@@ -24,6 +24,11 @@ export const routes: Route[] = [
     "route": "/core/useEventListener"
   },
   {
+    "name": "useFont",
+    "category": "browser",
+    "route": "/core/useFont"
+  },
+  {
     "name": "useIntersectionObserver",
     "category": "browser",
     "route": "/core/useIntersectionObserver"

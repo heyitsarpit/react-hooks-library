@@ -1,0 +1,78 @@
+---
+category: browser
+name: useTitle
+description: Reactive document title hook, set title or observe dom mutation reactively
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useTitle
+
+Reactive document title hook, set title or observe dom mutation reactively.
+Uses [useMutationObserver](/core/useMutationObserver) to observe DOM mutations.
+
+## Usage
+
+```tsx
+import { useTitle } from '@react-hooks-library/core'
+
+function Demo() {
+  const { title, setTitle } = useTitle()
+
+  function setRawTitle() {
+    const titleNode = document.head.querySelector('title')
+    // This will also re-render the component
+    titleNode.innerText = 'Some New Title'
+  }
+
+  return (
+    <div>
+      <div>Title - {title}</div>
+      <input
+        type="text"
+        placeholder="start typing to update title"
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
+      <button onClick={setRawTitle}>set raw title</button>
+    </div>
+  )
+}
+```
+
+```tsx
+function Demo() {
+  const { title } = useTitle('Default Title')
+
+  return (
+    <div>
+      <div>Title - {title}</div>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Reactive document title hook
+ *
+ * Set title or observe dom mutation reactively
+ *
+ * @param newTitle optional
+ * @see https://react-hooks-library.vercel.app/core/useTitle
+ */
+declare function useTitle(newTitle?: string): {
+  title: string
+  setTitle: react.Dispatch<react.SetStateAction<string>>
+}
+```
+
+## Source
+
+<Source name="useTitle" pkg="core" />

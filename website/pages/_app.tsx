@@ -3,10 +3,18 @@ import 'public/styles/prism.css'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { AppProps } from 'next/app'
+import { Router } from 'next/router'
 import { Header } from 'ui/Header'
 import { SEO } from 'ui/SEO'
 import { SideBar } from 'ui/SideBar'
 import { ThemeProvider } from 'ui/ThemeProvider'
+
+Router.events.on('routeChangeComplete', () => {
+  document.querySelector('#__next').scroll({
+    top: 0,
+    behavior: 'smooth'
+  })
+})
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
   return (

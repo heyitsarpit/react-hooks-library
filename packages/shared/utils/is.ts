@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
+/**
+ * Check if we're on the server or client side
+ */
 export const isClient = typeof window !== 'undefined'
 
+/**
+ * Check if object is a react ref
+ */
 export const isRef = (obj: unknown): boolean =>
   obj !== null &&
   typeof obj === 'object' &&

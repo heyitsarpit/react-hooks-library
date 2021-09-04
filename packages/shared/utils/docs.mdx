@@ -6,4 +6,72 @@ description: Common utils and helpers.
 
 # Utils
 
-Common utils and helpers.
+Common utils and helpers, as functions and types.
+
+## Functions
+
+- `isClient` - Check if we're on the server or client side
+- `unRef` - Accepts either a ref object or a dom node and returns a dom node
+- `isRef` - Check if object is a react ref
+- `isWindow` -  is the object window
+- `noop` - no operation
+- `rand` - random number between a min and max number
+- `isBoolean`
+- `isFunction`
+- `isNumber`
+- `isString`
+- `isObject`
+
+## Types
+
+- `Fn` - A function type
+- `MaybeRef<T>` - Union type of react ref and dom node.
+
+
+# Type Declarations
+
+```typescript
+/**
+ * Any function
+ */
+declare type Fn = () => void
+
+/**
+ * Maybe it's a react ref, or a dom node.
+ */
+declare type MaybeRef<T> = T | MutableRefObject<T>
+
+/**
+ * Accepts either a ref object or a dom node and returns a dom node
+ *
+ * @param target - ref or a dom node
+ * @returns dom node
+ */
+declare function unRef<T extends unknown = HTMLElement>(target: MaybeRef<T>): T
+
+/**
+ * Check if we're on the server or client side
+ */
+declare const isClient: boolean
+
+/**
+ * Check if object is a react ref
+ */
+declare const isRef: (obj: unknown) => boolean
+
+declare const isBoolean: (val: any) => val is boolean
+
+declare const isFunction: <T extends Function>(val: any) => val is T
+
+declare const isNumber: (val: any) => val is number
+
+declare const isString: (val: unknown) => val is string
+
+declare const isObject: (val: any) => val is object
+
+declare const isWindow: (val: any) => val is Window
+
+declare const noop: () => void
+
+declare const rand: (min: number, max: number) => number
+```

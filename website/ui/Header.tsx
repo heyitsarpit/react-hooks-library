@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { ThemeSwitch } from './ThemeSwitch'
@@ -34,8 +33,12 @@ function Logo() {
   return (
     <Link href="/">
       <a className="flex gap-4 py-2 ml-2 h-[var(--header-height)] w-32">
-        <img src="/logo.png" alt="abcd" />
-        <img src="/logo_text.svg" alt="abcd" />
+        <img src="/logo.png" alt="Logo" className="w-10 h-10" />
+        <img
+          className="py-1"
+          src="/logo_text.png"
+          alt="React Hooks Library Text"
+        />
       </a>
     </Link>
   )

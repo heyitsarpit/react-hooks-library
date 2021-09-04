@@ -42,7 +42,9 @@ export default function Functions({ meta, code }: Props) {
           description: meta.description
         }}
       />
-      <Component components={mdxComponents as any} />
+      <article>
+        <Component components={mdxComponents as any} />
+      </article>
     </>
   )
 }

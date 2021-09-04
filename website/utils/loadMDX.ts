@@ -73,7 +73,10 @@ export async function loadMdx(source: string, cwd?: string) {
       options.rehypePlugins = [
         ...(options?.rehypePlugins ?? []),
         rehypeSlug,
-        rehypeAutolink
+        [
+          rehypeAutolink,
+          { content: { type: 'text', value: '#' }, behaviour: 'append' }
+        ]
       ]
       return options
     }

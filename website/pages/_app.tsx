@@ -17,7 +17,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
         <SideBar />
         <AnimatePresence initial={false} exitBeforeEnter>
           <motion.main
-            key={router.asPath}
+            key={router.asPath.replace(/#.*/g, '')}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

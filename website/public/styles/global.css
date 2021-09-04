@@ -60,7 +60,6 @@
   }
 
   html {
-    scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     font-family: 'Inter', sans-serif; 
     --sidebar-width: 17rem;
@@ -70,6 +69,7 @@
 
   * {
     font-variant-numeric: tabular-nums;
+    scroll-behavior: smooth;
   }
 
   @supports (font-variation-settings: normal) {
@@ -85,7 +85,16 @@
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
+    --link-visibility: hidden;
     @apply mb-5 text-trueGray-700 dark:text-coolGray-200;
+  }
+  
+  :is(h1, h2, h3, h4, h5, h6):hover{
+    --link-visibility: visible;
+  }
+  :is(h1, h2, h3, h4, h5, h6) > a{
+    visibility: var(--link-visibility);
+    @apply ml-2 !no-underline;
   }
 
   ::-moz-color-swatch{

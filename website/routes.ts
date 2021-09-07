@@ -34,6 +34,11 @@ export const routes: Route[] = [
     "route": "/core/useIntersectionObserver"
   },
   {
+    "name": "useKeyStroke",
+    "category": "browser",
+    "route": "/core/useKeyStroke"
+  },
+  {
     "name": "useMediaQuery",
     "category": "browser",
     "route": "/core/useMediaQuery"

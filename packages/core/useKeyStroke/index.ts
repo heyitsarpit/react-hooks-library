@@ -1,7 +1,7 @@
-import { MaybeRef } from '@react-hooks-library/shared'
+import { isString, MaybeRef } from '@react-hooks-library/shared'
 import { useEventListener } from '..'
 
-export type Keys = string
+export type Keys = string | string[]
 export type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'
 export type KeyStrokeOptions = {
   eventName?: KeyStrokeEventName
@@ -12,21 +12,22 @@ export type KeyStrokeOptions = {
 /**
  * Listen for keyboard keys being stroked.
  *
- * @param key
+ * @param keys
  * @param handler
  * @param options
  *
  * @see https://react-hooks-library.vercel.app/core/onKeyStroke
  */
 export function useKeyStroke(
-  key: Keys,
+  keys: Keys,
   handler: (event: KeyboardEvent) => void,
   options: KeyStrokeOptions = {}
 ) {
   const { target = window, eventName = 'keydown', passive = false } = options
 
   const listener = (e: KeyboardEvent) => {
-    if (e.key === key) handler(e)
+    if (isString(keys)) keys = [keys]
+    if (keys.includes(e.key)) handler(e)
   }
 
   return useEventListener(target, eventName, listener, passive)
@@ -35,50 +36,50 @@ export function useKeyStroke(
 /**
  * Listen for keyboard keys on keydown.
  *
- * @param key
+ * @param keys
  * @param handler
  * @param options
  *
  * @see https://react-hooks-library.vercel.app/core/onKeyStroke
  */
 export function useKeyDown(
-  key: Keys,
+  keys: Keys,
   handler: (event: KeyboardEvent) => void,
   options: KeyStrokeOptions = {}
 ) {
-  return useKeyStroke(key, handler, { ...options, eventName: 'keydown' })
+  return useKeyStroke(keys, handler, { ...options, eventName: 'keydown' })
 }
 
 /**
  * Listen for keyboard keys on keypress.
  *
- * @param key
+ * @param keys
  * @param handler
  * @param options
  *
  * @see https://react-hooks-library.vercel.app/core/onKeyStroke
  */
 export function useKeyPressed(
-  key: Keys,
+  keys: Keys,
   handler: (event: KeyboardEvent) => void,
   options: KeyStrokeOptions = {}
 ) {
-  return useKeyStroke(key, handler, { ...options, eventName: 'keypress' })
+  return useKeyStroke(keys, handler, { ...options, eventName: 'keypress' })
 }
 
 /**
  * Listen for keyboard keys on keyup.
  *
- * @param key
+ * @param keys
  * @param handler
  * @param options
  *
  * @see https://react-hooks-library.vercel.app/core/onKeyStroke
  */
 export function useKeyUp(
-  key: Keys,
+  keys: Keys,
   handler: (event: KeyboardEvent) => void,
   options: KeyStrokeOptions = {}
 ) {
-  return useKeyStroke(key, handler, { ...options, eventName: 'keyup' })
+  return useKeyStroke(keys, handler, { ...options, eventName: 'keyup' })
 }

@@ -1,0 +1,155 @@
+---
+category: browser
+name: useKeyStroke
+description: Reactive media query hook that returns the truthy value of the media query.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useKeyStroke
+
+Listen for keyboard keys on keystroke. Built using [useEventListener](/core/useEventListener).
+Listen to single key or list of key events.
+
+### Functions
+
+- `useKeyStroke` - generic key stroke hook, defaults to keydown
+- `useKeyDown`- keydown event listener
+- `useKeyUp` - keyup event listener
+- `useKeyPressed` - keypress event listener
+
+## Usage
+
+```tsx
+import { useKeyDown } from '@react-hooks-library/core'
+import { useState } from 'react'
+
+function Demo() {
+  const [posY, setPosY] = useState(0)
+
+  useKeyDown(['w', 'W', 'ArrowUp'], (e) => {
+    setPosY((y) => y - 20)
+    e.preventDefault()
+  })
+
+  return <div style={{ transform: `translate(${posX}px, ${posY}px)` }}></div>
+}
+```
+
+```tsx
+import {
+  useKeyDown,
+  useKeyPressed,
+  useKeyUp,
+  useKeyStroke
+} from '@react-hooks-library/core'
+
+function Demo() {
+  useKeyStroke('Shift', () => console.log('pressed Shift'),
+    {
+      eventName: 'keypress'
+      target: document
+      passive: true
+      }
+    )
+
+  useKeyDown('a', (e) => {
+    console.log('a key down')
+  })
+
+  useKeyPressed('b', (e) => {
+    console.log('b key presses')
+  })
+
+  useKeyUp('c', (e) => {
+    console.log('c key up')
+  })
+
+  return null
+}
+```
+
+## Type Declarations
+
+```typescript
+declare type Keys = string | string[]
+declare type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'
+declare type KeyStrokeOptions = {
+  eventName?: KeyStrokeEventName
+  target?: MaybeRef<EventTarget>
+  passive?: boolean
+}
+
+/**
+ * Listen for keyboard keys being stroked.
+ *
+ * @param keys
+ * @param handler
+ * @param options
+ *
+ * @see https://react-hooks-library.vercel.app/core/useKeyStroke
+ */
+declare function useKeyStroke(
+  keys: Keys,
+  handler: (event: KeyboardEvent) => void,
+  options?: KeyStrokeOptions
+): _react_hooks_library_shared.Fn
+
+/**
+ * Listen for keyboard keys on keydown.
+ *
+ * @param keys
+ * @param handler
+ * @param options
+ *
+ * @see https://react-hooks-library.vercel.app/core/useKeyStroke
+ */
+declare function useKeyDown(
+  keys: Keys,
+  handler: (event: KeyboardEvent) => void,
+  options?: KeyStrokeOptions
+): _react_hooks_library_shared.Fn
+
+/**
+ * Listen for keyboard keys on keypress.
+ *
+ * @param keys
+ * @param handler
+ * @param options
+ *
+ * @see https://react-hooks-library.vercel.app/core/useKeyStroke
+ */
+declare function useKeyPressed(
+  keys: Keys,
+  handler: (event: KeyboardEvent) => void,
+  options?: KeyStrokeOptions
+): _react_hooks_library_shared.Fn
+
+/**
+ * Listen for keyboard keys on keyup.
+ *
+ * @param keys
+ * @param handler
+ * @param options
+ *
+ * @see https://react-hooks-library.vercel.app/core/useKeyStroke
+ */
+declare function useKeyUp(
+  keys: Keys,
+  handler: (event: KeyboardEvent) => void,
+  options?: KeyStrokeOptions
+): _react_hooks_library_shared.Fn
+```
+
+## Recommended Reading
+
+- [Key JS](https://keyjs.dev/)
+- [KeyboardEvent](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent)
+
+## Source
+
+<Source name="useKeyStroke" pkg="core" />

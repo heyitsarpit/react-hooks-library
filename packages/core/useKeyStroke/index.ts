@@ -1,5 +1,5 @@
 import { isString, MaybeRef } from '@react-hooks-library/shared'
-import { useEventListener } from '..'
+import { useEventListener } from '../useEventListener'
 
 export type Keys = string | string[]
 export type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'
@@ -16,7 +16,7 @@ export type KeyStrokeOptions = {
  * @param handler
  * @param options
  *
- * @see https://react-hooks-library.vercel.app/core/onKeyStroke
+ * @see https://react-hooks-library.vercel.app/core/useKeyStroke
  */
 export function useKeyStroke(
   keys: Keys,
@@ -40,7 +40,7 @@ export function useKeyStroke(
  * @param handler
  * @param options
  *
- * @see https://react-hooks-library.vercel.app/core/onKeyStroke
+ * @see https://react-hooks-library.vercel.app/core/useKeyStroke
  */
 export function useKeyDown(
   keys: Keys,

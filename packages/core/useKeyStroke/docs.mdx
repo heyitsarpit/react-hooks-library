@@ -73,16 +73,54 @@ function Demo() {
 }
 ```
 
+### Using `code` option to use `event.code` instead of `event.key`
+
+```tsx
+import { useKeyDown } from '@react-hooks-library/core'
+
+function Demo() {
+  useKeyDown('Digit1', () => console.log('Keydown Digit 1'), {
+    code: true
+  })
+
+  return null
+}
+```
+
 ## Type Declarations
 
 ```typescript
-declare type Keys = string | string[]
-declare type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'
+declare type Keys = string | string[];
+declare type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup';
 declare type KeyStrokeOptions = {
-  eventName?: KeyStrokeEventName
-  target?: MaybeRef<EventTarget>
-  passive?: boolean
-}
+    /** Key Stroke Event Name
+     *
+     * Can only be one of the following:
+     *  - keydown
+     *  - keypress
+     *  - keyup
+     */
+    eventName?: KeyStrokeEventName;
+    /** The DOM node to attach the event listener to
+     * @default window
+     */
+    target?: MaybeRef<EventTarget>;
+    /**
+     * when `true` will use `event.code`
+     *
+     * when `false` will use `event.key`
+     *
+     * @default false
+     */
+    code?: boolean;
+    /** TA boolean value that, if true,
+     * indicates that the function specified by listener
+     * will never call `preventDefault()`.
+     *
+     * @default window
+     */
+    passive?: false;
+};
 
 /**
  * Listen for keyboard keys being stroked.

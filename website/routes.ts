@@ -35,7 +35,7 @@ export const routes: Route[] = [
   },
   {
     "name": "useKeyStroke",
-    "category": "browser",
+    "category": "sensors",
     "route": "/core/useKeyStroke"
   },
   {

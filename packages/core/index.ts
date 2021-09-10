@@ -2,6 +2,7 @@
 
 export * from './BreakPointHooks'
 export * from './useActiveElement'
+export * from './useClickOutside'
 export * from './useDebounce'
 export * from './useEventListener'
 export * from './useFont'

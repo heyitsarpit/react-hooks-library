@@ -14,6 +14,11 @@ export const routes: Route[] = [
     "route": "/core/useActiveElement"
   },
   {
+    "name": "useClickOutside",
+    "category": "sensors",
+    "route": "/core/useClickOutside"
+  },
+  {
     "name": "useDebounce",
     "category": "utilities",
     "route": "/core/useDebounce"

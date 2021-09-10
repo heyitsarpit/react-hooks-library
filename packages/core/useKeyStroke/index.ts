@@ -4,9 +4,36 @@ import { useEventListener } from '../useEventListener'
 export type Keys = string | string[]
 export type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'
 export type KeyStrokeOptions = {
+  /** Key Stroke Event Name
+   *
+   * Can only be one of the following:
+   *  - keydown
+   *  - keypress
+   *  - keyup
+   */
   eventName?: KeyStrokeEventName
+
+  /** The DOM node to attach the event listener to
+   * @default window
+   */
   target?: MaybeRef<EventTarget>
-  passive?: boolean
+
+  /**
+   * when `true` will use `event.code`
+   *
+   * when `false` will use `event.key`
+   *
+   * @default false
+   */
+  code?: boolean
+
+  /** TA boolean value that, if true,
+   * indicates that the function specified by listener
+   * will never call `preventDefault()`.
+   *
+   * @default window
+   */
+  passive?: false
 }
 
 /**
@@ -23,14 +50,21 @@ export function useKeyStroke(
   handler: (event: KeyboardEvent) => void,
   options: KeyStrokeOptions = {}
 ) {
-  const { target = window, eventName = 'keydown', passive = false } = options
+  const {
+    target = window,
+    eventName = 'keydown',
+    passive = false,
+    code = false
+  } = options
 
   const listener = (e: KeyboardEvent) => {
+    const eventKey = code ? e.code : e.key
+
     if (isString(keys)) keys = [keys]
-    if (keys.includes(e.key)) handler(e)
+    if (keys.includes(eventKey)) handler(e)
   }
 
-  return useEventListener(target, eventName, listener, passive)
+  return useEventListener(target, eventName, listener, { passive })
 }
 
 /**

@@ -94,6 +94,11 @@ export const routes: Route[] = [
     "route": "/core/useUnMount"
   },
   {
+    "name": "useWindowSize",
+    "category": "sensors",
+    "route": "/core/useWindowSize"
+  },
+  {
     "name": "utils",
     "category": "shared",
     "route": "/shared/utils"

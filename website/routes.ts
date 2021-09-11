@@ -49,6 +49,11 @@ export const routes: Route[] = [
     "route": "/core/useMediaQuery"
   },
   {
+    "name": "useMediaStream",
+    "category": "sensors",
+    "route": "/core/useMediaStream"
+  },
+  {
     "name": "useMount",
     "category": "lifecycle",
     "route": "/core/useMount"

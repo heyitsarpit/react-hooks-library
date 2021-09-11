@@ -94,6 +94,11 @@ export const routes: Route[] = [
     "route": "/core/useTitle"
   },
   {
+    "name": "useToggle",
+    "category": "state",
+    "route": "/core/useToggle"
+  },
+  {
     "name": "useUnMount",
     "category": "lifecycle",
     "route": "/core/useUnMount"

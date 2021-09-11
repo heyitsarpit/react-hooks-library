@@ -1,0 +1,55 @@
+---
+category: sensors
+name: useScroll
+description: Reactive scroll values for a react ref or a dom node
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useScroll
+
+Reactive scroll values for a react ref or a dom node
+Returns a number between 0 and 1, indicating the progress of the scroll.
+
+## Usage
+
+```tsx
+import { useRef } from 'react'
+import { useScroll } from '@react-hooks-library/core'
+
+export function Demo() {
+  const box = useRef<HTMLDivElement | null>(null)
+  const { x, y } = useScroll(box)
+
+  return (
+    <div ref={box}>
+      <div>Scroll Vertically and Horizontally</div>
+      <div style={{ width: '100rem', height: '35rem' }}></div>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Reactive scroll values for a react ref or a dom node
+ *
+ * @param target - dom node or react ref
+ *
+ * @see https://react-hooks-library.vercel.app/core/useScroll
+ */
+declare function useScroll(target?: MaybeRef<Element | null | undefined>): {
+    x: number;
+    y: number;
+};
+```
+
+## Source
+
+<Source name="useScroll" pkg="core" />

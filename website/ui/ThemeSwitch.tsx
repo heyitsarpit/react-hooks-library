@@ -1,9 +1,20 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 import { useTheme } from './ThemeProvider'
 
 export function ThemeSwitch() {
   const { switchTheme, theme } = useTheme()
+  const [hasMounted, setHasMounted] = useState(false)
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  // Avoid initial transition when switching themes
+  if (!hasMounted) {
+    return <div className="w-10 h-10"></div>
+  }
 
   return (
     <button

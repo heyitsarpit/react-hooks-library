@@ -79,6 +79,11 @@ export const routes: Route[] = [
     "route": "/core/useRouter"
   },
   {
+    "name": "useScroll",
+    "category": "sensors",
+    "route": "/core/useScroll"
+  },
+  {
     "name": "useTitle",
     "category": "browser",
     "route": "/core/useTitle"

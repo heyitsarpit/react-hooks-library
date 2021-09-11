@@ -18,11 +18,9 @@ type Props = { children: React.ReactNode }
 
 export function ThemeProvider({ children }: Props) {
   const [theme, setTheme] = useState<Theme>('dark')
-  const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {
     const theme = (document.body.getAttribute('class') as Theme) || 'dark'
-    setHasMounted(true)
     setTheme(theme)
   }, [])
 
@@ -42,10 +40,6 @@ export function ThemeProvider({ children }: Props) {
 
   const switchTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light')
-
-  if (!hasMounted) {
-    return null
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, switchTheme }}>

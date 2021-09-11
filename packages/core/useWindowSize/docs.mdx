@@ -1,0 +1,58 @@
+---
+category: sensors
+name: useWindowSize
+description: Reactive window size
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useWindowSize
+
+Reactive window size
+
+## Usage
+
+```tsx
+import { useWindowSize } from '@react-hooks-library/core'
+
+function Demo() {
+  const { height, width } = useWindowSize()
+
+  return (
+    <div>
+      Dimensions - {height} x {width}
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+interface WindowSizeOptions {
+  initialWidth?: number
+  initialHeight?: number
+}
+/**
+ * Reactive window size.
+ *
+ * @param options
+ *
+ * @see https://react-hooks-library.vercel.app/core/useWindowSize
+ */
+declare function useWindowSize({
+  initialWidth,
+  initialHeight
+}?: WindowSizeOptions): {
+  width: number
+  height: number
+}
+```
+
+## Source
+
+<Source name="useWindowSize" pkg="core" />

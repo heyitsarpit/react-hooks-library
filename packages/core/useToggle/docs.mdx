@@ -1,0 +1,59 @@
+---
+category: state
+name: useToggle
+description: A state toggle hook
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useToggle
+
+A state toggle hook
+
+## Usage
+
+```tsx
+import { useToggle } from '@react-hooks-library/core'
+
+export function Demo() {
+  const { bool, setFalse, setTrue, toggle } = useToggle()
+
+  return (
+    <div>
+      <div>{bool ? '🐵' : '🙈'}</div>
+      <div>
+        <button onClick={toggle}>Toggle</button>
+        <button onClick={setTrue}>On</button>
+        <button onClick={setFalse}>Off</button>
+      </div>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * A state toggle hook
+ *
+ * @param defaultValue
+ * @default false
+ *
+ * @see https://react-hooks-library.vercel.app/core/useToggle
+ */
+declare function useToggle(defaultValue?: boolean): {
+  bool: boolean
+  toggle: () => void
+  setTrue: () => void
+  setFalse: () => void
+}
+```
+
+## Source
+
+<Source name="useToggle" pkg="core" />

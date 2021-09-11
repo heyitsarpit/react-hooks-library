@@ -38,3 +38,5 @@ export const rand = (min: number, max: number) => {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+export const round = (num: number) => Math.round(num * 1e2) / 1e2

@@ -7,6 +7,7 @@ import {
   unRef
 } from '@react-hooks-library/shared'
 import { useEffect, useRef } from 'react'
+
 import { _window } from '../_ssr.config'
 
 interface InferEventTarget<Events> {

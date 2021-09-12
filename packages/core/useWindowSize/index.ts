@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useMount } from '../useMount'
+
 import { useEventListener } from '../useEventListener'
+import { useMount } from '../useMount'
 
 export interface WindowSizeOptions {
   initialWidth?: number

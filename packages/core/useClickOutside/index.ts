@@ -1,8 +1,8 @@
 import type { MaybeRef } from '@react-hooks-library/shared'
 import { unRef } from '@react-hooks-library/shared'
 
-import { useEventListener } from '../useEventListener'
 import { _window } from '../_ssr.config'
+import { useEventListener } from '../useEventListener'
 
 export type ClickOutsideEvents = Pick<
   WindowEventMap,

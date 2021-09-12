@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+
 import { _navigator } from '../_ssr.config'
 
 export interface UseMediaStreamOptions {

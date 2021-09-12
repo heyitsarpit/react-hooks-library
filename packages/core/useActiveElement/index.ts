@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { useEventListener } from '../useEventListener'
 import { _document } from '../_ssr.config'
+import { useEventListener } from '../useEventListener'
 
 /**
  * Reactive document.activeElement, returns a reference to current active element

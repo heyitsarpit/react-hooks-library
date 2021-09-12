@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useMount } from '../useMount'
 
-import { useMutationObserver } from '../useMutationObserver'
 import { _document } from '../_ssr.config'
+import { useMount } from '../useMount'
+import { useMutationObserver } from '../useMutationObserver'
 
 /**
  * Reactive document title hook

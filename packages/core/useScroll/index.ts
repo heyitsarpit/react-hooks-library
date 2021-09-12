@@ -1,9 +1,9 @@
 import { MaybeRef, round, unRef } from '@react-hooks-library/shared'
 import { useState } from 'react'
 
+import { _document } from '../_ssr.config'
 import { useEventListener } from '../useEventListener'
 import { useMount } from '../useMount'
-import { _document } from '../_ssr.config'
 
 /**
  * Reactive scroll values for a react ref or a dom node

@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import { useEventListener } from '../useEventListener'
 import { useMount } from '../useMount'
+import { _document } from '../_ssr.config'
 
 /**
  * Reactive scroll values for a react ref or a dom node
@@ -12,7 +13,7 @@ import { useMount } from '../useMount'
  * @see https://react-hooks-library.vercel.app/core/useScroll
  */
 export function useScroll(
-  target: MaybeRef<Element | null | undefined> = document.documentElement
+  target: MaybeRef<Element | null | undefined> = _document?.documentElement
 ) {
   const [x, setX] = useState(0)
   const [y, setY] = useState(0)

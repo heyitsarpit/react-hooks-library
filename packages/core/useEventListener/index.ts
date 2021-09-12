@@ -7,6 +7,7 @@ import {
   unRef
 } from '@react-hooks-library/shared'
 import { useEffect, useRef } from 'react'
+import { _window } from '../_ssr.config'
 
 interface InferEventTarget<Events> {
   addEventListener(event: Events, fn?: any, options?: any): any
@@ -36,7 +37,6 @@ export type GeneralEventListener<E = Event> = {
 export function useEventListener<E extends keyof WindowEventMap>(
   event: E,
   listener: (this: Window, ev: WindowEventMap[E]) => any,
-  //   dependencies?: Ar ,
   options?: boolean | AddEventListenerOptions
 ): Fn
 
@@ -125,7 +125,7 @@ export function useEventListener<EventType = Event>(
 ): Fn
 
 export function useEventListener(...args: any[]) {
-  let target: MaybeRef<EventTarget | null | undefined> = window
+  let target: MaybeRef<EventTarget | null | undefined> = _window
   let event: string
   let listener: EventListener
   let options: boolean | AddEventListenerOptions

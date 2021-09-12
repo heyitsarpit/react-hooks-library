@@ -1,0 +1,47 @@
+---
+category: sensors
+name: useOnline
+description: Reactive online status
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useOnline
+
+Reactive online status.
+
+## Usage
+
+```tsx
+import { useOnline } from '@react-hooks-library/core'
+
+export function Demo() {
+  const isOnline = useOnline()
+
+  return (
+    <div>
+      {isOnline ? <div>Online</div> : <div>Offline</div>}
+      <small>Toggle your network to observe changes</small>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Reactive online status
+ *
+ * @see https://react-hooks-library.vercel.app/core/useOnline
+ */
+declare function useOnline(): boolean
+```
+
+## Source
+
+<Source name="useOnline" pkg="core" />

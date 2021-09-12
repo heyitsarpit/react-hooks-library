@@ -1,5 +1,6 @@
 import { isString, MaybeRef } from '@react-hooks-library/shared'
 import { useEventListener } from '../useEventListener'
+import { _window } from '../_ssr.config'
 
 export type Keys = string | string[]
 export type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'
@@ -51,7 +52,7 @@ export function useKeyStroke(
   options: KeyStrokeOptions = {}
 ) {
   const {
-    target = window,
+    target = _window,
     eventName = 'keydown',
     passive = false,
     code = false

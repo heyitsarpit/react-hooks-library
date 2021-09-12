@@ -1,5 +1,5 @@
-import { isClient } from '@react-hooks-library/shared'
 import { useEffect, useState } from 'react'
+import { useMount } from '../useMount'
 
 /**
  * Reactive media query hook that returns the truthy value of the media query.
@@ -10,9 +10,11 @@ import { useEffect, useState } from 'react'
  * @see https://react-hooks-library.vercel.app/core/useMediaQuery
  */
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(() =>
-    isClient ? window.matchMedia(query).matches : false
-  )
+  const [matches, setMatches] = useState(false)
+
+  useMount(() => {
+    setMatches(window.matchMedia(query).matches)
+  })
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(query)

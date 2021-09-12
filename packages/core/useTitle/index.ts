@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import { useMount } from '../useMount'
 
 import { useMutationObserver } from '../useMutationObserver'
+import { _document } from '../_ssr.config'
 
 /**
  * Reactive document title hook
@@ -11,14 +13,18 @@ import { useMutationObserver } from '../useMutationObserver'
  * @see https://react-hooks-library.vercel.app/core/useTitle
  */
 export function useTitle(newTitle?: string) {
-  const [title, setTitle] = useState(newTitle || document.title)
+  const [title, setTitle] = useState(newTitle ?? '')
+
+  useMount(() => {
+    setTitle((newTitle || _document?.title) ?? '')
+  })
 
   useEffect(() => {
     document.title = title
   }, [title])
 
   useMutationObserver(
-    document.head.querySelector('title'),
+    _document?.head.querySelector('title'),
     () => {
       if (document.title !== title) setTitle(document.title)
     },

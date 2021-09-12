@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useMount } from '..'
 
 import { useEventListener } from '../useEventListener'
 import { _window } from '../_ssr.config'
@@ -55,7 +56,11 @@ const buildState = (trigger: string): Router => {
  *
  */
 export function useRouter() {
-  const [state, setState] = useState(() => buildState('load'))
+  const [state, setState] = useState<Router | null>(null)
+
+  useMount(() => {
+    setState(buildState('load'))
+  })
 
   useEventListener('popstate', () => setState(buildState('popstate')), {
     passive: true

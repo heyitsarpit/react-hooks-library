@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 
-import { useUnMount } from '../useUnMount'
 import { useMutationObserver } from '.'
 
 export function Demo() {
@@ -18,8 +17,6 @@ export function Demo() {
     },
     { attributes: true }
   )
-
-  useUnMount(stop)
 
   const addAttribute = () => {
     if (!ref.current) return

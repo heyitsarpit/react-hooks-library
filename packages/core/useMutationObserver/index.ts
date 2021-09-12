@@ -1,7 +1,8 @@
 import { isClient, MaybeRef, unRef } from '@react-hooks-library/shared'
-import { useCallback, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { useUnMount } from '../useUnMount'
+import { _window } from '../_ssr.config'
 
 /**
  * Watch for changes being made to the DOM tree.
@@ -14,37 +15,35 @@ import { useUnMount } from '../useUnMount'
  * @see https://react-hooks-library.vercel.app/core/useMutationObserver
  */
 export function useMutationObserver(
-  target: MaybeRef<HTMLElement | null>,
+  target: MaybeRef<Element | null | undefined>,
   callback: MutationCallback,
   options: MutationObserverInit = {}
 ) {
   const observer = useRef<MutationObserver | null>(null)
-  const isSupported = useRef<boolean>(
-    isClient && 'IntersectionObserver' in window
-  )
+  const isSupported = isClient && !!_window?.IntersectionObserver
 
-  const stop = useCallback(() => {
+  const stop = () => {
     if (!observer.current) return
 
     observer.current.disconnect()
     observer.current = null
-  }, [])
+  }
 
   useUnMount(stop)
 
   useEffect(() => {
     const el = unRef(target)
 
-    if (!(isSupported.current && el)) return
+    if (!(isSupported && el && _window)) return
 
-    observer.current = new window.MutationObserver(callback)
+    observer.current = new _window.MutationObserver(callback)
     observer.current?.observe(el, options)
 
     return stop
   }, [callback, stop, options, target])
 
   return {
-    isSupported: isSupported.current,
+    isSupported,
     stop
   }
 }

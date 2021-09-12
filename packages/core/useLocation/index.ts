@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { useMount } from '..'
+import { useMount } from '../useMount'
 
 import { useEventListener } from '../useEventListener'
 import { _window } from '../_ssr.config'
 
-export interface Router {
+export interface Location {
   trigger: string
   state?: any
   length?: number
@@ -19,7 +19,7 @@ export interface Router {
   search?: string
 }
 
-const buildState = (trigger: string): Router => {
+const buildState = (trigger: string): Location => {
   const { state, length } = _window?.history || {}
   const {
     hash,
@@ -52,11 +52,11 @@ const buildState = (trigger: string): Router => {
 /**
  * Reactive browser location.
  *
- * @see https://react-hooks-library.vercel.app/core/useDebounce
+ * @see https://react-hooks-library.vercel.app/core/useLocation
  *
  */
-export function useRouter() {
-  const [state, setState] = useState<Router | null>(null)
+export function useLocation() {
+  const [state, setState] = useState<Location | null>(null)
 
   useMount(() => {
     setState(buildState('load'))

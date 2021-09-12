@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useEventListener } from '../useEventListener'
+import { _window } from '../_ssr.config'
 
 export interface Router {
   trigger: string
@@ -18,7 +19,7 @@ export interface Router {
 }
 
 const buildState = (trigger: string): Router => {
-  const { state, length } = window?.history || {}
+  const { state, length } = _window?.history || {}
   const {
     hash,
     host,
@@ -29,7 +30,7 @@ const buildState = (trigger: string): Router => {
     port,
     protocol,
     search
-  } = window?.location || {}
+  } = _window?.location || {}
 
   return {
     trigger,
@@ -56,16 +57,13 @@ const buildState = (trigger: string): Router => {
 export function useRouter() {
   const [state, setState] = useState(() => buildState('load'))
 
-  useEventListener(window, 'popstate', () => setState(buildState('popstate')), {
+  useEventListener('popstate', () => setState(buildState('popstate')), {
     passive: true
   })
 
-  useEventListener(
-    window,
-    'hashchange',
-    () => setState(buildState('hashchange')),
-    { passive: true }
-  )
+  useEventListener('hashchange', () => setState(buildState('hashchange')), {
+    passive: true
+  })
 
   return state
 }

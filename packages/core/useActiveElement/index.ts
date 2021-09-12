@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useEventListener } from '../useEventListener'
+import { _document } from '../_ssr.config'
 
 /**
  * Reactive document.activeElement, returns a reference to current active element
@@ -9,12 +10,12 @@ import { useEventListener } from '../useEventListener'
  **/
 export function useActiveElement() {
   const [activeElement, setActiveElement] = useState(
-    () => document.activeElement
+    () => _document?.activeElement
   )
 
   useEventListener(
     'focus',
-    () => setActiveElement(document.activeElement),
+    () => setActiveElement(_document?.activeElement),
     true
   )
 

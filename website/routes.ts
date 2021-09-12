@@ -74,6 +74,11 @@ export const routes: Route[] = [
     "route": "/core/useMutationObserver"
   },
   {
+    "name": "useNetwork",
+    "category": "sensors",
+    "route": "/core/useNetwork"
+  },
+  {
     "name": "usePreferredColorScheme",
     "category": "browser",
     "route": "/core/usePreferredColorScheme"

@@ -79,6 +79,11 @@ export const routes: Route[] = [
     "route": "/core/useNetwork"
   },
   {
+    "name": "useOnline",
+    "category": "sensors",
+    "route": "/core/useOnline"
+  },
+  {
     "name": "usePreferredColorScheme",
     "category": "browser",
     "route": "/core/usePreferredColorScheme"

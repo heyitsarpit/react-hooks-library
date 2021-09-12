@@ -118,7 +118,7 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
 
   useEffect(() => {
     if (autoSwitch && stream.current) restart()
-  }, [videoDeviceId, audioDeviceId])
+  }, [videoDeviceId, audioDeviceId, autoSwitch])
 
   return {
     isSupported,

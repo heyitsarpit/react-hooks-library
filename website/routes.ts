@@ -44,6 +44,11 @@ export const routes: Route[] = [
     "route": "/core/useKeyStroke"
   },
   {
+    "name": "useLocation",
+    "category": "browser",
+    "route": "/core/useLocation"
+  },
+  {
     "name": "useMediaQuery",
     "category": "browser",
     "route": "/core/useMediaQuery"
@@ -77,11 +82,6 @@ export const routes: Route[] = [
     "name": "usePrevious",
     "category": "state",
     "route": "/core/usePrevious"
-  },
-  {
-    "name": "useRouter",
-    "category": "browser",
-    "route": "/core/useRouter"
   },
   {
     "name": "useScroll",

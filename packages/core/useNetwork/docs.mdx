@@ -1,0 +1,75 @@
+---
+category: sensors
+name: useNetwork
+description: Reactive Network status
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useNetwork
+
+Reactive Network status.
+
+## Usage
+
+```tsx
+import { useNetwork } from '@react-hooks-library/core'
+
+export function Demo() {
+  const network = useNetwork()
+
+  return (
+    <div>
+      <dl className="my-4">
+        {Object.entries(network).map(([key, value]) => (
+          <div key={`${key} + ${value}`}>
+            <dt>{key}:</dt>
+            <dd>{`${value}` ?? 'unknown'}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+declare type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined
+
+interface NetworkInformation extends EventTarget {
+  readonly type?: ConnectionType
+  readonly effectiveType?: NetworkEffectiveType
+  readonly downlinkMax?: number
+  readonly downlink?: number
+  readonly rtt?: number
+  readonly saveData?: boolean
+  onchange?: EventListener
+}
+
+/**
+ * Reactive Network status.
+ *
+ * @see https://react-hooks-library.vercel.app/core/useNetwork
+ */
+declare function useNetwork(): {
+  isSupported: boolean
+  isOnline: boolean
+  offlineAt: number | undefined
+  saveData: boolean | undefined
+  rtt: number | undefined
+  downlink: number | undefined
+  downlinkMax: number | undefined
+  effectiveType: NetworkEffectiveType
+  type: ConnectionType
+}
+```
+
+## Source
+
+<Source name="useNetwork" pkg="core" />

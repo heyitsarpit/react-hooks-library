@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { _navigator } from '../_ssr.config'
 
 export interface UseMediaStreamOptions {
   /**
@@ -36,7 +37,7 @@ export interface UseMediaStreamOptions {
  */
 export function useMediaStream(options: UseMediaStreamOptions = {}) {
   const { audioDeviceId, videoDeviceId, autoSwitch } = options
-  const isSupported = Boolean(navigator?.mediaDevices?.getUserMedia)
+  const isSupported = Boolean(_navigator?.mediaDevices?.getUserMedia)
 
   const stream = useRef<MediaStream | null>(null)
   const videoNode = useRef<HTMLVideoElement | null>(null)
@@ -57,10 +58,11 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
   async function play() {
     if (!isSupported || stream.current) return
 
-    stream.current = await navigator.mediaDevices.getUserMedia({
-      video: getDeviceOptions(videoDeviceId),
-      audio: getDeviceOptions(audioDeviceId)
-    })
+    stream.current =
+      (await _navigator?.mediaDevices.getUserMedia({
+        video: getDeviceOptions(videoDeviceId),
+        audio: getDeviceOptions(audioDeviceId)
+      })) ?? null
 
     setPlaying(true)
     return stream.current

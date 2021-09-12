@@ -1,7 +1,7 @@
-import { useRouter } from '.'
+import { useLocation } from '.'
 
 export function Demo() {
-  const router = useRouter()
+  const router = useLocation()
 
   return (
     <div>

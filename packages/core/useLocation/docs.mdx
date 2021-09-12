@@ -1,6 +1,6 @@
 ---
 category: browser
-name: useRouter
+name: useLocation
 description: Reactive browser location.
 ---
 
@@ -10,17 +10,17 @@ import { Demo } from './demo.tsx'
   <Demo />
 </Playground>
 
-# useRouter
+# useLocation
 
 Reactive browser location.
 
 ## Usage
 
 ```tsx
-import { useRouter } from '@react-hooks-library/core'
+import { useLocation } from '@react-hooks-library/core'
 
 export function Demo() {
-  const router = useRouter()
+  const router = useLocation()
 
   return (
     <div>
@@ -35,7 +35,7 @@ export function Demo() {
 ## Type Declarations
 
 ```typescript
-interface Router {
+interface Location {
   trigger: string
   state?: any
   length?: number
@@ -49,16 +49,15 @@ interface Router {
   protocol?: string
   search?: string
 }
-
 /**
  * Reactive browser location.
  *
- * @see https://react-hooks-library.vercel.app/core/useRouter
+ * @see https://react-hooks-library.vercel.app/core/useLocation
  *
  */
-declare function useRouter(): Router
+declare function useLocation(): Location | null
 ```
 
 ## Source
 
-<Source name="useRouter" pkg="core" />
+<Source name="useLocation" pkg="core" />

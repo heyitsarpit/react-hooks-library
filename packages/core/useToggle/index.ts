@@ -8,7 +8,7 @@ import { useState } from 'react'
  *
  * @see https://react-hooks-library.vercel.app/core/useToggle
  */
-export function useToggle(defaultValue: boolean = false) {
+export function useToggle(defaultValue = false) {
   const [bool, setBool] = useState(defaultValue)
 
   const toggle = () => setBool((s) => !s)

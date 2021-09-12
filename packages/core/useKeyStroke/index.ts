@@ -1,6 +1,7 @@
 import { isString, MaybeRef } from '@react-hooks-library/shared'
-import { useEventListener } from '../useEventListener'
+
 import { _window } from '../_ssr.config'
+import { useEventListener } from '../useEventListener'
 
 export type Keys = string | string[]
 export type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'

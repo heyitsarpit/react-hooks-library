@@ -18,13 +18,11 @@ module.exports = {
     amd: true,
     node: true
   },
-  plugins: ['simple-import-sort', 'react-hooks'],
+  plugins: ['simple-import-sort'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'next',
     'plugin:prettier/recommended'

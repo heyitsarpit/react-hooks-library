@@ -1,7 +1,8 @@
 import { getMDXComponent } from 'mdx-bundler/client'
 import { InferGetStaticPropsType } from 'next'
+import Link from 'next/link'
 import { NextSeo } from 'next-seo'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { Color } from 'ui/Color'
 import { loadMdx } from 'utils/loadMDX'
 
@@ -148,7 +149,9 @@ export default function Design({ code }: Props) {
 
         <section>
           <h2>Link</h2>
-          <a href="/">Home</a>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
         </section>
 
         <section>

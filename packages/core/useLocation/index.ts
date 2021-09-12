@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { useMount } from '../useMount'
 
-import { useEventListener } from '../useEventListener'
 import { _window } from '../_ssr.config'
+import { useEventListener } from '../useEventListener'
+import { useMount } from '../useMount'
 
 export interface Location {
   trigger: string

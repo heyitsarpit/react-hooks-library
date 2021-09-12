@@ -1,8 +1,8 @@
 import { isClient, MaybeRef, unRef } from '@react-hooks-library/shared'
 import { useEffect, useRef } from 'react'
 
-import { useUnMount } from '../useUnMount'
 import { _window } from '../_ssr.config'
+import { useUnMount } from '../useUnMount'
 
 /**
  * Watch for changes being made to the DOM tree.

@@ -1,11 +1,13 @@
 import { useMediaQuery } from '../useMediaQuery'
 export * from './breakpoints'
+import { _window } from '../_ssr.config'
 
 export type BreakPoints = Record<string, number>
 
 function match(query: string): boolean {
-  if (!window) return false
-  return window.matchMedia(query).matches
+  if (!_window) return false
+
+  return _window.matchMedia(query).matches
 }
 
 /**

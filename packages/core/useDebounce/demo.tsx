@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDebounce } from '.'
 
 export function Demo() {
-  const [text, setText] = useState('Hello World')
+  const [text, setText] = useState('Hello')
   const [delay, setDelay] = useState(1000)
 
   const debouncedText = useDebounce(text, delay)
@@ -30,8 +30,8 @@ export function Demo() {
           </span>
         </span>
       </div>
-      <div>
-        Debounced Value - <div className="text-lg">{debouncedText}</div>
+      <div className="mt-8">
+        Debounced Value - <span className="pill active">{debouncedText}</span>
       </div>
     </div>
   )

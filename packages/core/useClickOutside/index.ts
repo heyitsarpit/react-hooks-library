@@ -2,6 +2,7 @@ import type { MaybeRef } from '@react-hooks-library/shared'
 import { unRef } from '@react-hooks-library/shared'
 
 import { useEventListener } from '../useEventListener'
+import { _window } from '../_ssr.config'
 
 export type ClickOutsideEvents = Pick<
   WindowEventMap,
@@ -43,5 +44,5 @@ export function useClickOutside<
     handler(event)
   }
 
-  return useEventListener(window, event, listener, { passive: true })
+  return useEventListener(_window, event, listener, { passive: true })
 }

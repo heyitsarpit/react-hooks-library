@@ -39,9 +39,9 @@ export const routes: Route[] = [
     "route": "/core/useIntersectionObserver"
   },
   {
-    "name": "useIsSuppported",
+    "name": "useIsSupported",
     "category": "sensors",
-    "route": "/core/useIsSuppported"
+    "route": "/core/useIsSupported"
   },
   {
     "name": "useKeyStroke",

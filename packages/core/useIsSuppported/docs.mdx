@@ -1,0 +1,48 @@
+---
+category: sensors
+name: useIsSupported
+description: Is a feature supported in the browser or not
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useIsSupported
+
+Is a feature supported in the browser or not.
+
+## Usage
+
+```tsx
+import { useIsSupported } from '@react-hooks-library/core'
+
+export function Demo() {
+  const isSupported = useIsSupported(() => !!navigator?.connection)
+
+  return isSupported ? (
+    <div>`navigator.connection` Is supported</div>
+  ) : (
+    <div>`navigator.connection` Is not supported</div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Is a feature supported in the browser or not
+ *
+ * @param predicate - predicate to check if the feature is supported
+ *
+ * @see https://react-hooks-library.vercel.app/core/useIsSupported
+ */
+declare function useIsSupported(predicate: () => boolean): boolean
+```
+
+## Source
+
+<Source name="useIsSupported" pkg="core" />

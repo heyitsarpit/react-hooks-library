@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { useMount } from '..'
 import { useEventListener } from '../useEventListener'
+import { useMount } from '../useMount'
 
 /**
  * Reactive online status

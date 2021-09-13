@@ -1,7 +1,8 @@
-import { isClient, MaybeRef, unRef } from '@react-hooks-library/shared'
-import { useEffect, useRef } from 'react'
+import { MaybeRef, unRef } from '@react-hooks-library/shared'
+import { useCallback, useEffect, useRef } from 'react'
 
 import { _window } from '../_ssr.config'
+import { useIsSupported } from '../useIsSupported'
 import { useUnMount } from '../useUnMount'
 
 /**
@@ -20,14 +21,14 @@ export function useMutationObserver(
   options: MutationObserverInit = {}
 ) {
   const observer = useRef<MutationObserver | null>(null)
-  const isSupported = isClient && !!_window?.IntersectionObserver
+  const isSupported = useIsSupported(() => !!_window?.IntersectionObserver)
 
-  const stop = () => {
+  const stop = useCallback(() => {
     if (!observer.current) return
 
     observer.current.disconnect()
     observer.current = null
-  }
+  }, [])
 
   useUnMount(stop)
 
@@ -40,7 +41,7 @@ export function useMutationObserver(
     observer.current?.observe(el, options)
 
     return stop
-  }, [callback, stop, options, target])
+  }, [callback, stop, options, target, isSupported])
 
   return {
     isSupported,

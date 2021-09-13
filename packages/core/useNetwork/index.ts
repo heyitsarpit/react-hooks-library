@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 
 import { _navigator } from '../_ssr.config'
 import { useEventListener } from '../useEventListener'
+import { useIsSupported } from '../useIsSupported'
 import { useMount } from '../useMount'
 
 export type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined
@@ -22,7 +23,7 @@ export interface NetworkInformation extends EventTarget {
  * @see https://react-hooks-library.vercel.app/core/useNetwork
  */
 export function useNetwork() {
-  const [isSupported, setIsSupported] = useState(false)
+  const isSupported = useIsSupported(() => !!_navigator?.connection)
   const [isOnline, setIsOnline] = useState(true)
   const [offlineAt, setOfflineAt] = useState<number | undefined>(undefined)
 
@@ -30,8 +31,6 @@ export function useNetwork() {
   const rerender = useState({})[1]
 
   useMount(() => {
-    setIsSupported(!!_navigator?.connection)
-
     if (!_navigator) return
 
     setIsOnline(_navigator.onLine)

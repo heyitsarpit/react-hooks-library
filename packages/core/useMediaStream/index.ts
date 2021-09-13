@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { _navigator } from '../_ssr.config'
+import { useIsSupported } from '../useIsSupported'
 
 export interface UseMediaStreamOptions {
   /**
@@ -38,7 +39,9 @@ export interface UseMediaStreamOptions {
  */
 export function useMediaStream(options: UseMediaStreamOptions = {}) {
   const { audioDeviceId, videoDeviceId, autoSwitch } = options
-  const isSupported = Boolean(_navigator?.mediaDevices?.getUserMedia)
+  const isSupported = useIsSupported(
+    () => !!_navigator?.mediaDevices?.getUserMedia
+  )
 
   const stream = useRef<MediaStream | null>(null)
   const videoNode = useRef<HTMLVideoElement | null>(null)

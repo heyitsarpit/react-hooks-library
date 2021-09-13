@@ -1,6 +1,7 @@
-import { isClient, MaybeRef, noop, unRef } from '@react-hooks-library/shared'
+import { MaybeRef, noop, unRef } from '@react-hooks-library/shared'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { useIsSupported } from '../useIsSupported'
 import { useUnMount } from '../useUnMount'
 
 export interface IntersectionObserverOptions {
@@ -45,11 +46,9 @@ export function useIntersectionObserver(
 
   const [inView, setInView] = useState(false)
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null)
+  const isSupported = useIsSupported(() => 'IntersectionObserver' in window)
 
   const observer = useRef<IntersectionObserver | null>(null)
-  const isSupported = useRef<boolean>(
-    isClient && 'IntersectionObserver' in window
-  )
 
   const stop = useCallback(() => {
     if (!observer.current) return
@@ -64,7 +63,7 @@ export function useIntersectionObserver(
     const el = unRef(target)
     const rootEl = unRef(root)
 
-    if (!(isSupported.current && el && rootEl)) return
+    if (!(isSupported && el && rootEl)) return
 
     observer.current = new window.IntersectionObserver(
       (
@@ -93,10 +92,10 @@ export function useIntersectionObserver(
     observer.current?.observe(el)
 
     return stop
-  }, [callback, root, rootMargin, stop, target, threshold])
+  }, [callback, root, rootMargin, stop, target, threshold, isSupported])
 
   return {
-    isSupported: isSupported.current,
+    isSupported,
     stop,
     inView,
     entry

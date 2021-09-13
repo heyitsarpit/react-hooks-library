@@ -24,18 +24,10 @@ export interface NetworkInformation extends EventTarget {
 export function useNetwork() {
   const [isSupported, setIsSupported] = useState(false)
   const [isOnline, setIsOnline] = useState(true)
-
-  // TODO: Explore if we can remove all these state updates with a single rerender
-  const [saveData, setSaveData] = useState<boolean | undefined>(false)
   const [offlineAt, setOfflineAt] = useState<number | undefined>(undefined)
-  const [downlink, setDownlink] = useState<number | undefined>(undefined)
-  const [downlinkMax, setDownlinkMax] = useState<number | undefined>(undefined)
-  const [rtt, setRtt] = useState<number | undefined>(undefined)
-  const [effectiveType, setEffectiveType] =
-    useState<NetworkEffectiveType>(undefined)
-  const [type, setType] = useState<ConnectionType>('unknown')
 
-  const connection = useRef(_navigator?.connection as NetworkInformation)
+  const connection = useRef<NetworkInformation | undefined>(undefined)
+  const rerender = useState({})[1]
 
   useMount(() => {
     setIsSupported(!!_navigator?.connection)
@@ -45,19 +37,11 @@ export function useNetwork() {
     setIsOnline(_navigator.onLine)
     setOfflineAt(isOnline ? undefined : Date.now())
 
-    if (!connection.current) return
+    const _connection = _navigator?.connection as NetworkInformation
+    if (!_connection) return
 
-    const update = () => {
-      setSaveData(connection.current.saveData)
-      setDownlink(connection.current.downlink)
-      setDownlinkMax(connection.current.downlinkMax)
-      setRtt(connection.current.rtt)
-      setEffectiveType(connection.current.effectiveType)
-      setType(connection.current.type ?? 'unknown')
-    }
-
-    update()
-    connection.current.onchange = update
+    connection.current = _connection
+    connection.current.onchange = () => rerender({})
   })
 
   useEventListener('offline', () => {
@@ -73,11 +57,11 @@ export function useNetwork() {
     isSupported,
     isOnline,
     offlineAt,
-    saveData,
-    rtt,
-    downlink,
-    downlinkMax,
-    effectiveType,
-    type
+    saveData: connection.current?.saveData,
+    rtt: connection.current?.rtt,
+    downlink: connection.current?.downlink,
+    downlinkMax: connection.current?.downlinkMax,
+    effectiveType: connection.current?.effectiveType,
+    type: connection.current?.type
   }
 }

@@ -23,7 +23,9 @@ export function Demo() {
           <div
             key={`${key} + ${value}`}
             className="flex items-center gap-4 my-2">
-            <dt>{key}:</dt>
+            <dt>
+              <code>{key}</code>:
+            </dt>
             <dd className={getClass(value)}>{`${value}` ?? 'unknown'}</dd>
           </div>
         ))}

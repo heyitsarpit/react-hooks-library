@@ -1,4 +1,4 @@
-import { useMount } from '@react-hooks-library/core'
+import { useScrollIntoView } from '@react-hooks-library/core'
 import { AnimateSharedLayout, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -28,21 +28,16 @@ type ItemProps = {
 function ListItem({ name, route, isActive }: ItemProps) {
   const activeEl = useRef<HTMLLIElement | null>(null)
 
-  useMount(() => {
-    if (!activeEl.current || !isActive) return
-
-    activeEl.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'start'
-    })
+  useScrollIntoView(activeEl, {
+    behavior: 'smooth',
+    scrollMargin: 'calc(50vh - 5rem)',
+    predicate: isActive
   })
 
   return (
     <li
       ref={activeEl}
-      className="relative flex items-center w-full py-1 pl-0 before:hidden"
-      style={{ scrollMargin: '20rem' }}>
+      className="relative flex items-center w-full py-1 pl-0 before:hidden">
       {isActive ? (
         <motion.div
           layoutId="active"

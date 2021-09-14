@@ -1,0 +1,119 @@
+---
+category: browser
+name: useScrollIntoView
+description: A hook to scroll an element into view on mounting
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useScrollIntoView
+
+A hook to scroll an element into view on mounting.
+
+## Usage
+
+```tsx
+import { useRef } from 'react'
+import { useScrollIntoView } from '@react-hooks-library/core'
+
+const routes = [
+  'BreakPointHooks',
+  'useActiveElement',
+  'useClickOutside',
+  'useScrollIntoView'
+]
+
+function ListItem({ isActive, name }) {
+  const activeEl = useRef(null)
+
+  useScrollIntoView(activeEl, {
+    scrollMargin: '8rem',
+    block: 'end',
+    predicate: isActive
+  })
+
+  return (
+    <li ref={activeEl} className={`${isActive ? 'active' : ''}`}>
+      {name}
+    </li>
+  )
+}
+
+export function Demo() {
+  return (
+    <div>
+      <ul className="h-64 p-4 m-4 overflow-y-scroll">
+        {routes.map((name) => (
+          <ListItem
+            key={name}
+            isActive={name === 'useScrollIntoView'}
+            name={name}
+          />
+        ))}
+      </ul>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+interface UseScrollIntoViewOptions extends ScrollIntoViewOptions {
+  /**
+   * Defines vertical alignment.
+   * One of `'start'`, `'center'`, `'end'`, or `'nearest'`
+   *
+   * @default 'start'
+   */
+  block?: ScrollLogicalPosition
+  /**
+   * Defines horizontal alignment.
+   * One of `start`, `center`, `end`, or `nearest`. Defaults to nearest.
+   *
+   * @default 'nearest'
+   */
+  inline?: ScrollLogicalPosition
+  /**
+   * Defines the transition animation.
+   * One of 'auto' or 'smooth'.
+   *
+   * @default 'auto'
+   */
+  behavior?: ScrollBehavior
+  /**
+   * The margin around the element to make sure it's visible.
+   *
+   * @default '0px'
+   */
+  scrollMargin?: string
+  /**
+   * The condition to decide if the element should be scrolled into view.
+   *
+   * @default true
+   */
+  predicate?: boolean | (() => boolean)
+}
+/**
+ *
+ * A hook to scroll an element into view on mounting.
+ *
+ * @param options {UseScrollIntoViewOptions}
+ *
+ * @see https://react-hooks-library.vercel.app/core/useScrollIntoView
+ */
+declare function useScrollIntoView(
+  target: MaybeRef<HTMLElement | null | undefined>,
+  options?: UseScrollIntoViewOptions
+): void
+```
+## Recommended Reading
+- [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
+
+## Source
+
+<Source name="useScrollIntoView" pkg="core" />

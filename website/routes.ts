@@ -109,6 +109,11 @@ export const routes: Route[] = [
     "route": "/core/useScrollIntoView"
   },
   {
+    "name": "useStateHistory",
+    "category": "state",
+    "route": "/core/useStateHistory"
+  },
+  {
     "name": "useTitle",
     "category": "browser",
     "route": "/core/useTitle"

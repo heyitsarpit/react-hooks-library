@@ -1,0 +1,48 @@
+---
+category: state
+name: useHasMounted
+description: Hook that returns whether or not the component has mounted
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useHasMounted
+
+Hook that returns whether or not the component has mounted.
+Useful in SSR frameworks like Next or Gatsby.
+
+## Usage
+
+```tsx
+import { useHasMounted } from '@react-hooks-library/core'
+
+export function Demo() {
+  const hasMounted = useHasMounted()
+
+  return (
+    <div className={`pill ${hasMounted ? 'success' : 'danger'}`}>
+      {hasMounted ? 'Mounted' : 'Not Yet Mounted'}
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Hook that returns whether or not the component has mounted.
+ * Useful in SSR frameworks like Next or Gatsby.
+ *
+ * @returns hasMounted
+ */
+declare function useHasMounted(): boolean
+```
+
+## Source
+
+<Source name="useScroll" pkg="core" />

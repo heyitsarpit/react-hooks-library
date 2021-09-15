@@ -34,6 +34,11 @@ export const routes: Route[] = [
     "route": "/core/useFont"
   },
   {
+    "name": "useHasMounted",
+    "category": "state",
+    "route": "/core/useHasMounted"
+  },
+  {
     "name": "useIntersectionObserver",
     "category": "browser",
     "route": "/core/useIntersectionObserver"

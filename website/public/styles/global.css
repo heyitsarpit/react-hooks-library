@@ -156,6 +156,9 @@
   .active{
     @apply text-brand bg-cyan-600/20 dark:bg-cyan-400/20;
   }
+  .inactive{
+    @apply text-blueGray-400 dark:text-blueGray-300 bg-blueGray-400/20 dark:bg-blueGray-600/20;
+  }
   .info{
     @apply text-sky-600 bg-sky-600/20;
   }

@@ -1,0 +1,106 @@
+---
+category: state
+name: useStateHistory
+description: useState with built in undo and redo history control
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useStateHistory
+
+useState with built in undo and redo history control
+
+## Usage
+
+```tsx
+import { useStateHistory } from '@react-hooks-library/core'
+
+export function Demo() {
+  const { state, undo, redo, push, history, reset, redoAllowed } =
+    useStateHistory(0, { maxHistory: 5 })
+
+  return (
+    <div>
+      <div>State: {state}</div>
+      <div>
+        <button onClick={() => push(state + 2)}>Push</button>
+        <button onClick={undo}>Undo</button>
+        <button onClick={redo} disabled={!redoAllowed}>
+          Redo
+        </button>
+        <button onClick={reset}>Reset</button>
+      </div>
+    </div>
+  )
+}
+```
+
+### Functions
+
+- `push`
+
+  Push new state to history
+
+- `undo`
+
+  Undo action and go back to previous state
+
+- `redo`
+
+  Redo actions that were just undid with the undo function.
+  Only allowed after an undo or a another redo action.
+  Disabled right after a push action.
+
+- `redoAllowed`
+
+  Returns true if redo is allowed, false otherwise.
+
+- `reset`
+
+  Reset to last saved state
+
+- `history`
+
+  The entire history of saved states.
+
+## Type Declarations
+
+```typescript
+declare type UseStateHistoryOptions = {
+  /**
+   * Max number of history states to be stores
+   *
+   * @default 10
+   */
+  maxHistory?: number
+}
+
+/**
+ *
+ * useState with built in undo and redo history control
+ *
+ * @param defaultValue
+ * @param options
+ * @returns
+ */
+declare function useStateHistory<T>(
+  defaultValue: T | (() => T),
+  options?: UseStateHistoryOptions
+): {
+  state: T
+  push: (value: T) => void
+  undo: () => void
+  redo: () => void
+  reset: () => void
+  history: T[]
+  redoAllowed: boolean
+}
+```
+
+## Source
+
+<Source name="useStateHistory" pkg="core" />

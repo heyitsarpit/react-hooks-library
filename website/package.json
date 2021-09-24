@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run build:routes && next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "build:routes": "esno ./scripts/buildRoutes.ts"
   },
@@ -33,6 +34,7 @@
     "gray-matter": "^4.0.3",
     "mdx-bundler": "^6.0.1",
     "next-pwa": "^5.3.1",
+    "next-sitemap": "^1.6.168",
     "postcss": "^8.3.6",
     "rehype-autolink-headings": "^6.1.0",
     "rehype-slug": "^5.0.0",

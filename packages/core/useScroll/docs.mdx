@@ -13,7 +13,7 @@ import { Demo } from './demo.tsx'
 # useScroll
 
 Reactive scroll values for a react ref or a dom node.
-Returns a number between 0 and 1, indicating the progress of the scroll.
+Takes a callback that takes parameters with number between 0 and 1, indicating the progress of the scroll.
 
 ## Usage
 
@@ -23,7 +23,11 @@ import { useScroll } from '@react-hooks-library/core'
 
 export function Demo() {
   const box = useRef<HTMLDivElement | null>(null)
-  const { x, y } = useScroll(box)
+  const [scroll, setScroll] = useState({ x: 0, y: 0 })
+
+  useScroll(box, ({ scrollX, scrollY }) =>
+    setScroll({ x: scrollX, y: scrollY })
+  )
 
   return (
     <div ref={box}>
@@ -34,6 +38,38 @@ export function Demo() {
 }
 ```
 
+### A Scroll Progress Bar Example
+
+```tsx
+import { useRef } from 'react'
+import { useScroll } from '@react-hooks-library/core'
+
+export function Demo() {
+  const box = useRef<HTMLDivElement | null>(null)
+  const scrollProgress = useRef<HTMLDivElement | null>(null)
+
+  useScroll(box, ({ scrollX }) =>
+   if(!scrollProgress.current) return
+
+   scrollProgress.current.style.width = `${scrollX * 100}%`
+  )
+
+  return (
+    <div ref={box}>
+      <div ref={scrollProgress} style={{ height: '2rem' }}></div>
+    </div>
+  )
+}
+```
+
+## A Note on Performance
+
+You should avoid updating state inside the hook's callback if possible, updating state on every scroll action can be expensive and cause performance issues.
+
+The first example above update updates state for demonstration only.
+
+The second example updates the progress bar's width on every scroll action by mutating the DOM and hence bypassing any react related code.
+
 ## Type Declarations
 
 ```typescript
@@ -41,13 +77,15 @@ export function Demo() {
  * Reactive scroll values for a react ref or a dom node
  *
  * @param target - dom node or react ref
+ * @param callback - callback to run on scroll
  *
  * @see https://react-hooks-library.vercel.app/core/useScroll
  */
-declare function useScroll(target?: MaybeRef<Element | null | undefined>): {
-    x: number;
-    y: number;
-};
+declare function useScroll(target: MaybeRef<Element | null | undefined>, callback: (coords: {
+    scrollX: number;
+    scrollY: number;
+}) => void): void;
+
 ```
 
 ## Source

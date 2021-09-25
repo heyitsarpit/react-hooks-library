@@ -1,10 +1,14 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import { useScroll } from '.'
 
 export function Demo() {
   const box = useRef<HTMLDivElement | null>(null)
-  const { x, y } = useScroll(box)
+  const [scroll, setScroll] = useState({ x: 0, y: 0 })
+
+  useScroll(box, ({ scrollX, scrollY }) =>
+    setScroll({ x: scrollX, y: scrollY })
+  )
 
   return (
     <div className="w-full p-6">
@@ -12,11 +16,11 @@ export function Demo() {
         <div className="flex flex-col gap-4">
           <div>
             Horizontally scrolled -{' '}
-            <span className="active pill">{(x * 100).toFixed(0)}%</span>
+            <span className="active pill">{(scroll.x * 100).toFixed(0)}%</span>
           </div>
           <div>
             Vertically scrolled -{' '}
-            <span className="active pill">{(y * 100).toFixed(0)}%</span>
+            <span className="active pill">{(scroll.y * 100).toFixed(0)}%</span>
           </div>
         </div>
       </div>

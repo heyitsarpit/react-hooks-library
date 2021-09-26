@@ -21,6 +21,7 @@
     "build:rollup": "rollup -c",
     "clean": "rimraf dist packages/*/dist",
     "build:full": "esno scripts/build.ts",
+    "publish:packages": "esno scripts/publish.ts",
     "test": "jest",
     "website": "yarn workspace @react-hooks-library/website",
     "website:build": "yarn website build",

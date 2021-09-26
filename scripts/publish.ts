@@ -5,7 +5,7 @@ import { join, resolve } from 'path'
 import { version } from '../package.json'
 import { findFunctions } from './utils/findFunctions'
 
-execSync('npm run build', { stdio: 'inherit' })
+execSync('yarn build:full', { stdio: 'inherit' })
 
 let command = 'npm publish --access public'
 

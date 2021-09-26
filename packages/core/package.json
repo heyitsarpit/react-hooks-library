@@ -1,31 +1,31 @@
 {
-    "name": "@react-hooks-library/core",
-    "version": "0.1.2",
-    "description": "A collection of hooks and utilities for React",
-    "keywords": [
-        "react",
-        "react hooks",
-        "@react-hooks-library"
-    ],
-    "exports": {
-        ".": {
-            "import": "./index.esm.js",
-            "require": "./index.cjs.js"
-        },
-        "./*": "./*"
+  "name": "@react-hooks-library/core",
+  "version": "0.1.3-beta.1",
+  "description": "A collection of hooks and utilities for React",
+  "keywords": [
+    "react",
+    "react hooks",
+    "@react-hooks-library"
+  ],
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
     },
-    "main": "./index.cjs.js",
-    "types": "./index.d.ts",
-    "module": "./index.esm.js",
-    "license": "MIT",
-    "author": "Arpit<https://github.com/heyitsarpit>",
-    "dependencies": {
-        "@react-hooks-library/shared": "0.1.1"
-    },
-    "devDependencies": {
-        "@types/css-font-loading-module": "^0.0.6"
-    },
-    "peerDependencies": {
-        "react": ">=16.9.0"
-    }
+    "./*": "./*"
+  },
+  "main": "./index.cjs.js",
+  "types": "./index.d.ts",
+  "module": "./index.esm.js",
+  "license": "MIT",
+  "author": "Arpit<https://github.com/heyitsarpit>",
+  "dependencies": {
+    "@react-hooks-library/shared": "0.1.1"
+  },
+  "devDependencies": {
+    "@types/css-font-loading-module": "^0.0.6"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0"
+  }
 }

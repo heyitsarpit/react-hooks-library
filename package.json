@@ -1,6 +1,6 @@
 {
   "name": "@react-hooks-library/packages",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "A collection of hooks and utilities for React",
   "main": "index.js",
@@ -22,6 +22,7 @@
     "clean": "rimraf dist packages/*/dist",
     "build:full": "esno scripts/build.ts",
     "publish:packages": "esno scripts/publish.ts",
+    "release": "esno scripts/release.ts",
     "test": "jest",
     "website": "yarn workspace @react-hooks-library/website",
     "website:build": "yarn website build",

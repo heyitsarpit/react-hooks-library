@@ -33,4 +33,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: false
-          title: "Release ${VERSION}"
+          title: "Release ${{ steps.get_version.outputs.VERSION }}"

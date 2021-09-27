@@ -44,6 +44,6 @@ for (const pkg of packages) {
 }
 
 execSync('git add .', { stdio: 'inherit' })
-execSync(`git commit -m "release: v${version}"`, { stdio: 'inherit' })
+execSync(`git commit -m "v${version}"`, { stdio: 'inherit' })
 execSync(`git tag -a v${version} -m "v${version}"`, { stdio: 'inherit' })
 execSync(`git push --follow-tags`, { stdio: 'inherit' })

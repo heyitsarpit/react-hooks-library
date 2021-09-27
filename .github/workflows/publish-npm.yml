@@ -1,12 +1,13 @@
 name: Publish Packages
 
-on:
-  push:
-    branches:
-      - main
+on: 
+  release:
+    types:
+      - published
 
 jobs:
   publish-npm:
+    name: Publish to NPM
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

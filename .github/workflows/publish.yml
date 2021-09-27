@@ -15,7 +15,10 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: yarn install --frozen-lockfile
-      - run: yarn publish:packages
+      - run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          yarn publish:packages
         env:
+          CI: true
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NODE_OPTIONS: '--max-old-space-size=6144'

@@ -22,7 +22,6 @@ jobs:
 
   release-github:
     name: Release To Github
-    needs: publish-npm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,4 +30,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: false
-          title: "Release ${{ github.ref }}"
+          title: "Release ${GITHUB_REF/refs\/tags\//}"

@@ -1,6 +1,6 @@
 {
   "name": "@react-hooks-library/shared",
-  "version": "0.1.3",
+  "version": "0.1.4-beta.1",
   "description": "A collection of hooks and utilities for React",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

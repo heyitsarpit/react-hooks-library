@@ -18,6 +18,8 @@ const { version: oldVersion } = JSON.parse(
   readFileSync('package.json', 'utf-8')
 )
 
+execSync('npx bumpp', { stdio: 'inherit' })
+
 const { version } = JSON.parse(readFileSync('package.json', 'utf-8'))
 
 if (oldVersion === version) {

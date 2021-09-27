@@ -5,15 +5,6 @@ import { basename, resolve } from 'path'
 
 import { findFunctions } from './utils/findFunctions'
 
-const branch = execSync('git branch --show-current', {
-  encoding: 'utf8'
-}).trim()
-
-if (branch !== 'main') {
-  consola.error('You must be on the main branch to release')
-  process.exit(1)
-}
-
 const { version: oldVersion } = JSON.parse(
   readFileSync('package.json', 'utf-8')
 )

@@ -37,10 +37,11 @@ packages = [
 ]
 
 for (const pkg of packages) {
-  console.log(pkg)
   const packageJson = JSON.parse(readFileSync(`${pkg}/package.json`, 'utf-8'))
+
   packageJson.version = version
-  if (packageJson.dependencies['@react-hooks-library/shared']) {
+
+  if (packageJson.dependencies?.['@react-hooks-library/shared']) {
     packageJson.dependencies['@react-hooks-library/shared'] = version
   }
 

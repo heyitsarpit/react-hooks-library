@@ -10,6 +10,7 @@
     "react hooks",
     "@react-hooks-library"
   ],
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": "./index.esm.js",

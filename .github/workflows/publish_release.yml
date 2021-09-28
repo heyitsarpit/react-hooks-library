@@ -6,9 +6,23 @@ on:
       - v*
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn test
+
   publish-npm:
     name: Publish to NPM
+    needs: test
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -22,6 +36,7 @@ jobs:
 
   release-github:
     name: Release To Github
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get the version

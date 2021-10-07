@@ -34,9 +34,9 @@ function Logo() {
   return (
     <Link href="/">
       <a className="flex items-center gap-4 py-2 ml-2 h-[var(--header-height)] w-32">
-        <img src="/logo.png" alt="Logo" className="w-8 h-8 md:w-10 md:h-10" />
+        <img src="/logo.png" alt="Logo" className="w-8 h-8" />
         <img
-          className="hidden py-1 md:inline"
+          className="hidden h-7 md:inline"
           src="/logo_text.png"
           alt="React Hooks Library Text"
         />

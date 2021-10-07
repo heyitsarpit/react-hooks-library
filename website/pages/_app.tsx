@@ -30,7 +30,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="ml-0 md:ml-[var(--sidebar-width)] mt-[var(--header-height)]">
-            <div className="mx-auto max-w-[75ch] p-8">
+            <div className="mx-auto max-w-[75ch] px-4 md:px-8">
               <Component {...pageProps} />
             </div>
           </motion.main>

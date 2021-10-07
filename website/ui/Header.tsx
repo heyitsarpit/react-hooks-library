@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 
 import { ThemeSwitch } from './ThemeSwitch'
@@ -32,10 +33,10 @@ function Github() {
 function Logo() {
   return (
     <Link href="/">
-      <a className="flex gap-4 py-2 ml-2 h-[var(--header-height)] w-32">
-        <img src="/logo.png" alt="Logo" className="w-10 h-10" />
+      <a className="flex items-center gap-4 py-2 ml-2 h-[var(--header-height)] w-32">
+        <img src="/logo.png" alt="Logo" className="w-8 h-8 md:w-10 md:h-10" />
         <img
-          className="py-1"
+          className="hidden py-1 md:inline"
           src="/logo_text.png"
           alt="React Hooks Library Text"
         />

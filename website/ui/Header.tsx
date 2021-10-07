@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
+import { useSidebar } from 'utils/useSidebar'
 
 import { ThemeSwitch } from './ThemeSwitch'
 
@@ -45,11 +46,29 @@ function Logo() {
   )
 }
 
+function Hamburger() {
+  const toggleSideBar = useSidebar((s) => s.toggleSideBar)
+
+  return (
+    <button
+      onClick={toggleSideBar}
+      className="flex flex-col gap-[7px] bg-transparent md:hidden">
+      <div className="w-6 h-[3px] bg-txt-2"></div>
+      <div className="w-6 h-[3px] bg-txt-2"></div>
+      <div className="w-6 h-[3px] bg-txt-2"></div>
+    </button>
+  )
+}
+
 export function Header() {
   return (
     <header className="fixed top-0 bottom-0 left-0 right-0 z-10 h-[var(--header-height)] border-b bg-bg-2 border-b-fg-1 flex items-center">
       <div className="flex items-center justify-between w-full px-2">
-        <Logo />
+        <div className="flex items-center">
+          <Hamburger />
+          <Logo />
+        </div>
+
         <Github />
         <ThemeSwitch />
       </div>

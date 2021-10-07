@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;600&display=swap');
 
+.remark-highlight{
+  margin: 2rem 0;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
   color: var(--stx-primary);

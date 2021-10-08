@@ -52,10 +52,10 @@ function Hamburger() {
   return (
     <button
       onClick={toggleSideBar}
-      className="flex flex-col gap-[7px] bg-transparent md:hidden">
-      <div className="w-6 h-[3px] bg-txt-2"></div>
-      <div className="w-6 h-[3px] bg-txt-2"></div>
-      <div className="w-6 h-[3px] bg-txt-2"></div>
+      className="flex flex-col gap-[5px] bg-transparent md:hidden">
+      <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
+      <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
+      <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
     </button>
   )
 }

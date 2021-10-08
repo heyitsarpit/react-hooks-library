@@ -7,7 +7,7 @@ type SideBarStateProps = {
 }
 
 export const useSidebar = create<SideBarStateProps>((set) => ({
-  sidebarOpen: false,
+  sidebarOpen: true,
   toggleSideBar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
   setSideBar: (sidebarOpen: boolean) => set({ sidebarOpen })
 }))

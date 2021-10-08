@@ -1,5 +1,5 @@
 import { BreakPointHooks, breakpointsTailwind } from '@react-hooks-library/core'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { useSidebar } from '../utils/useSidebar'
 import { FunctionList } from './FunctionList'
@@ -9,6 +9,21 @@ const { useGreater } = BreakPointHooks(breakpointsTailwind)
 export function SideBar() {
   const { sidebarOpen, setSideBar } = useSidebar()
   const isGreater = useGreater('md')
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!ref.current) return
+
+    if (sidebarOpen) {
+      ref.current.classList.remove(
+        'translate-x-[calc(-1*var(--sidebar-width))]'
+      )
+      ref.current.classList.add('md:translate-x-0')
+    } else {
+      ref.current.classList.remove('md:translate-x-0')
+      ref.current.classList.add('translate-x-[calc(-1*var(--sidebar-width))]')
+    }
+  }, [sidebarOpen])
 
   useEffect(() => {
     setSideBar(isGreater)
@@ -16,18 +31,15 @@ export function SideBar() {
 
   return (
     <aside
-      className={`fixed 
-      transform-gpu 
-      transition-transform 
-      duration-300 
+      ref={ref}
+      className={`
+      fixed 
+      transform-gpu transition-transform duration-300
       top-[calc(var(--header-height))] 
       bottom-0 
-      left-0 
-      ${
-        sidebarOpen
-          ? 'translate-x-0'
-          : 'translate-x-[calc(-1*var(--sidebar-width))] '
-      }
+      left-0
+      md:translate-x-0
+      translate-x-[calc(-1*var(--sidebar-width))]
       right-0 
       z-10 
       w-[var(--sidebar-width)] 

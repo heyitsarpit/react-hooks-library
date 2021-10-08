@@ -47,12 +47,14 @@ function Logo() {
 }
 
 function Hamburger() {
-  const toggleSideBar = useSidebar((s) => s.toggleSideBar)
+  const { sidebarOpen, toggleSideBar } = useSidebar()
 
   return (
     <button
       onClick={toggleSideBar}
-      className="flex flex-col gap-[5px] bg-transparent md:hidden">
+      // closing handler is at <Sidebar />
+      disabled={sidebarOpen}
+      className="flex flex-col gap-[5px] bg-transparent md:hidden disabled:bg-transparent disabled:opacity-100 hover:opacity-100">
       <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
       <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
       <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>

@@ -1,15 +1,23 @@
-import { BreakPointHooks, breakpointsTailwind } from '@react-hooks-library/core'
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+  useClickOutside
+} from '@react-hooks-library/core'
 import { useEffect, useRef } from 'react'
 
 import { useSidebar } from '../utils/useSidebar'
 import { FunctionList } from './FunctionList'
 
-const { useGreater } = BreakPointHooks(breakpointsTailwind)
+export const { useGreater } = BreakPointHooks(breakpointsTailwind)
 
 export function SideBar() {
   const { sidebarOpen, setSideBar } = useSidebar()
   const isGreater = useGreater('md')
   const ref = useRef<HTMLElement>(null)
+
+  useClickOutside(ref, () => {
+    !isGreater ? setSideBar(false) : null
+  })
 
   useEffect(() => {
     if (!ref.current) return

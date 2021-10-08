@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://rsms.me/inter/inter.css');
-
 @layer base {
   body.dark {
     --brand: theme('colors.cyan.400');
@@ -61,20 +59,16 @@
 
   html {
     text-rendering: optimizeLegibility;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif;
     --sidebar-width: 17rem;
     --header-height: 3.5rem;
   }
-
 
   * {
     font-variant-numeric: tabular-nums;
     scroll-behavior: smooth;
   }
 
-  @supports (font-variation-settings: normal) {
-    html { font-family: 'Inter var', sans-serif; }
-  }
   
   *::selection {
     @apply text-brand bg-cyan-600/20;

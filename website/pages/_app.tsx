@@ -1,5 +1,6 @@
 import 'public/styles/global.css'
 import 'public/styles/prism.css'
+import 'public/styles/fonts.css'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { AppProps } from 'next/app'

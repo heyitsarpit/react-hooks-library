@@ -24,12 +24,12 @@ export default function Home() {
         </div>
       </div>
       <div className="flex gap-8">
-        <Link href="/">
+        <Link href="/getting-started">
           <a className="!no-underline font-light shadow-lg dark:shadow-white-lg dark:hover:shadow-white-xl hover:shadow-xl text-sm uppercase rounded-lg p-3 text-bg-2 bg-trueGray-900 dark:bg-white">
             Get Started
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/functions">
           <a className="!no-underline bg-white dark:bg-trueGray-900 font-light text-sm uppercase border border-trueGray-900 dark:border-trueGray-100 p-3 rounded-lg text-trueGray-900 dark:text-white">
             All Functions
           </a>

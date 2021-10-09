@@ -23,19 +23,27 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
       <SEO />
       <ThemeProvider>
         <Header />
-        <SideBar />
-        <AnimatePresence initial={false} exitBeforeEnter>
-          <motion.main
-            key={router.asPath.replace(/#.*/g, '')}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="ml-0 md:ml-[var(--sidebar-width)] mt-[var(--header-height)] h-[calc(100%-var(--header-height))]">
-            <div className="mx-auto max-w-[75ch] px-4 md:px-8 h-full">
-              <Component {...pageProps} />
-            </div>
-          </motion.main>
-        </AnimatePresence>
+        {router.asPath === '/' ? (
+          <div className="mt-[var(--header-height)] h-[calc(100%-var(--header-height))]">
+            <Component {...pageProps} />
+          </div>
+        ) : (
+          <>
+            <SideBar />
+            <AnimatePresence initial={false} exitBeforeEnter>
+              <motion.main
+                key={router.asPath.replace(/#.*/g, '')}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="ml-0 md:ml-[var(--sidebar-width)] mt-[var(--header-height)] h-[calc(100%-var(--header-height))]">
+                <div className="mx-auto max-w-[75ch] px-4 md:px-8 h-full">
+                  <Component {...pageProps} />
+                </div>
+              </motion.main>
+            </AnimatePresence>
+          </>
+        )}
       </ThemeProvider>
     </>
   )

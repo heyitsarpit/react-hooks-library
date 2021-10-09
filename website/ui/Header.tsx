@@ -6,7 +6,7 @@ import { ThemeSwitch } from './ThemeSwitch'
 
 function Github() {
   return (
-    <div className="hover:text-brand">
+    <div className="ml-auto hover:text-brand">
       <a
         className="flex items-center text-current hover:no-underline"
         href="https://github.com/react-hooks-library/react-hooks-library"
@@ -67,7 +67,7 @@ function Hamburger() {
 export function Header() {
   return (
     <header className="fixed top-0 bottom-0 left-0 right-0 z-10 h-[var(--header-height)] border-b bg-bg-2 border-b-fg-1 flex items-center">
-      <div className="flex items-center justify-between w-full px-2">
+      <div className="flex items-center justify-between w-full gap-4 px-2">
         <div className="flex items-center">
           <Hamburger />
           <Logo />

@@ -20,6 +20,9 @@ module.exports = {
         'fg-1': 'var(--fg-1)',
         'txt-1': 'var(--txt-1)',
         'txt-2': 'var(--txt-2)'
+      },
+      fontFamily: {
+        mono: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;'
       }
     }
   },

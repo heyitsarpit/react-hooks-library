@@ -74,12 +74,27 @@
     @apply text-brand bg-cyan-600/20;
   }
 
-  .logo{
-    background: conic-gradient(from 178.37deg at 48.57% 50%, #2BF1AA 0deg, #49A6FD 86.25deg, #35E7FF 150deg, #2EE8F4 221.25deg, #28FFB2 283.13deg, #28D8FF 354.37deg, #2BF1AA 360deg);
+  .logo-glow {
+    background-image: linear-gradient(to right, rgb(1, 187, 170), rgb(0, 156, 204));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  body.dark .logo-glow{
+    background-image: linear-gradient(to right, rgb(9, 238, 195), rgb(46, 167, 255));
   }
 
   .link {
     @apply text-pink-600 no-underline hover:underline;
+  }
+  
+  .shadow-white-lg{
+    --tw-shadow: 0 10px 15px -3px rgba(200, 200, 200, 0.2), 0 4px 6px -2px rgba(200, 200, 200, 0.05);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #f4f4f4db), var(--tw-ring-shadow, 0 0 #d7d7d7d9), var(--tw-shadow);
+  }
+
+  .shadow-white-xl{
+    --tw-shadow: 0 10px 15px -3px rgba(180, 180, 180, 0.5), 0 4px 6px -2px rgba(200, 200, 200, 0.05);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #f4f4f4db), var(--tw-ring-shadow, 0 0 #d7d7d7d9), var(--tw-shadow);
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
@@ -132,8 +147,21 @@
 
   .polka{
     background-image: radial-gradient(#d9d9d9 1px,transparent 0);
-    background-position: 50%;
+    background-position-y: 50%;
     background-size: 20px 20px;
+  }
+
+  .polka-animation {
+    animation: polka-drift infinite 20s linear;
+  }
+  @keyframes polka-drift {
+    0% {
+      background-position-y: 50%;
+    }
+
+    100% {
+      background-position-y: 100%;
+    }
   }
 
   body.dark .polka{

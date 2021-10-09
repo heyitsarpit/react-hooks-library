@@ -3,6 +3,7 @@ import {
   breakpointsTailwind,
   useClickOutside
 } from '@react-hooks-library/core'
+import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 
 import { useSidebar } from '../utils/useSidebar'
@@ -14,6 +15,8 @@ export function SideBar() {
   const { sidebarOpen, setSideBar } = useSidebar()
   const isGreater = useGreater('md')
   const ref = useRef<HTMLElement>(null)
+
+  const { asPath } = useRouter()
 
   useClickOutside(ref, () => {
     !isGreater ? setSideBar(false) : null
@@ -36,6 +39,10 @@ export function SideBar() {
   useEffect(() => {
     setSideBar(isGreater)
   }, [isGreater, setSideBar])
+
+  if (asPath === '/') {
+    return null
+  }
 
   return (
     <aside

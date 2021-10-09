@@ -54,7 +54,7 @@
   html,
   body,
   #__next {
-    @apply w-full h-full p-0 m-0 overflow-auto text-gray-600 bg-bg-1 dark:text-coolGray-300;
+    @apply w-full h-full p-0 m-0 text-gray-600 bg-bg-1 dark:text-coolGray-300;
   }
 
   html {
@@ -72,6 +72,10 @@
   
   *::selection {
     @apply text-brand bg-cyan-600/20;
+  }
+
+  .logo{
+    background: conic-gradient(from 178.37deg at 48.57% 50%, #2BF1AA 0deg, #49A6FD 86.25deg, #35E7FF 150deg, #2EE8F4 221.25deg, #28FFB2 283.13deg, #28D8FF 354.37deg, #2BF1AA 360deg);
   }
 
   .logo-glow {

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Logo = () => (
   <div className="relative">
-    <div className="relative z-[1] flex justify-center gap-8 h-28">
+    <div className="relative z-[1] flex justify-center gap-8 h-16 md:h-28">
       <img src="/logo.png" alt="logo" />
       <img src="/logo_text.png" alt="react hooks library" />
     </div>

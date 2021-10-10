@@ -70,7 +70,7 @@ export default function Design({ code }: Props) {
           description: 'Design system for react hooks library docs website'
         }}
       />
-      <div className="flex flex-col w-full h-full gap-8 mx-auto md:max-w-screen-md 2xl:max-w-screen-2xl">
+      <div className="flex flex-col w-full h-full gap-8 px-4 py-8 mx-auto md:px-8 md:max-w-screen-md 2xl:max-w-screen-2xl">
         <h1>Design System</h1>
         <section className="flex flex-col gap-8">
           <h2>Colors</h2>

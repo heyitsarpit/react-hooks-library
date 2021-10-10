@@ -29,7 +29,7 @@ export default function Functions() {
           description: 'List of all functions for react hooks library'
         }}
       />
-      <div className="p-8">
+      <div className="py-8">
         <h1>Functions</h1>
         {Object.keys(groupedRoutes).map((category) => (
           <Fragment key={category}>

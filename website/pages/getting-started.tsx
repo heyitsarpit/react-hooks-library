@@ -36,7 +36,7 @@ export default function GettingStarted({ code }: Props) {
           description: 'Guide for react hooks library'
         }}
       />
-      <div className="p-8">
+      <div className="py-8">
         <CodeComponent components={mdxComponents as any} />
       </div>
     </>

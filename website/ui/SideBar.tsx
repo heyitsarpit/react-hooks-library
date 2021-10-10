@@ -8,6 +8,7 @@ import { useEffect, useRef } from 'react'
 
 import { useSidebar } from '../utils/useSidebar'
 import { FunctionList } from './FunctionList'
+import { NavLinks } from './Header'
 
 export const { useGreater } = BreakPointHooks(breakpointsTailwind)
 
@@ -64,6 +65,11 @@ export function SideBar() {
       bg-bg-2 
       border-r-fg-1`}>
       <nav className="w-full">
+        {isGreater ? null : (
+          <div className="flex flex-col gap-4 py-4 mb-4 border-b border-b-fg-1">
+            <NavLinks />
+          </div>
+        )}
         <FunctionList />
       </nav>
     </aside>

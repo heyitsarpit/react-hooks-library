@@ -3,29 +3,29 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSidebar } from 'utils/useSidebar'
 
+import { useGreater } from './SideBar'
 import { ThemeSwitch } from './ThemeSwitch'
 
-function Github() {
+export function Github() {
   return (
-    <div className="ml-auto hover:text-brand">
+    <div className="hover:text-brand">
       <a
         className="flex items-center text-current hover:no-underline"
         href="https://github.com/react-hooks-library/react-hooks-library"
         target="_blank"
         rel="noopener noreferrer">
-        Github
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-4 h-4 ml-1"
-          fill="none"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          />
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="feather feather-github">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
         </svg>
       </a>
     </div>
@@ -69,7 +69,41 @@ function Hamburger() {
   )
 }
 
+export function NavLinks() {
+  const router = useRouter()
+  const links = [
+    {
+      href: '/getting-started',
+      label: 'Getting Started',
+      isActive: router.asPath.includes('/getting-started')
+    },
+    {
+      href: '/functions',
+      label: 'Functions',
+      isActive: router.asPath.includes('/functions')
+    }
+  ]
+
+  return (
+    <>
+      {links.map(({ href, label, isActive }) => (
+        <Link href={href} key={href}>
+          <a
+            className={`
+        !no-underline
+        pill hover:active
+         ${isActive ? 'active text-brand' : 'text-txt-1'}`}>
+            {label}
+          </a>
+        </Link>
+      ))}
+    </>
+  )
+}
+
 export function Header() {
+  const isGreater = useGreater('md')
+
   return (
     <header className="fixed top-0 bottom-0 left-0 right-0 z-10 h-[var(--header-height)] border-b bg-bg-2 border-b-fg-1 flex items-center">
       <div className="flex items-center justify-between w-full gap-4 px-2">
@@ -77,6 +111,10 @@ export function Header() {
           <Hamburger />
           <Logo />
         </div>
+
+        <div className="ml-auto"></div>
+
+        {isGreater ? <NavLinks /> : null}
 
         <Github />
         <ThemeSwitch />

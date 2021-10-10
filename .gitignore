@@ -17,6 +17,7 @@ out
 # misc
 .DS_Store
 *.pem
+.eslintcache
 
 # debug
 npm-debug.log*
@@ -29,7 +30,7 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+.eslintcache
 # vercel
 .vercel
 dist
-

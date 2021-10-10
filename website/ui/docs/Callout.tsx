@@ -14,8 +14,9 @@ export function Callout({ type, children }: CalloutProps) {
       : '🚨'
 
   return (
-    <blockquote className={`my-4 px-2 py-1 rounded-lg flex ${type}`}>
-      <div className="mx-2 mt-6">{emoji}</div>
+    <blockquote
+      className={`my-4 px-2 py-1 rounded-lg flex items-center ${type}`}>
+      <div className="mx-2 text-xl">{emoji}</div>
       {children}
     </blockquote>
   )

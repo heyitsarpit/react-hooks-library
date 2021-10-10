@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 import { useMemo } from 'react'
 import { Color } from 'ui/Color'
+import { Callout } from 'ui/docs/Callout'
 import { loadMdx } from 'utils/loadMDX'
 
 export async function getStaticProps() {
@@ -152,6 +153,17 @@ export default function Design({ code }: Props) {
           <Link href="/">
             <a>Home</a>
           </Link>
+        </section>
+
+        <section>
+          <h2>Callouts</h2>
+          {['info', 'warning', 'danger', 'success'].map(
+            (type: 'info' | 'warning' | 'danger' | 'success') => (
+              <Callout key={type} type={type}>
+                <p>This is a {type} callout</p>
+              </Callout>
+            )
+          )}
         </section>
 
         <section>

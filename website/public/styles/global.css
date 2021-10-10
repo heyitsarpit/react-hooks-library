@@ -60,6 +60,7 @@
   html {
     text-rendering: optimizeLegibility;
     font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
     --sidebar-width: 17rem;
     --header-height: 3.5rem;
   }

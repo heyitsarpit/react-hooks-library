@@ -84,9 +84,9 @@ export default function Home() {
           </section>
         ))}
       </div>
-      <div className="flex justify-center mt-16 mb-16 opacity-50">
+      <footer className="flex justify-center py-16 opacity-50">
         MIT © 2021 | Arpit
-      </div>
+      </footer>
     </div>
   )
 }

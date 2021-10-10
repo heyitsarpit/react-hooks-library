@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSidebar } from 'utils/useSidebar'
 
-import { useGreater } from './SideBar'
 import { ThemeSwitch } from './ThemeSwitch'
 
 export function Github() {
@@ -48,7 +47,7 @@ function Logo() {
 }
 
 function Hamburger() {
-  const { sidebarOpen, toggleSideBar } = useSidebar()
+  const { toggleSideBar } = useSidebar()
   const router = useRouter()
   const Row = () => <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
 
@@ -59,8 +58,6 @@ function Hamburger() {
   return (
     <button
       onClick={toggleSideBar}
-      // closing handler is at <Sidebar />
-      disabled={sidebarOpen}
       className="flex flex-col gap-[5px] bg-transparent md:hidden disabled:bg-transparent disabled:opacity-100 hover:opacity-100">
       <Row />
       <Row />
@@ -102,8 +99,6 @@ export function NavLinks() {
 }
 
 export function Header() {
-  const isGreater = useGreater('md')
-
   return (
     <header className="fixed top-0 bottom-0 left-0 right-0 z-10 h-[var(--header-height)] border-b bg-bg-2 border-b-fg-1 flex items-center">
       <div className="flex items-center justify-between w-full gap-4 px-2">
@@ -114,7 +109,9 @@ export function Header() {
 
         <div className="ml-auto"></div>
 
-        {isGreater ? <NavLinks /> : null}
+        <div className="hidden gap-4 md:flex">
+          <NavLinks />
+        </div>
 
         <Github />
         <ThemeSwitch />

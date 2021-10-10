@@ -1,8 +1,4 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-  useClickOutside
-} from '@react-hooks-library/core'
+import { BreakPointHooks, breakpointsTailwind } from '@react-hooks-library/core'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 
@@ -19,21 +15,19 @@ export function SideBar() {
 
   const { asPath } = useRouter()
 
-  useClickOutside(ref, () => {
-    !isGreater ? setSideBar(false) : null
-  })
-
   useEffect(() => {
     if (!ref.current) return
 
+    const classes = ref.current.classList
+    const open = 'translate-x-0'
+    const close = 'translate-x-[calc(-1*var(--sidebar-width))]'
+
     if (sidebarOpen) {
-      ref.current.classList.remove(
-        'translate-x-[calc(-1*var(--sidebar-width))]'
-      )
-      ref.current.classList.add('md:translate-x-0')
+      classes.remove(close)
+      classes.add(open)
     } else {
-      ref.current.classList.remove('md:translate-x-0')
-      ref.current.classList.add('translate-x-[calc(-1*var(--sidebar-width))]')
+      classes.remove(open)
+      classes.add(close)
     }
   }, [sidebarOpen])
 
@@ -49,13 +43,13 @@ export function SideBar() {
     <aside
       ref={ref}
       className={`
-      fixed 
+      fixed
       transform-gpu transition-transform duration-300
+      md:translate-x-0
+      translate-x-[calc(-1*var(--sidebar-width))]
       top-[calc(var(--header-height))] 
       bottom-0 
       left-0
-      md:translate-x-0
-      translate-x-[calc(-1*var(--sidebar-width))]
       right-0 
       z-10 
       w-[var(--sidebar-width)] 
@@ -65,11 +59,9 @@ export function SideBar() {
       bg-bg-2 
       border-r-fg-1`}>
       <nav className="w-full">
-        {isGreater ? null : (
-          <div className="flex flex-col gap-4 py-4 mb-4 border-b border-b-fg-1">
-            <NavLinks />
-          </div>
-        )}
+        <div className="flex flex-col gap-4 py-4 mb-4 border-b md:hidden border-b-fg-1">
+          <NavLinks />
+        </div>
         <FunctionList />
       </nav>
     </aside>

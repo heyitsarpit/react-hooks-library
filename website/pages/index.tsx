@@ -9,6 +9,7 @@ const Logo = () => (
     </div>
     <div className="absolute top-0 left-8 z-0 flex justify-center gap-4 saturate-200 scale-[2] h-28 blur-[100px]">
       <img src="/logo_text.png" alt="react hooks library" />
+      <div className="absolute z-[-1] w-20 h-20 opacity-40 rounded-full blob blob-move logo"></div>
     </div>
   </div>
 )
@@ -19,7 +20,7 @@ export default function Home() {
       <Logo />
       <div>
         <p className="mb-8">A collection of hooks and utilities for React</p>
-        <div className="p-4 font-mono font-light border-2 logo-glow dark:border-trueGray-900/90 border-trueGray-200/90 border-opacity-20 rounded-3xl dark:bg-trueGray-900/50 bg-trueGray-200/50">
+        <div className="p-4 font-mono text-sm font-light border-2 md:text-base logo-glow dark:border-trueGray-900/90 border-trueGray-200/90 border-opacity-20 rounded-3xl dark:bg-trueGray-900/50 bg-trueGray-200/50">
           npm i @react-hooks-library/core
         </div>
       </div>

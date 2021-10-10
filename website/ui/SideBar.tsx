@@ -1,4 +1,8 @@
-import { BreakPointHooks, breakpointsTailwind } from '@react-hooks-library/core'
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+  useClickOutside
+} from '@react-hooks-library/core'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 
@@ -14,6 +18,10 @@ export function SideBar() {
   const ref = useRef<HTMLElement>(null)
 
   const { asPath } = useRouter()
+
+  useClickOutside(ref, () => {
+    if (sidebarOpen && !isGreater) setSideBar(false)
+  })
 
   useEffect(() => {
     if (!ref.current) return

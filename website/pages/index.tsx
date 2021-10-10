@@ -3,13 +3,13 @@ import Link from 'next/link'
 
 const Logo = () => (
   <div className="relative">
-    <div className="relative z-[1] flex justify-center gap-8 h-16 md:h-28">
-      <img src="/logo.png" alt="logo" />
-      <img src="/logo_text.png" alt="react hooks library" />
+    <div className="relative z-[1] flex items-start justify-center gap-8 h-16 md:h-28">
+      <img src="/logo.png" alt="logo" className="h-full" />
+      <img src="/logo_text.png" alt="react hooks library" className="h-full" />
     </div>
-    <div className="absolute top-0 left-8 z-0 flex justify-center gap-4 saturate-200 scale-[2] h-28 blur-[100px]">
+    <div className="absolute top-0 left-8 z-0 flex justify-center gap-4 saturate-200 scale-[2] h-28 blur-3xl">
       <img src="/logo_text.png" alt="react hooks library" />
-      <div className="absolute z-[-1] w-20 h-20 opacity-40 rounded-full blob blob-move logo"></div>
+      <div className="absolute z-[-1] w-20 h-20 opacity-40 rounded-full logo"></div>
     </div>
   </div>
 )

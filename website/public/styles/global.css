@@ -238,19 +238,4 @@
     content: '';
     @apply absolute bg-coolGray-400 dark:bg-coolGray-500  rounded-full w-1.5 h-1.5 left-1 top-2.5;
   }
-
-  .blob-move {
-    transform-origin: -90px 0px;
-    animation: blob-animation 30000ms infinite alternate ease-in-out;
-    offset-path: path('M101.188 94.6974C188.895 -25.3791 -135.535 12.6523 73.5759 106.121C120.468 123.621 263.444 107.674 293.608 80.0484C309.334 65.6449 319.927 44.7291 305.114 27.1945C230.66 -60.9344 179.492 119.346 276.148 60.6209C276.148 -51.6953 41.2377 90.6442 194.432 87.0303C233.797 84.8056 200.044 3.90604 143.134 2.12091C15.6111 -1.8791 59.4946 94.6974 101.188 94.6974Z');
-  }
-  
-  @keyframes blob-animation {
-    0% {
-      offset-distance: 0%;
-    }
-    100% {
-      offset-distance: 100%;
-    }
-  }
 }

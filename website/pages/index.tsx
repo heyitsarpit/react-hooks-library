@@ -66,13 +66,15 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid w-2/3 grid-cols-2 gap-4 mx-auto mt-12">
+      <div className="grid w-full gap-4 px-8 mx-auto mt-12 md:grid-cols-2 md:w-2/3">
         {features.map(({ img, description, title }) => (
           <section key={title} className="flex items-start gap-4 mb-4">
             <div>
-              <div className="relative flex items-center justify-center w-12 h-12 mt-2 overflow-hidden rounded-lg">
+              <div className="relative flex items-center justify-center w-12 h-12 mt-1 overflow-hidden rounded-lg">
                 <div className="text-3xl">{img}</div>
-                <div className="absolute text-3xl scale-150 blur-lg">{img}</div>
+                <div className="absolute text-3xl scale-150 blur-lg saturate-150">
+                  {img}
+                </div>
               </div>
             </div>
             <div>
@@ -82,7 +84,7 @@ export default function Home() {
           </section>
         ))}
       </div>
-      <div className="flex justify-center mt-16 mb-6 opacity-50">
+      <div className="flex justify-center mt-16 mb-16 opacity-50">
         MIT © 2021 | Arpit
       </div>
     </div>

@@ -4,11 +4,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment, useRef } from 'react'
 
-import type { Route } from '../routes'
-import { routes } from '../routes'
+import routes from '../routes.json'
 
 const groupedRoutes: {
-  [key: string]: Route[]
+  [key: string]: typeof routes
 } = {}
 
 routes.forEach((route) => {

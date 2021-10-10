@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { routes } from '../../../website/routes'
+import routes from '../../../website/routes.json'
 import { useScrollIntoView } from '.'
 
 type ListItemProps = { isActive: boolean; name: string }

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useSidebar } from 'utils/useSidebar'
 
 import { ThemeSwitch } from './ThemeSwitch'
@@ -48,8 +49,12 @@ function Logo() {
 
 function Hamburger() {
   const { sidebarOpen, toggleSideBar } = useSidebar()
-
+  const router = useRouter()
   const Row = () => <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
+
+  if (['/', '/design'].includes(router.asPath)) {
+    return null
+  }
 
   return (
     <button

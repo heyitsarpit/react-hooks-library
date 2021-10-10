@@ -43,7 +43,7 @@ export default function Functions({ meta, code }: Props) {
           description: meta.description
         }}
       />
-      <article>
+      <article className="pb-12">
         <Component components={mdxComponents as any} />
       </article>
     </>

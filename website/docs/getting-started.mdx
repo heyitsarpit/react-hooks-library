@@ -1,3 +1,40 @@
 # Getting Started
 
-This is the getting started page
+React Hooks Library is a collection of [hooks](https://reactjs.org/docs/hooks-intro.html) and utilities for React.
+It is currently available for use in Node environments and works with any react meta framework like next, vite, astro.
+Support for Deno and browsers is coming soon.
+
+<Callout type="warning">
+  The library is currently not v1 yet, while it's mostly stable, some aspects of
+  the API may change.
+</Callout>
+
+## Installation
+
+```bash
+npm i @react-hooks-library/core
+```
+
+# Usage
+
+```tsx
+import {
+  useMediaStream,
+  useKeyDown,
+  useOnline
+} from '@react-hooks-library/core'
+
+export function Demo() {
+  const isOnline = useOnline()
+
+  useKeyDown(['w', 'W', 'ArrowUp'], (e) => {
+    console.log('w or W or ArrowUp was pressed')
+  })
+
+  const { ref, pause, resume, play, stop } = useMediaStream()
+
+  return <div>Hello World</div>
+}
+```
+
+Read the list of [all function](/functions) to know more.

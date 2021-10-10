@@ -1,15 +1,11 @@
+import { useHasMounted } from '@react-hooks-library/core'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 
 import { useTheme } from './ThemeProvider'
 
 export function ThemeSwitch() {
   const { switchTheme, theme } = useTheme()
-  const [hasMounted, setHasMounted] = useState(false)
-
-  useEffect(() => {
-    setHasMounted(true)
-  }, [])
+  const hasMounted = useHasMounted()
 
   // Avoid initial transition when switching themes
   if (!hasMounted) {

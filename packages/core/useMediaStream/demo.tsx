@@ -1,7 +1,7 @@
 import { useMediaStream } from '.'
 
 export function Demo() {
-  const { ref, pause, paused, restart, resume, play, stop, playing } =
+  const { ref, pause, isPaused, restart, resume, play, stop, isPlaying } =
     useMediaStream()
 
   return (
@@ -15,17 +15,17 @@ export function Demo() {
         autoPlay
         playsInline></video>
       <div className="flex justify-center gap-4">
-        <button onClick={play} disabled={playing}>
+        <button onClick={play} disabled={isPlaying}>
           Start
         </button>
-        <button onClick={stop} disabled={!playing}>
+        <button onClick={stop} disabled={!isPlaying}>
           Stop
         </button>
         <button onClick={restart}>Restart</button>
-        <button onClick={pause} disabled={paused}>
+        <button onClick={pause} disabled={isPaused}>
           Pause
         </button>
-        <button onClick={resume} disabled={!paused}>
+        <button onClick={resume} disabled={!isPaused}>
           Resume
         </button>
       </div>

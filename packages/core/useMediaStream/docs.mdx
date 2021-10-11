@@ -75,7 +75,7 @@ export function Demo() {
 
   The stream object, wrapped in a react ref.
 
-- `playing` (boolean)
+- `isPlaying` (boolean)
 
   Is the stream playing or not.
 
@@ -92,7 +92,7 @@ export function Demo() {
 
   Restart the stream.
 
-- `audioMuted` (boolean)
+- `isAudioMuted` (boolean)
 
   Is the audio muted or not.
 
@@ -104,7 +104,7 @@ export function Demo() {
 
   UnMute the audio track.
 
-- `videoMuted` (boolean)
+- `isVideoMuted` (boolean)
 
   Is the video muted or not.
 
@@ -118,14 +118,14 @@ export function Demo() {
 
 - `pause` (function)
 
-  Pause the stream, (mutes both audio and video). 
+  Pause the stream, (mutes both audio and video).
   Does not `stop` the stream.
 
 - `resume` (function)
 
   Resume the stream, (un-mutes both audio and video).
 
-- `paused` (boolean)
+- `isPaused` (boolean)
 
   Is the stream paused or not.
 
@@ -163,25 +163,25 @@ interface UseMediaStreamOptions {
  *
  * @param options
  *
- * @see https://react-hooks-library.vercel.app/core/useUserMedia
+ * @see https://react-hooks-library.vercel.app/core/useMediaStream
  */
 declare function useMediaStream(options?: UseMediaStreamOptions): {
   isSupported: boolean
   ref: react.MutableRefObject<HTMLVideoElement | null>
   stream: react.MutableRefObject<MediaStream | null>
-  playing: boolean
-  play: () => Promise<MediaStream | undefined>
+  isPlaying: boolean
+  play: () => Promise<MediaStream | null | undefined>
   stop: () => Promise<void>
-  restart: () => Promise<MediaStream | undefined>
-  audioMuted: boolean
+  restart: () => Promise<MediaStream | null | undefined>
+  isAudioMuted: boolean
   muteAudio: () => void
   unMuteAudio: () => void
-  videoMuted: boolean
+  isVideoMuted: boolean
   muteVideo: () => void
   unMuteVideo: () => void
   pause: () => void
   resume: () => void
-  paused: boolean
+  isPaused: boolean
 }
 ```
 

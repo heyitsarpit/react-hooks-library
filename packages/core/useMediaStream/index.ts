@@ -35,7 +35,7 @@ export interface UseMediaStreamOptions {
  *
  * @param options
  *
- * @see https://react-hooks-library.vercel.app/core/useUserMedia
+ * @see https://react-hooks-library.vercel.app/core/useMediaStream
  */
 export function useMediaStream(options: UseMediaStreamOptions = {}) {
   const { audioDeviceId, videoDeviceId, autoSwitch } = options
@@ -46,9 +46,9 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
   const stream = useRef<MediaStream | null>(null)
   const videoNode = useRef<HTMLVideoElement | null>(null)
 
-  const [playing, setPlaying] = useState(false)
-  const [audioMuted, setAudioMuted] = useState(false)
-  const [videoMuted, setVideoMuted] = useState(false)
+  const [isPlaying, setPlaying] = useState(false)
+  const [isAudioMuted, setAudioMuted] = useState(false)
+  const [isVideoMuted, setVideoMuted] = useState(false)
 
   function getDeviceOptions(device: string | undefined | false | 'none') {
     if (device === 'none' || device === false) return false
@@ -117,7 +117,7 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
     if (!videoNode.current) return
 
     videoNode.current.srcObject = stream.current
-  }, [playing])
+  }, [isPlaying])
 
   useEffect(() => {
     if (autoSwitch && stream.current) restart()
@@ -127,18 +127,18 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
     isSupported,
     ref: videoNode,
     stream,
-    playing,
+    isPlaying,
     play,
     stop,
     restart,
-    audioMuted,
+    isAudioMuted,
     muteAudio,
     unMuteAudio,
-    videoMuted,
+    isVideoMuted,
     muteVideo,
     unMuteVideo,
     pause,
     resume,
-    paused: audioMuted && videoMuted
+    isPaused: isAudioMuted && isVideoMuted
   }
 }

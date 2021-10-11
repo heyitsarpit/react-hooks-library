@@ -105,8 +105,19 @@ export function NavLinks() {
 }
 
 export function Header() {
+  const { asPath } = useRouter()
+
   return (
-    <header className="fixed top-0 bottom-0 left-0 right-0 z-10 h-[var(--header-height)] border-b bg-bg-2 border-b-fg-1 flex items-center">
+    <header
+      className={`
+      fixed top-0 bottom-0 left-0 right-0 z-10
+       h-[var(--header-height)]
+       ${
+         asPath === '/'
+           ? 'backdrop-blur-lg bg-white/30 dark:bg-black/30'
+           : 'bg-bg-2 border-b border-b-fg-1'
+       }
+       flex items-center`}>
       <div className="flex items-center justify-between w-full gap-4 px-2">
         <div className="flex items-center">
           <Hamburger />

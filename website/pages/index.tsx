@@ -44,7 +44,7 @@ const Logo = () => (
 export default function Home() {
   return (
     <div>
-      <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-200px)] gap-20 p-8 overflow-hidden polka polka-animation">
+      <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-100px)] gap-20 p-8 pt-32 overflow-hidden polka polka-animation">
         <Logo />
         <div>
           <p className="mb-8">A collection of hooks and utilities for React</p>

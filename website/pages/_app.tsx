@@ -24,7 +24,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
       <ThemeProvider>
         <Header />
         {['/', '/design'].includes(router.asPath) ? (
-          <div className="mt-[var(--header-height)] h-[calc(100%-var(--header-height))]">
+          <div className="h-[calc(100%-var(--header-height))]">
             <Component {...pageProps} />
           </div>
         ) : (

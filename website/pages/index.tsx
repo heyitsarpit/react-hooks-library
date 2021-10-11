@@ -41,49 +41,58 @@ const Logo = () => (
   </div>
 )
 
+const Features = () => (
+  <div className="grid w-full gap-4 px-8 mx-auto mt-12 md:grid-cols-2 md:w-2/3">
+    {features.map(({ img, description, title }) => (
+      <section key={title} className="flex items-start gap-4 mb-4">
+        <div>
+          <div className="relative flex items-center justify-center w-12 h-12 mt-1 overflow-hidden rounded-lg">
+            <div className="text-3xl">{img}</div>
+            <div className="absolute text-3xl scale-150 blur-lg saturate-150">
+              {img}
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 className="m-0 text-lg">{title}</h2>
+          <p>{description}</p>
+        </div>
+      </section>
+    ))}
+  </div>
+)
+
+const CallToAction = () => (
+  <>
+    <div>
+      <p className="mb-8">A collection of hooks and utilities for React</p>
+      <div className="p-4 font-mono text-sm font-light border-2 md:text-base logo-glow dark:border-trueGray-900/90 border-trueGray-200/90 border-opacity-20 rounded-3xl dark:bg-trueGray-900/50 bg-trueGray-200/50">
+        npm i @react-hooks-library/core
+      </div>
+    </div>
+    <div className="flex gap-8">
+      <Link href="/getting-started">
+        <a className="!no-underline font-light shadow-lg dark:shadow-white-lg dark:hover:shadow-white-xl hover:shadow-xl text-sm uppercase rounded-lg p-3 text-bg-2 bg-trueGray-900 dark:bg-white">
+          Get Started
+        </a>
+      </Link>
+      <Link href="/functions">
+        <a className="!no-underline bg-white dark:bg-trueGray-900 font-light text-sm uppercase border border-trueGray-900 dark:border-trueGray-100 p-3 rounded-lg text-trueGray-900 dark:text-white">
+          All Functions
+        </a>
+      </Link>
+    </div>
+  </>
+)
+
 export default function Home() {
   return (
     <div>
       <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-100px)] gap-20 p-8 pt-32 overflow-hidden polka polka-animation">
         <Logo />
-        <div>
-          <p className="mb-8">A collection of hooks and utilities for React</p>
-          <div className="p-4 font-mono text-sm font-light border-2 md:text-base logo-glow dark:border-trueGray-900/90 border-trueGray-200/90 border-opacity-20 rounded-3xl dark:bg-trueGray-900/50 bg-trueGray-200/50">
-            npm i @react-hooks-library/core
-          </div>
-        </div>
-        <div className="flex gap-8">
-          <Link href="/getting-started">
-            <a className="!no-underline font-light shadow-lg dark:shadow-white-lg dark:hover:shadow-white-xl hover:shadow-xl text-sm uppercase rounded-lg p-3 text-bg-2 bg-trueGray-900 dark:bg-white">
-              Get Started
-            </a>
-          </Link>
-          <Link href="/functions">
-            <a className="!no-underline bg-white dark:bg-trueGray-900 font-light text-sm uppercase border border-trueGray-900 dark:border-trueGray-100 p-3 rounded-lg text-trueGray-900 dark:text-white">
-              All Functions
-            </a>
-          </Link>
-        </div>
+        <CallToAction />
       </div>
-
-      <div className="grid w-full gap-4 px-8 mx-auto mt-12 md:grid-cols-2 md:w-2/3">
-        {features.map(({ img, description, title }) => (
-          <section key={title} className="flex items-start gap-4 mb-4">
-            <div>
-              <div className="relative flex items-center justify-center w-12 h-12 mt-1 overflow-hidden rounded-lg">
-                <div className="text-3xl">{img}</div>
-                <div className="absolute text-3xl scale-150 blur-lg saturate-150">
-                  {img}
-                </div>
-              </div>
-            </div>
-            <div>
-              <h2 className="m-0 text-lg">{title}</h2>
-              <p>{description}</p>
-            </div>
-          </section>
-        ))}
-      </div>
+      <Features />
       <footer className="flex justify-center py-16 opacity-50">
         MIT © 2021 | Arpit
       </footer>

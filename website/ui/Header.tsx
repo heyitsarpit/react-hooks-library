@@ -47,7 +47,7 @@ function Logo() {
 }
 
 function Hamburger() {
-  const { toggleSideBar, sidebarOpen } = useSidebar()
+  const { toggleSideBar } = useSidebar()
   const router = useRouter()
   const Row = () => <div className="w-6 h-[3px] rounded-md bg-txt-2"></div>
 
@@ -60,7 +60,6 @@ function Hamburger() {
       onClick={toggleSideBar}
       className={`
       flex flex-col gap-[5px]
-      ${sidebarOpen ? 'pointer-events-none' : ''}  
       bg-transparent 
       md:hidden 
       disabled:bg-transparent 

@@ -1,8 +1,4 @@
-import {
-  BreakPointHooks,
-  breakpointsTailwind,
-  useClickOutside
-} from '@react-hooks-library/core'
+import { BreakPointHooks, breakpointsTailwind } from '@react-hooks-library/core'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 
@@ -18,10 +14,6 @@ export function SideBar() {
   const ref = useRef<HTMLElement>(null)
 
   const { asPath } = useRouter()
-
-  useClickOutside(ref, () => {
-    if (sidebarOpen && !isGreater) setSideBar(false)
-  })
 
   useEffect(() => {
     if (!ref.current) return
@@ -56,22 +48,32 @@ export function SideBar() {
       md:translate-x-0
       translate-x-[calc(-1*var(--sidebar-width))]
       top-[calc(var(--header-height))] 
-      bottom-0 
+      bottom-0
       left-0
-      right-0 
-      z-10 
-      w-[var(--sidebar-width)] 
-      p-4 
-      overflow-auto 
-      border-r 
-      bg-bg-2 
-      border-r-fg-1`}>
-      <nav className="w-full">
+      right-0
+      z-10
+      flex
+      w-full
+      `}>
+      <nav
+        className={`
+        w-[var(--sidebar-width)] 
+        border-r border-r-fg-1
+        bg-bg-2
+        p-4 overflow-auto
+        `}>
         <div className="flex flex-col gap-4 py-4 mb-4 border-b md:hidden border-b-fg-1">
           <NavLinks />
         </div>
         <FunctionList />
       </nav>
+      <button
+        onClick={() => setSideBar(false)}
+        className={`
+        h-full
+        w-[calc(100vw-var(--sidebar-width))] 
+        ${sidebarOpen ? 'block' : 'hidden'}
+        bg-transparent md:hidden`}></button>
     </aside>
   )
 }

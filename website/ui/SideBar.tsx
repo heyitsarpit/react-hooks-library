@@ -54,6 +54,7 @@ export function SideBar() {
       z-10
       flex
       w-full
+      md:w-[var(--sidebar-width)]
       `}>
       <nav
         className={`

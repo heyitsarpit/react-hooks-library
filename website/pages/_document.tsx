@@ -10,10 +10,10 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
-        <body>
+        <body className="dark">
           <script
             dangerouslySetInnerHTML={{
-              __html: `var e,a;e=document.body.classList,(a=localStorage.getItem("theme"))?e.add(a.replace(/"/g,"")):window.matchMedia("(prefers-color-scheme: dark)").matches?e.add("dark"):e.add("light");`
+              __html: `!function(){var a=document.body.classList;a.remove("dark");var e=localStorage.getItem("theme");e?a.add(e.replace(/"/g,"")):window.matchMedia("(prefers-color-scheme: dark)").matches?a.add("dark"):a.add("light")}()`
             }}
           />
           <Main />

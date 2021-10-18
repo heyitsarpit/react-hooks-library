@@ -120,6 +120,12 @@
     "description": "Find previous value of a state"
   },
   {
+    "name": "useScreenShare",
+    "category": "sensors",
+    "route": "/core/useScreenShare",
+    "description": "Reactive scroll values for a react ref or a dom node"
+  },
+  {
     "name": "useScroll",
     "category": "sensors",
     "route": "/core/useScroll",

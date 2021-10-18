@@ -44,7 +44,7 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
   )
 
   const stream = useRef<MediaStream | null>(null)
-  const videoNode = useRef<HTMLVideoElement | null>(null)
+  const ref = useRef<HTMLVideoElement | null>(null)
 
   const [isPlaying, setPlaying] = useState(false)
   const [isAudioMuted, setAudioMuted] = useState(false)
@@ -114,9 +114,9 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
   }
 
   useEffect(() => {
-    if (!videoNode.current) return
+    if (!ref.current) return
 
-    videoNode.current.srcObject = stream.current
+    ref.current.srcObject = stream.current
   }, [isPlaying])
 
   useEffect(() => {
@@ -125,7 +125,7 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
 
   return {
     isSupported,
-    ref: videoNode,
+    ref,
     stream,
     isPlaying,
     play,

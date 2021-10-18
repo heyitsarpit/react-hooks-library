@@ -1,0 +1,84 @@
+---
+category: sensors
+name: useScreenShare
+description: Reactive screen sharing
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useScreenShare
+
+Reactive `mediaDevices.getDisplayMedia`, allows screen sharing. It also handles the native stop stream button automatically.
+
+## Usage
+
+```tsx
+import { useScreenShare } from '@react-hooks-library/core'
+
+export function Demo() {
+  const { play, ref, stop, isPlaying } = useScreenShare()
+
+  return (
+    <div>
+      <video
+        ref={ref}
+        width="500"
+        height="280"
+        muted
+        autoPlay
+        playsInline></video>
+      <div>
+        <button onClick={play} disabled={isPlaying}>
+          Start Screen Sharing
+        </button>
+        <button onClick={stop} disabled={!isPlaying}>
+          Stop Screen Sharing
+        </button>
+      </div>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+interface UseScreenShareOptions {
+  /**
+   * If the stream video media constraints
+   *
+   * @default true
+   */
+  video?: boolean | MediaTrackConstraints | undefined
+  /**
+   * If the stream audio media constraints
+   *
+   * @default true
+   */
+  audio?: boolean | MediaTrackConstraints | undefined
+}
+
+/**
+ * Reactive screen sharing
+ *
+ * @param options
+ *
+ * @see https://react-hooks-library.vercel.app/core/useScreenShare
+ */
+declare function useScreenShare(options?: UseScreenShareOptions): {
+  isSupported: boolean
+  isPlaying: boolean
+  ref: react.MutableRefObject<HTMLVideoElement | null>
+  stream: react.MutableRefObject<MediaStream | null>
+  play: () => Promise<MediaStream | null | undefined>
+  stop: () => Promise<void>
+}
+```
+
+## Source
+
+<Source name="useScreenShare" pkg="core" />

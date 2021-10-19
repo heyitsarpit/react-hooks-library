@@ -1,4 +1,8 @@
-# React Hooks Library
+# ![React Hooks Library](/website/public/logo_text.png)
+
+[![Build Status](https://img.shields.io/github/workflow/status/heyitsarpit/react-hooks-library/Publish%20to%20NPM%20and%20Release%20To%20Github?style=flat&colorA=000000&colorB=000000)](https://github.com/heyitsarpit/react-hooks-library/actions/workflows/publish_release.yml?query=event%3Apush)
+[![Version](https://img.shields.io/npm/v/@react-hooks-library/core?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@react-hooks-library/core)
+[![License](https://img.shields.io/github/license/heyitsarpit/react-hooks-library?style=flat&colorA=000000&colorB=000000)](/LICENSE)
 
 A collection of hooks and utilities for React. List of [all function](https://react-hooks-library-rosy.vercel.app/functions). For more information, read the [official documentation](https://react-hooks-library-rosy.vercel.app).
 

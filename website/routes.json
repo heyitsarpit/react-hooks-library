@@ -60,6 +60,12 @@
     "description": "Listen for keyboard keys on keystroke"
   },
   {
+    "name": "useLocalStorage",
+    "category": "browser",
+    "route": "/core/useLocalStorage",
+    "description": "Reactive browser location."
+  },
+  {
     "name": "useLocation",
     "category": "browser",
     "route": "/core/useLocation",
@@ -123,7 +129,7 @@
     "name": "useScreenShare",
     "category": "sensors",
     "route": "/core/useScreenShare",
-    "description": "Reactive scroll values for a react ref or a dom node"
+    "description": "Reactive screen sharing"
   },
   {
     "name": "useScroll",

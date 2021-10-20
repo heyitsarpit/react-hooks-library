@@ -1,0 +1,59 @@
+---
+category: browser
+name: useLocalStorage
+description: Modified `useState` hook that syncs with localStorage.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useLocalStorage
+
+Modified `useState` hook that syncs with localStorage.
+
+## Usage
+
+```tsx
+import { useLocalStorage } from '@react-hooks-library/core'
+
+export function Demo() {
+  const [value, setValue] = useLocalStorage(
+    'useLocalsStorageKey',
+    'Hello World'
+  )
+
+  return (
+    <div>
+      <div>State - {value}</div>
+      <label htmlFor="demo">
+        Enter some text to update state and localStorage
+      </label>
+      <input onChange={(e) => setValue(e.target.value)} type="text" id="demo" />
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Modified `useState` hook that syncs with localStorage.
+ *
+ * @param key
+ * @param initialValue
+ *
+ * @see https://react-hooks-library.vercel.app/core/useLocalStorage
+ */
+declare function useLocalStorage<T>(
+  key: string,
+  initialValue: T
+): [T, React.Dispatch<React.SetStateAction<T>>]
+```
+
+## Source
+
+<Source name="useLocalStorage" pkg="core" />

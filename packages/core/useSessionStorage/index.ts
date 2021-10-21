@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useMount } from '../useMount'
 
 /**
- * Modified `useState` hook that syncs with localStorage.
+ * Modified `useState` hook that syncs with useSessionStorage.
  *
  * @param key
  * @param initialValue

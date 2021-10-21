@@ -1,0 +1,59 @@
+---
+category: state
+name: useSessionStorage
+description: Modified `useState` hook that syncs with sessionStorage.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useSessionStorage
+
+Modified `useState` hook that syncs with [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
+
+## Usage
+
+```tsx
+import { useSessionStorage } from '@react-hooks-library/core'
+
+export function Demo() {
+  const [value, setValue] = useSessionStorage(
+    'useSessionStorageKey',
+    'Hello World'
+  )
+
+  return (
+    <div>
+      <div>State - {value}</div>
+      <label htmlFor="demo">
+        Enter some text to update state and sessionStorage
+      </label>
+      <input onChange={(e) => setValue(e.target.value)} type="text" id="demo" />
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Modified `useState` hook that syncs with localStorage.
+ *
+ * @param key
+ * @param initialValue
+ *
+ * @see https://react-hooks-library.vercel.app/core/useSessionStorage
+ */
+declare function useSessionStorage<T>(
+  key: string,
+  initialValue: T
+): [T, Dispatch<SetStateAction<T>>]
+```
+
+## Source
+
+<Source name="useSessionStorage" pkg="core" />

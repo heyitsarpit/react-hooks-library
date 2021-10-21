@@ -37,21 +37,49 @@ export function Demo() {
 }
 ```
 
+### Using custom serialize and deserialize options
+
+The default for `serialize` is `JSON.stringify` and the default for `deserialize` is `JSON.parse`.
+
+```tsx
+const [value, setValue] = useLocalStorage('key', 'value', {
+  serialize: JSON.stringify,
+  deserialize: JSON.parse
+})
+```
+
 ## Type Declarations
 
 ```typescript
+declare type UseLocalStorageOptions = {
+  /**
+   * Function for converting to string.
+   *
+   * @default JSON.stringify
+   */
+  serialize: (value: unknown) => string
+  /**
+   * Function to convert stored string to object value.
+   *
+   * @default JSON.parse
+   */
+  deserialize: (value: string) => unknown
+}
+
 /**
  * Modified `useState` hook that syncs with localStorage.
  *
  * @param key
  * @param initialValue
+ * @param options
  *
  * @see https://react-hooks-library.vercel.app/core/useLocalStorage
  */
 declare function useLocalStorage<T>(
   key: string,
-  initialValue: T
-): [T, React.Dispatch<React.SetStateAction<T>>]
+  initialValue: T,
+  options?: UseLocalStorageOptions
+): [T, Dispatch<SetStateAction<T>>]
 ```
 
 ## Source

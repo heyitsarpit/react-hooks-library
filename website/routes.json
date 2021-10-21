@@ -3,7 +3,7 @@
     "name": "BreakPointHooks",
     "category": "browser",
     "route": "/core/BreakPointHooks",
-    "description": "Reaactive hooks and utilities to be used with user provided breakpoints."
+    "description": "Reactive hooks and utilities to be used with user provided breakpoints."
   },
   {
     "name": "useActiveElement",
@@ -61,9 +61,9 @@
   },
   {
     "name": "useLocalStorage",
-    "category": "browser",
+    "category": "state",
     "route": "/core/useLocalStorage",
-    "description": "Reactive browser location."
+    "description": "Modified `useState` hook that syncs with localStorage."
   },
   {
     "name": "useLocation",

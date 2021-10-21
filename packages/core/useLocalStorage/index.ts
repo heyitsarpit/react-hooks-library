@@ -3,6 +3,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useState } from 'react'
 
 import { useMount } from '../useMount'
+
 /**
  * Modified `useState` hook that syncs with localStorage.
  *

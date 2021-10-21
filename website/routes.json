@@ -144,6 +144,12 @@
     "description": "A hook to scroll an element into view on mounting"
   },
   {
+    "name": "useSessionStorage",
+    "category": "state",
+    "route": "/core/useSessionStorage",
+    "description": "Modified `useState` hook that syncs with sessionStorage."
+  },
+  {
     "name": "useStateHistory",
     "category": "state",
     "route": "/core/useStateHistory",

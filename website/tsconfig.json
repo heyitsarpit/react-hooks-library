@@ -13,11 +13,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "incremental": true,
     "baseUrl": ".",
     "paths": {
       "@react-hooks-library/core": ["../packages/core/index.ts"],
       "@react-hooks-library/shared": ["../packages/shared/index.ts"]
-    }
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

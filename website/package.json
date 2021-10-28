@@ -16,32 +16,32 @@
     "build:routes": "esno ./scripts/buildRoutes.ts"
   },
   "dependencies": {
-    "framer-motion": "^4.1.17",
-    "next": "11.1.2",
-    "next-seo": "^4.26.0",
+    "framer-motion": "^5.0.0",
+    "next": "12.0.1",
+    "next-seo": "^4.28.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "zustand": "^3.5.13"
+    "zustand": "^3.6.1"
   },
   "devDependencies": {
-    "@types/node": "16.7.10",
-    "@types/react": "17.0.19",
-    "@types/react-dom": "17.0.9",
-    "autoprefixer": "^10.3.4",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "^11.1.2",
-    "esno": "^0.9.1",
+    "@types/node": "16.11.6",
+    "@types/react": "17.0.33",
+    "@types/react-dom": "17.0.10",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.1.0",
+    "eslint-config-next": "^12.0.1",
+    "esno": "^0.10.1",
     "fast-glob": "^3.2.7",
     "gray-matter": "^4.0.3",
-    "mdx-bundler": "^6.0.1",
-    "next-pwa": "^5.3.1",
-    "next-sitemap": "^1.6.168",
-    "postcss": "^8.3.6",
+    "mdx-bundler": "^6.0.2",
+    "next-pwa": "^5.4.0",
+    "next-sitemap": "^1.6.192",
+    "postcss": "^8.3.11",
     "rehype-autolink-headings": "^6.1.0",
     "rehype-slug": "^5.0.0",
-    "remark-gfm": "^2.0.0",
+    "remark-gfm": "^3.0.0",
     "remark-prism": "^1.3.6",
-    "tailwindcss": "^2.2.9",
-    "typescript": "4.4.2"
+    "tailwindcss": "^2.2.17",
+    "typescript": "4.4.4"
   }
 }

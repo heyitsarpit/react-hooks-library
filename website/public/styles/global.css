@@ -181,22 +181,22 @@
     @apply px-2 py-1 rounded-lg w-max;
   }
   .active{
-    @apply text-brand bg-cyan-600/20 dark:bg-cyan-400/20;
+    @apply text-brand bg-cyan-600/10 dark:bg-cyan-400/10;
   }
   .inactive{
-    @apply text-blueGray-400 dark:text-blueGray-300 bg-blueGray-400/20 dark:bg-blueGray-600/20;
+    @apply text-blueGray-400 dark:text-blueGray-300 bg-blueGray-400/10 dark:bg-blueGray-600/10;
   }
   .info{
-    @apply text-sky-600 bg-sky-600/20;
+    @apply text-sky-700 dark:text-sky-400 bg-sky-600/10;
   }
   .danger{
-    @apply text-red-600 bg-red-600/20;
+    @apply text-red-700 dark:text-red-500 bg-red-600/10;
   }
   .warning{
-    @apply text-yellow-600 bg-yellow-600/20;
+    @apply text-yellow-700 dark:text-yellow-400 bg-yellow-600/10;
   }
   .success{
-    @apply text-green-600 bg-green-600/20;
+    @apply text-green-700 dark:text-green-400 bg-green-600/10;
   }
   
   h1{

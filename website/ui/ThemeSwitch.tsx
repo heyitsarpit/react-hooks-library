@@ -31,7 +31,12 @@ export function ThemeSwitch() {
             viewBox="0 0 24 24"
             fill="currentColor"
             stroke="currentColor"
-            className="w-6 h-6">
+            className="w-6 h-6"
+            aria-label={
+              theme === 'light'
+                ? 'Switch to dark theme'
+                : 'Switch to light theme'
+            }>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"

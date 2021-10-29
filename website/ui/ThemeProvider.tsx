@@ -1,6 +1,6 @@
-import React, { createContext } from 'react'
-import { useContext } from 'react'
-import { useEffect, useState } from 'react'
+import { usePreferredColorScheme } from '@react-hooks-library/core'
+import { noop } from '@react-hooks-library/shared'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 
 type Theme = 'dark' | 'light'
 
@@ -10,14 +10,20 @@ type ThemeContextProps = {
 }
 const ThemeContext = createContext<ThemeContextProps>({
   theme: 'dark',
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  switchTheme: () => {}
+  switchTheme: noop
 })
 
 type Props = { children: React.ReactNode }
 
 export function ThemeProvider({ children }: Props) {
   const [theme, setTheme] = useState<Theme>('dark')
+  const preferredTheme = usePreferredColorScheme()
+
+  const renderCount = useRef(0)
+
+  useEffect(() => {
+    renderCount.current += 1
+  })
 
   useEffect(() => {
     const theme = (document.body.getAttribute('class') as Theme) || 'dark'
@@ -37,6 +43,15 @@ export function ThemeProvider({ children }: Props) {
 
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  useEffect(() => {
+    /**
+     * We don't want to switch theme on first few renders
+     * only when user switches system theme
+     */
+    if (renderCount.current <= 2) return
+    preferredTheme === 'dark' ? setTheme('dark') : setTheme('light')
+  }, [preferredTheme])
 
   const switchTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light')

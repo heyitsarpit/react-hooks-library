@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSidebar } from 'utils/useSidebar'
 
+import { version } from '../package.json'
 import { ThemeSwitch } from './ThemeSwitch'
 
 export function Github() {
@@ -31,13 +32,28 @@ export function Github() {
   )
 }
 
+function Version() {
+  return (
+    <div>
+      <span className="mr-2 pill info" title="version">
+        v{version.split('-')[0]}
+      </span>
+      {version.includes('beta') ? (
+        <span className="pill warning">beta</span>
+      ) : version.includes('alpha') ? (
+        <span className="pill danger">alpha</span>
+      ) : null}
+    </div>
+  )
+}
+
 function Logo() {
   return (
     <Link href="/">
-      <a className="flex items-center gap-4 py-2 ml-2 h-[var(--header-height)] w-32">
+      <a className="flex items-center gap-4 py-2 ml-2 h-[var(--header-height)]">
         <img src="/logo.png" alt="Logo" className="w-8 h-8" />
         <img
-          className="hidden h-7 md:inline"
+          className="hidden w-32 md:inline-block"
           src="/logo_text.png"
           alt="React Hooks Library Text"
         />
@@ -122,6 +138,8 @@ export function Header() {
           <Hamburger />
           <Logo />
         </div>
+
+        <Version />
 
         <div className="ml-auto"></div>
 

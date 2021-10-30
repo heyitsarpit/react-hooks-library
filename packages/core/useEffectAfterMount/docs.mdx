@@ -1,0 +1,66 @@
+---
+category: lifecycle
+name: useEffectAfterMount
+description: A useEffect hook that does not run on mount, but only on subsequent updates
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useEffectAfterMount
+
+A useEffect hook that does not run on mount, but only on subsequent updates, useful for purely reactive effects.
+
+## Usage
+
+```tsx
+import { useEffect, useState } from 'react'
+
+import { useEffectAfterMount } from '@react-hooks-library/core'
+
+export function Demo() {
+  const [count, setCount] = useState(0)
+  const [firstEffect, setFirstEffect] = useState(false)
+  const [secondEffect, setSecondEffect] = useState(false)
+
+  useEffect(() => {
+    setFirstEffect(true)
+  }, [count])
+
+  useEffectAfterMount(() => {
+    setSecondEffect(true)
+  }, [count])
+
+  return (
+    <div>
+      <div>First effect - {firstEffect ? 'ran' : 'did not run'}</div>
+      <div>Second effect - {secondEffect ? 'ran' : 'did not run'}</div>
+      <button onClick={() => setCount((c) => c + 1)}>Rerender</button>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * A useEffect hook does that not run on mount, but only on subsequent updates.
+ *
+ * @param effect
+ * @param deps
+ *
+ * @see https://react-hooks-library.vercel.app/core/useEffectAfterMount
+ */
+declare function useEffectAfterMount(
+  effect: React.EffectCallback,
+  deps?: React.DependencyList | undefined
+): void
+```
+
+## Source
+
+<Source name="useEffectAfterMount" pkg="core" />

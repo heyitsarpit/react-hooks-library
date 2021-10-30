@@ -47,14 +47,13 @@ export function SideBar() {
       transform-gpu transition-transform duration-300
       md:translate-x-0
       translate-x-[calc(-1*var(--sidebar-width))]
-      top-[calc(var(--header-height))] 
+      top-[calc(var(--header-height))]
       bottom-0
       left-0
       right-0
       z-10
       flex
-      w-full
-      md:w-[var(--sidebar-width)]
+      ${sidebarOpen ? 'md:w-[var(--sidebar-width)]' : 'w-0'}
       `}>
       <nav
         className={`
@@ -72,9 +71,11 @@ export function SideBar() {
         onClick={() => setSideBar(false)}
         className={`
         h-full
-        w-[calc(100vw-var(--sidebar-width))] 
-        ${sidebarOpen ? 'block' : 'hidden'}
-        bg-transparent md:hidden`}></button>
+        w-[calc(100vw-var(--sidebar-width))]
+        md:hidden
+        bg-warmGray-100/20 dark:bg-warmGray-800/20
+        backdrop-blur-lg
+        `}></button>
     </aside>
   )
 }

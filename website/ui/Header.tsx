@@ -112,9 +112,10 @@ export function NavLinks() {
         <Link href={href} key={href}>
           <a
             className={`
-        !no-underline
-        pill hover:active
-         ${isActive ? 'active text-brand' : 'text-txt-1'}`}>
+            w-full md:w-max
+            !no-underline
+            pill hover:active
+            ${isActive ? 'active text-brand' : 'text-txt-1'}`}>
             {label}
           </a>
         </Link>

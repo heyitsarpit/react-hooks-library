@@ -1,8 +1,12 @@
-import { BreakPointHooks, breakpointsTailwind } from '@react-hooks-library/core'
+import {
+  BreakPointHooks,
+  breakpointsTailwind,
+  useClickOutside
+} from '@react-hooks-library/core'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
+import { useSidebar } from 'utils/useSidebar'
 
-import { useSidebar } from '../utils/useSidebar'
 import { FunctionList } from './FunctionList'
 import { NavLinks } from './Header'
 
@@ -14,6 +18,12 @@ export function SideBar() {
   const ref = useRef<HTMLElement>(null)
 
   const { asPath } = useRouter()
+
+  useClickOutside(ref, () => {
+    if (sidebarOpen && !isGreater) {
+      setSideBar(false)
+    }
+  })
 
   useEffect(() => {
     if (!ref.current) return
@@ -44,16 +54,17 @@ export function SideBar() {
       ref={ref}
       className={`
       fixed
+      top-0
+      md:top-[calc(var(--header-height))]
       transform-gpu transition-transform duration-300
       md:translate-x-0
       translate-x-[calc(-1*var(--sidebar-width))]
-      top-[calc(var(--header-height))]
       bottom-0
       left-0
       right-0
       z-10
       flex
-      ${sidebarOpen ? 'md:w-[var(--sidebar-width)]' : 'w-0'}
+      w-[var(--sidebar-width)]
       `}>
       <nav
         className={`
@@ -67,15 +78,6 @@ export function SideBar() {
         </div>
         <FunctionList />
       </nav>
-      <button
-        onClick={() => setSideBar(false)}
-        className={`
-        h-full
-        w-[calc(100vw-var(--sidebar-width))]
-        md:hidden
-        bg-warmGray-100/20 dark:bg-warmGray-800/20
-        backdrop-blur-lg
-        `}></button>
     </aside>
   )
 }

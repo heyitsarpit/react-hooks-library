@@ -1,4 +1,4 @@
-# ![React Hooks Library](/website/public/logo_text.png)
+# ![React Hooks Library](https://github.com/heyitsarpit/react-hooks-library/blob/main/website/public/logo_text.png)
 
 [![Build Status](https://img.shields.io/github/workflow/status/heyitsarpit/react-hooks-library/Publish%20to%20NPM%20and%20Release%20To%20Github?style=flat&colorA=34B6BF&colorB=34B6BF)](https://github.com/heyitsarpit/react-hooks-library/actions/workflows/publish_release.yml?query=event%3Apush)
 [![Version](https://img.shields.io/npm/v/@react-hooks-library/core?style=flat&colorA=33C5BC&colorB=33C5BC)](https://www.npmjs.com/package/@react-hooks-library/core)

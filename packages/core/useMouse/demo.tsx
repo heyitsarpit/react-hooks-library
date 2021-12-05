@@ -1,7 +1,7 @@
 import { useMouse } from '.'
 
 export function Demo() {
-  const { x, y } = useMouse({ type: 'page' })
+  const { x, y } = useMouse()
 
   return (
     <div>

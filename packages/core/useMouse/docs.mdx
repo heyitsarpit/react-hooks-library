@@ -1,0 +1,105 @@
+---
+category: sensors
+name: useMouse
+description: Reactive mouse position based by page or client
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useMouse
+
+Reactive mouse position based by page or client.
+
+## Usage
+
+```tsx
+import { useMouse } from '@react-hooks-library/core'
+
+export function Demo() {
+  const { x, y } = useMouse()
+
+  return (
+    <div>
+      x: {x}
+      <br />
+      y: {y}
+    </div>
+  )
+}
+```
+
+### Position Types
+
+```tsx
+// use clientX and clientY
+const { x, y } = useMouse({ type: 'client' })
+
+// use pageX and pageY
+const { x, y } = useMouse({ type: 'page' })
+```
+
+## Options
+
+- `type` - Mouse position type, `'page'` or `'client'`. Default is `'client'`.
+
+- `touch` - Enable or disable touch events, default is `true`.
+
+- `resetOnTouchEnds` - Reset to initial value when `touchend` event fired
+
+- `initialValue` - Initial x and y position, default is `{ x: 0, y: 0 }`  
+
+## Type Declarations
+
+```typescript
+declare type Position = {
+  x: number
+  y: number
+}
+interface MouseOptions {
+  /**
+   * Mouse position based by page or client
+   *
+   * @default 'client'
+   */
+  type?: 'page' | 'client'
+  /**
+   * Listen to `touchmove` events
+   *
+   * @default true
+   */
+  touch?: boolean
+  /**
+   * Reset to initial value when `touchend` event fired
+   *
+   * @default false
+   */
+  resetOnTouchEnds?: boolean
+  /**
+   * Initial values
+   */
+  initialValue?: Position
+}
+
+declare type MouseSource = 'mouse' | 'touch' | null
+/**
+ *
+ * Reactive mouse position based by page or client
+ *
+ * @param options
+ *
+ * @see https://react-hooks-library.vercel.app/core/useMouse
+ */
+declare function useMouse(options?: MouseOptions): {
+  x: number
+  y: number
+  source: MouseSource
+}
+```
+
+## Source
+
+<Source name="useMouse" pkg="core" />

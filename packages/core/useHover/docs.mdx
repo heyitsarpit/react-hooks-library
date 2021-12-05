@@ -1,0 +1,50 @@
+---
+category: sensors
+name: useHover
+description: Detect if a dom element is hovered
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useHover
+
+Detect if a dom element is hovered.
+
+## Usage
+
+```tsx
+import { useRef } from 'react'
+import { useHover } from '@react-hooks-library/core'
+
+export function Demo() {
+  const ref = useRef<HTMLDivElement | null>(null)
+  const isHovered = useHover(ref)
+
+  return (
+    <div ref={ref}>
+      {isHovered ? 'Hovered' : 'Not Hovered'}
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ *
+ * Detect if a dom element is hovered
+ *
+ * @param target - The element to listen to
+ * @returns
+ */
+declare function useHover(target: MaybeRef<EventTarget | null>): boolean;
+```
+
+## Source
+
+<Source name="useHover" pkg="core" />

@@ -27,7 +27,7 @@
     "name": "useEffectAfterMount",
     "category": "lifecycle",
     "route": "/core/useEffectAfterMount",
-    "description": "A useEffect hook does not run on mount, but only on subsequent updates"
+    "description": "A useEffect hook that does not run on mount, but only on subsequent updates"
   },
   {
     "name": "useEventListener",
@@ -100,6 +100,12 @@
     "category": "lifecycle",
     "route": "/core/useMountSync",
     "description": "Run a function synchronously when a component is mounted but after DOM is painted."
+  },
+  {
+    "name": "useMouse",
+    "category": "sensors",
+    "route": "/core/useMouse",
+    "description": "Reactive Network status"
   },
   {
     "name": "useMutationObserver",

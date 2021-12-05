@@ -48,6 +48,12 @@
     "description": "Hook that returns whether or not the component has mounted"
   },
   {
+    "name": "useHover",
+    "category": "sensors",
+    "route": "/core/useHover",
+    "description": "Is a feature supported in the browser or not"
+  },
+  {
     "name": "useIntersectionObserver",
     "category": "browser",
     "route": "/core/useIntersectionObserver",
@@ -105,7 +111,7 @@
     "name": "useMouse",
     "category": "sensors",
     "route": "/core/useMouse",
-    "description": "Reactive Network status"
+    "description": "Reactive mouse position based by page or client"
   },
   {
     "name": "useMutationObserver",

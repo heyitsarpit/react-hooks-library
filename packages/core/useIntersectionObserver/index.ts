@@ -1,6 +1,7 @@
 import { MaybeRef, noop, unRef } from '@react-hooks-library/shared'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { _document } from '../_ssr.config'
 import { useIsSupported } from '../useIsSupported'
 import { useUnMount } from '../useUnMount'
 
@@ -42,7 +43,7 @@ export function useIntersectionObserver(
   options: IntersectionObserverOptions = {},
   callback: IntersectionObserverCallback = noop
 ) {
-  const { root = document, rootMargin = '0px', threshold = 0 } = options
+  const { root = _document, rootMargin = '0px', threshold = 0 } = options
 
   const [inView, setInView] = useState(false)
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null)
@@ -92,7 +93,7 @@ export function useIntersectionObserver(
     observer.current?.observe(el)
 
     return stop
-  }, [callback, root, rootMargin, stop, target, threshold, isSupported])
+  }, [callback, isSupported, root, rootMargin, stop, target, threshold])
 
   return {
     isSupported,

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { _navigator } from '../_ssr.config'
 import { useIsSupported } from '../useIsSupported'
@@ -36,7 +36,7 @@ export function useScreenShare(options: UseScreenShareOptions = {}) {
 
   const [isPlaying, setPlaying] = useState(false)
 
-  async function play() {
+  const play = useCallback(async () => {
     if (!isSupported || !ref.current) return
 
     stream.current =
@@ -48,13 +48,13 @@ export function useScreenShare(options: UseScreenShareOptions = {}) {
     setPlaying(true)
 
     return stream.current
-  }
+  }, [audio, isSupported, video])
 
-  async function stop() {
+  const stop = useCallback(() => {
     stream.current?.getTracks().forEach((t) => t.stop())
     stream.current = null
     setPlaying(false)
-  }
+  }, [])
 
   useEffect(() => {
     if (!ref.current) return
@@ -63,7 +63,7 @@ export function useScreenShare(options: UseScreenShareOptions = {}) {
 
     // Handle os native stop screen sharing buttons
     stream.current?.getVideoTracks()[0].addEventListener('ended', stop)
-  }, [isPlaying])
+  }, [isPlaying, stop])
 
   return {
     isSupported,

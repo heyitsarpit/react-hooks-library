@@ -1,5 +1,4 @@
-import { isFunction } from '@react-hooks-library/shared'
-import type { Dispatch, SetStateAction } from 'react'
+import { useCallback } from 'react'
 import { useState } from 'react'
 
 import { useMount } from '../useMount'
@@ -33,7 +32,7 @@ export function useLocalStorage<T>(
   key: string,
   initialValue: T,
   options?: UseLocalStorageOptions
-): [T, Dispatch<SetStateAction<T>>] {
+): [T, (value: T) => void] {
   const [storedValue, setStoredValue] = useState(initialValue)
   const { deserialize = JSON.parse, serialize = JSON.stringify } = options || {}
 
@@ -46,16 +45,17 @@ export function useLocalStorage<T>(
     }
   })
 
-  const setValue: Dispatch<SetStateAction<T>> = (value) => {
-    try {
-      const valueToStore = isFunction(value) ? value(storedValue) : value
-
-      setStoredValue(valueToStore)
-      localStorage.setItem(key, serialize(valueToStore))
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  const setValue = useCallback(
+    (value: T) => {
+      try {
+        localStorage.setItem(key, serialize(value))
+        setStoredValue(value)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    [key, serialize]
+  )
 
   return [storedValue, setValue]
 }

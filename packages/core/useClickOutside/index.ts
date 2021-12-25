@@ -1,5 +1,6 @@
 import type { MaybeRef } from '@react-hooks-library/shared'
 import { unRef } from '@react-hooks-library/shared'
+import { useCallback } from 'react'
 
 import { _window } from '../_ssr.config'
 import { useEventListener } from '../useEventListener'
@@ -35,14 +36,17 @@ export function useClickOutside<
 ) {
   const { event = 'pointerdown' } = options
 
-  const listener = (event: ClickOutsideEvents[E]) => {
-    const el = unRef(target)
-    if (!el) return
+  const listener = useCallback(
+    (event: ClickOutsideEvents[E]) => {
+      const el = unRef(target)
+      if (!el) return
 
-    if (el === event.target || event.composedPath().includes(el)) return
+      if (el === event.target || event.composedPath().includes(el)) return
 
-    handler(event)
-  }
+      handler(event)
+    },
+    [handler, target]
+  )
 
   return useEventListener(_window, event, listener, { passive: true })
 }

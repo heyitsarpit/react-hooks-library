@@ -1,4 +1,5 @@
-import { isString, MaybeRef } from '@react-hooks-library/shared'
+import { MaybeRef } from '@react-hooks-library/shared'
+import { useCallback } from 'react'
 
 import { _window } from '../_ssr.config'
 import { useEventListener } from '../useEventListener'
@@ -59,12 +60,14 @@ export function useKeyStroke(
     code = false
   } = options
 
-  const listener = (e: KeyboardEvent) => {
-    const eventKey = code ? e.code : e.key
+  const listener = useCallback(
+    (e: KeyboardEvent) => {
+      const eventKey = code ? e.code : e.key
 
-    if (isString(keys)) keys = [keys]
-    if (keys.includes(eventKey)) handler(e)
-  }
+      keys.includes(eventKey) && handler(e)
+    },
+    [code, handler, keys]
+  )
 
   return useEventListener(target, eventName, listener, { passive })
 }

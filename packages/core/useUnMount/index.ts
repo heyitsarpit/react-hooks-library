@@ -9,5 +9,5 @@ import { useEffect } from 'react'
 export function useUnMount(func: Fn) {
   useEffect(() => {
     return func
-  }, [])
+  }, [func])
 }

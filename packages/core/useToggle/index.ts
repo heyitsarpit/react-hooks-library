@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 /**
  * A state toggle hook
@@ -11,9 +11,11 @@ import { useState } from 'react'
 export function useToggle(defaultValue = false) {
   const [bool, setBool] = useState(defaultValue)
 
-  const toggle = () => setBool((s) => !s)
-  const setTrue = () => setBool(true)
-  const setFalse = () => setBool(false)
+  const toggle = useCallback(() => setBool((s) => !s), [])
+
+  const setTrue = useCallback(() => setBool(true), [])
+
+  const setFalse = useCallback(() => setBool(false), [])
 
   return { bool, toggle, setTrue, setFalse }
 }

@@ -1,5 +1,5 @@
 import { isFunction } from '@react-hooks-library/shared'
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 type UseStateHistoryOptions = {
   /**
@@ -34,27 +34,30 @@ export function useStateHistory<T>(
   const redoHistory = useRef<T[]>([])
   const redoAllowed = useRef(false)
 
-  const push = (value: T) => {
-    if (actionHistory.current.length < maxHistory) {
-      actionHistory.current.push(value)
-    } else {
-      actionHistory.current = [...actionHistory.current.slice(1), value]
-      lastSaved.current = actionHistory.current[0]
-    }
+  const push = useCallback(
+    (value: T) => {
+      if (actionHistory.current.length < maxHistory) {
+        actionHistory.current.push(value)
+      } else {
+        actionHistory.current = [...actionHistory.current.slice(1), value]
+        lastSaved.current = actionHistory.current[0]
+      }
 
-    redoAllowed.current = false
-    setState(value)
-  }
+      redoAllowed.current = false
+      setState(value)
+    },
+    [maxHistory]
+  )
 
-  const redo = () => {
+  const redo = useCallback(() => {
     if (!(redoHistory.current.length && redoAllowed.current)) return
 
     const lastUndoState = redoHistory.current.pop()
     lastUndoState && push(lastUndoState)
     redoAllowed.current = true
-  }
+  }, [push])
 
-  const undo = () => {
+  const undo = useCallback(() => {
     if (actionHistory.current.length < 1) return
 
     const lastState = actionHistory.current.pop()
@@ -64,12 +67,12 @@ export function useStateHistory<T>(
     prev ? setState(prev) : setState(lastSaved.current)
     rerender({})
     redoAllowed.current = true
-  }
+  }, [rerender])
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setState(actionHistory.current[0])
     actionHistory.current = [actionHistory.current[0]]
-  }
+  }, [])
 
   return {
     state,

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { _navigator } from '../_ssr.config'
 import { useIsSupported } from '../useIsSupported'
@@ -50,16 +50,19 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
   const [isAudioMuted, setAudioMuted] = useState(false)
   const [isVideoMuted, setVideoMuted] = useState(false)
 
-  function getDeviceOptions(device: string | undefined | false | 'none') {
-    if (device === 'none' || device === false) return false
-    if (device === null) return true
+  const getDeviceOptions = useCallback(
+    (device: string | undefined | false | 'none') => {
+      if (device === 'none' || device === false) return false
+      if (device === null) return true
 
-    return {
-      deviceId: device
-    }
-  }
+      return {
+        deviceId: device
+      }
+    },
+    []
+  )
 
-  async function play() {
+  const play = useCallback(async () => {
     if (!isSupported || stream.current) return
 
     stream.current =
@@ -70,48 +73,48 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
 
     setPlaying(true)
     return stream.current
-  }
+  }, [audioDeviceId, getDeviceOptions, isSupported, videoDeviceId])
 
-  async function stop() {
+  const stop = useCallback(() => {
     setPlaying(false)
     stream.current?.getTracks().forEach((t) => t.stop())
     stream.current = null
-  }
+  }, [])
 
-  async function restart() {
+  const restart = useCallback(async () => {
     stop()
     return await play()
-  }
+  }, [play, stop])
 
-  function muteAudio() {
+  const muteAudio = useCallback(() => {
     setAudioMuted(true)
     stream.current?.getAudioTracks().forEach((t) => (t.enabled = false))
-  }
+  }, [])
 
-  function unMuteAudio() {
+  const unMuteAudio = useCallback(() => {
     setAudioMuted(false)
     stream.current?.getAudioTracks().forEach((t) => (t.enabled = true))
-  }
+  }, [])
 
-  function muteVideo() {
+  const muteVideo = useCallback(() => {
     setVideoMuted(true)
     stream.current?.getVideoTracks().forEach((t) => (t.enabled = false))
-  }
+  }, [])
 
-  function unMuteVideo() {
+  const unMuteVideo = useCallback(() => {
     setVideoMuted(false)
     stream.current?.getVideoTracks().forEach((t) => (t.enabled = true))
-  }
+  }, [])
 
-  function pause() {
+  const pause = useCallback(() => {
     muteAudio()
     muteVideo()
-  }
+  }, [muteAudio, muteVideo])
 
-  function resume() {
+  const resume = useCallback(() => {
     unMuteAudio()
     unMuteVideo()
-  }
+  }, [unMuteAudio, unMuteVideo])
 
   useEffect(() => {
     if (!ref.current) return
@@ -121,7 +124,7 @@ export function useMediaStream(options: UseMediaStreamOptions = {}) {
 
   useEffect(() => {
     if (autoSwitch && stream.current) restart()
-  }, [videoDeviceId, audioDeviceId, autoSwitch])
+  }, [videoDeviceId, audioDeviceId, autoSwitch, restart])
 
   return {
     isSupported,

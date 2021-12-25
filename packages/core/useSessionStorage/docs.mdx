@@ -65,7 +65,6 @@ declare type UseSessionStorageOptions = {
    */
   deserialize: (value: string) => unknown
 }
-
 /**
  * Modified `useState` hook that syncs with useSessionStorage.
  *
@@ -79,7 +78,7 @@ declare function useSessionStorage<T>(
   key: string,
   initialValue: T,
   options?: UseSessionStorageOptions
-): [T, Dispatch<SetStateAction<T>>]
+): [T, (value: T) => void]
 ```
 
 ## Source

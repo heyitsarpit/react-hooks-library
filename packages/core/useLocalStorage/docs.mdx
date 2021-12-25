@@ -65,7 +65,6 @@ declare type UseLocalStorageOptions = {
    */
   deserialize: (value: string) => unknown
 }
-
 /**
  * Modified `useState` hook that syncs with localStorage.
  *
@@ -79,7 +78,7 @@ declare function useLocalStorage<T>(
   key: string,
   initialValue: T,
   options?: UseLocalStorageOptions
-): [T, Dispatch<SetStateAction<T>>]
+): [T, (value: T) => void]
 ```
 
 ## Source

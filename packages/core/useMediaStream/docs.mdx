@@ -171,7 +171,7 @@ declare function useMediaStream(options?: UseMediaStreamOptions): {
   stream: react.MutableRefObject<MediaStream | null>
   isPlaying: boolean
   play: () => Promise<MediaStream | null | undefined>
-  stop: () => Promise<void>
+  stop: () => void
   restart: () => Promise<MediaStream | null | undefined>
   isAudioMuted: boolean
   muteAudio: () => void

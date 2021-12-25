@@ -1,5 +1,4 @@
-import { isFunction } from '@react-hooks-library/shared'
-import { Dispatch, SetStateAction, useCallback } from 'react'
+import { useCallback } from 'react'
 import { useState } from 'react'
 
 import { useMount } from '../useMount'

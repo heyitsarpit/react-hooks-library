@@ -1,16 +1,18 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export function useCounter(initialValue = 0) {
   const [count, setCount] = useState(initialValue)
 
-  const inc = (by = 1) => setCount((c) => c + by)
-  const dec = (by = 1) => setCount((c) => c - by)
+  const inc = useCallback((by = 1) => setCount((c) => c + by), [])
+  const dec = useCallback((by = 1) => setCount((c) => c - by), [])
   const get = () => count
-  const set = (val: number) => setCount(val)
-  const reset = (val = initialValue) => {
-    initialValue = val
-    return set(val)
-  }
+  const set = useCallback((val: number) => setCount(val), [])
+  const reset = useCallback(
+    (val = initialValue) => {
+      return set(val)
+    },
+    [initialValue, set]
+  )
 
   return { count, inc, dec, get, set, reset }
 }

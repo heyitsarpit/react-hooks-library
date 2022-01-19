@@ -23,9 +23,16 @@ export function useMediaQuery(query: string): boolean {
       setMatches(event.matches)
     }
 
-    mediaQuery.addEventListener('change', handler)
+    // Add event listener for old safari browsers
+    'addEventListener' in mediaQuery
+      ? mediaQuery.addEventListener('change', handler)
+      : mediaQuery.addListener(handler)
 
-    return () => mediaQuery.removeEventListener('change', handler)
+    return () => {
+      'addEventListener' in mediaQuery
+        ? mediaQuery.removeEventListener('change', handler)
+        : mediaQuery.removeListener(handler)
+    }
   }, [query])
 
   return matches

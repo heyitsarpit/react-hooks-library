@@ -10,29 +10,21 @@ export const SEO: React.FC = () => {
         url: 'https://react-hooks-library.vercel.app',
         title: 'React Hooks Library',
         description: 'A collection of hooks and utilities for React',
-        site_name: 'React Hooks Library'
-        // images: [
-        //   {
-        //     url: 'https://www.example.ie/og-image-01.jpg',
-        //     width: 800,
-        //     height: 600,
-        //     alt: 'Og Image Alt'
-        //   },
-        //   {
-        //     url: 'https://www.example.ie/og-image-02.jpg',
-        //     width: 900,
-        //     height: 800,
-        //     alt: 'Og Image Alt Second'
-        //   },
-        //   { url: 'https://www.example.ie/og-image-03.jpg' },
-        //   { url: 'https://www.example.ie/og-image-04.jpg' }
-        // ]
+        site_name: 'React Hooks Library',
+        images: [
+          {
+            url: 'https://react-hooks-library.vercel.app/og_image.jpg',
+            width: 1000,
+            height: 509,
+            alt: 'React Hooks Library'
+          }
+        ]
       }}
-      //   twitter={{
-      //     handle: '',
-      //     site: '',
-      //     cardType: 'summary_large_image'
-      //   }}
+      twitter={{
+        handle: '@heyitsarpit',
+        site: 'https://react-hooks-library.vercel.app/',
+        cardType: 'summary_large_image'
+      }}
     />
   )
 }

@@ -1,0 +1,51 @@
+---
+category: state
+name: useInterval
+description: Run a function repeatedly at a specified interval
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useInterval
+
+Run a function repeatedly at a specified interval.
+Use the `immediate` option to run the function immediately when it is updated.
+
+## Usage
+
+```tsx
+import { useInterval } from '@react-hooks-library/core'
+
+function Demo() {
+  const [count, setCount] = useState(0)
+
+  const increment = useCallback(() => setCount((c) => c + 1), [])
+
+  useInterval(increment, 1000)
+
+  return <div>Count - {count}</div>
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Run a function repeatedly at a specified interval.
+ *
+ * @see https://react-hooks-library.vercel.app/core/useInterval
+ */
+declare function useInterval<T extends () => void>(
+  callback: T,
+  delay: number,
+  immediate?: boolean
+): void
+```
+
+## Source
+
+<Source name="useInterval" pkg="core" />

@@ -51,7 +51,7 @@
     "name": "useHover",
     "category": "sensors",
     "route": "/core/useHover",
-    "description": "Is a feature supported in the browser or not"
+    "description": "Detect if a dom element is hovered"
   },
   {
     "name": "useIntersectionObserver",
@@ -165,6 +165,12 @@
     "name": "useSessionStorage",
     "category": "state",
     "route": "/core/useSessionStorage",
+    "description": "Modified `useState` hook that syncs with sessionStorage."
+  },
+  {
+    "name": "useStateCompare",
+    "category": "state",
+    "route": "/core/useStateCompare",
     "description": "Modified `useState` hook that syncs with sessionStorage."
   },
   {

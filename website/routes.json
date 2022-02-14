@@ -60,6 +60,12 @@
     "description": "Reactive intersection observer."
   },
   {
+    "name": "useInterval",
+    "category": "state",
+    "route": "/core/useInterval",
+    "description": "Is a feature supported in the browser or not"
+  },
+  {
     "name": "useIsSupported",
     "category": "sensors",
     "route": "/core/useIsSupported",
@@ -171,7 +177,7 @@
     "name": "useStateCompare",
     "category": "state",
     "route": "/core/useStateCompare",
-    "description": "Modified `useState` hook that syncs with sessionStorage."
+    "description": "useState hook with custom compare function to avoid re-rendering"
   },
   {
     "name": "useStateHistory",

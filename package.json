@@ -1,6 +1,6 @@
 {
   "name": "@react-hooks-library/packages",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "description": "A collection of hooks and utilities for React",
   "main": "index.js",

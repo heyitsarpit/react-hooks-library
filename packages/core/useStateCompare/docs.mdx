@@ -1,0 +1,80 @@
+---
+category: state
+name: useStateCompare
+description: useState hook with custom compare function to avoid re-rendering
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useStateCompare
+
+`useState` hook with custom compare function to avoid re-rendering when state is the same, compares with previous state.
+
+<Callout type="info">
+  create a custom `compare` function, outside of the hook to keep a stable
+  reference, otherwise it will be recreated on every render
+</Callout>
+
+<Callout type="warning">
+  `compare` is only used when in `setState(value)`, `value` is not a function, in that case the default react behavior is used.
+</Callout>
+
+## Usage
+
+```tsx
+import { useStateCompare } from '@react-hooks-library/core'
+
+type State = {
+  count: number
+}
+
+const compare = (oldState: State, newState: State) =>
+  oldState.count === newState.count ? oldState : newState
+
+export function Demo() {
+  const [state, setState] = useStateCompare<State>({
+    initialValue: () => ({ count: 0 }),
+    compare
+  })
+
+  return (
+    <div>
+      <div>Count - {state.count}</div>
+      <button onClick={() => setState({ count: state.count + 1 })}>
+        Increment
+      </button>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+declare type UseStateCompare<T> = {
+  initialValue: T | (() => T)
+  compare: (oldValue: T, newValue: T) => T
+}
+/**
+ * useState hook with custom compare function to avoid re-rendering
+ * when state is the same, compares with previous state
+ *
+ *
+ * Note: create a custom compare function, outside of the hook to a keep
+ * stable reference, otherwise it will be recreated on every render
+ *
+ * @see https://react-hooks-library.vercel.app/core/useStateCompare
+ */
+declare function useStateCompare<T>({
+  initialValue,
+  compare
+}: UseStateCompare<T>): [T, Dispatch<SetStateAction<T>>]
+```
+
+## Source
+
+<Source name="useStateCompare" pkg="core" />

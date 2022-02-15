@@ -12,6 +12,12 @@
     "description": "Reactive document.activeElement"
   },
   {
+    "name": "useAsyncCallback",
+    "category": "state",
+    "route": "/core/useAsyncCallback",
+    "description": "Listen for click outside an element, useful for modals and tooltips."
+  },
+  {
     "name": "useClickOutside",
     "category": "sensors",
     "route": "/core/useClickOutside",
@@ -63,7 +69,7 @@
     "name": "useInterval",
     "category": "state",
     "route": "/core/useInterval",
-    "description": "Is a feature supported in the browser or not"
+    "description": "Run a function repeatedly at a specified interval"
   },
   {
     "name": "useIsSupported",

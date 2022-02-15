@@ -1,0 +1,63 @@
+---
+category: state
+name: useAsyncCallback
+description: Returns a current execution state of an async function.
+---
+
+import { Demo } from './demo.tsx'
+
+<Playground>
+  <Demo />
+</Playground>
+
+# useAsyncCallback
+
+Returns a current execution state of an async function, Use it to orchestrate async actions in UI.
+
+## Usage
+
+```tsx
+import { useCallback } from 'react'
+import { useAsyncCallback } from '@react-hooks-library/core'
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+function Demo() {
+  const fn = useCallback(async () => {
+    await sleep(3000)
+    return 5000
+  }, [])
+
+  const [fnState, fnCallback] = useAsyncCallback(fn)
+
+  return (
+    <div>
+      {fnState.isLoading ? <div>Loading...</div> : null}
+
+      {fnState.error ? <div>An Error Occurred</div> : null}
+
+      {fnState.data ? <div>{fnState.data}</div> : null}
+
+      <button onClick={fnCallback}>Call Function</button>
+    </div>
+  )
+}
+```
+
+## Type Declarations
+
+```typescript
+/**
+ * Returns a current execution state of an async function.
+ * Use it to orchestrate async actions in UI.
+ *
+ * @see https://react-hooks-library.vercel.app/core/useAsyncCallback
+ */
+declare function useAsyncCallback<Args extends unknown[], ResolvedType>(
+  callback: (...args: Args) => Promise<ResolvedType>
+): [UseAsyncState<ResolvedType>, (...args: Args) => Promise<ResolvedType>]
+```
+
+## Source
+
+<Source name="useAsyncCallback" pkg="core" />

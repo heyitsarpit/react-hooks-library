@@ -70,6 +70,8 @@ export function useStateHistory<T>(
   }, [rerender])
 
   const reset = useCallback(() => {
+    if (!actionHistory.current?.length) return
+
     setState(actionHistory.current[0])
     actionHistory.current = [actionHistory.current[0]]
   }, [])

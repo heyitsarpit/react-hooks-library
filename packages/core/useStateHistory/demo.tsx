@@ -9,10 +9,10 @@ export function Demo() {
 
   return (
     <div>
-      <div className="mb-4">
+      <div className="mb-2">
         Current State: <span className="pill active">{state.num}</span>
       </div>
-      <div>
+      <div className="h-16">
         <ul className="flex gap-4 w-80">
           {history.map(({ num, id }) => (
             <li
@@ -33,7 +33,9 @@ export function Demo() {
         <button onClick={redo} disabled={!redoAllowed}>
           Redo
         </button>
-        <button onClick={reset}>Reset</button>
+        <button onClick={reset} disabled={!history.length}>
+          Reset
+        </button>
       </div>
     </div>
   )

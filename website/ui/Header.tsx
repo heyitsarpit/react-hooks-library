@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSidebar } from 'utils/useSidebar'
 
-import { version } from '../package.json'
+import packageFile from '../package.json'
 import { ThemeSwitch } from './ThemeSwitch'
 
 export function Github() {
@@ -32,6 +32,8 @@ export function Github() {
     </div>
   )
 }
+
+const version = packageFile.version
 
 function Version() {
   return (

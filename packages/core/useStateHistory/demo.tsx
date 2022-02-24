@@ -33,9 +33,7 @@ export function Demo() {
         <button onClick={redo} disabled={!redoAllowed}>
           Redo
         </button>
-        <button onClick={reset} disabled={!history.length}>
-          Reset
-        </button>
+        <button onClick={reset}>Reset</button>
       </div>
     </div>
   )

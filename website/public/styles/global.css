@@ -80,7 +80,7 @@
   }
 
   .logo-glow {
-    background-image: linear-gradient(to right, rgb(1, 187, 170), rgb(0, 156, 204));
+    background-image: linear-gradient(to right, rgb(16, 134, 123), rgb(13, 125, 151));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

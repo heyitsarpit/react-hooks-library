@@ -33,7 +33,8 @@ Non reactive utility function
 ```tsx
 import { BreakPointHooks, breakpointsTailwind } from '@react-hooks-library/core'
 
-const { useGreater, useBetween, isSmaller } = BreakPointHooks(breakpointsTailwind)
+const { useGreater, useBetween, isSmaller } =
+  BreakPointHooks(breakpointsTailwind)
 
 // Non reactive check, can be used outside react components
 const smaller = isSmaller('xl')
@@ -51,9 +52,9 @@ function Demo() {
 
 return (
   <div>
-   {greater && 'Greater than md'}
-   {between && 'Between md & lg'}
-   {smaller && 'Smaller than 2xl'}
+    {greater && 'Greater than md'}
+    {between && 'Between md & lg'}
+    {smaller && 'Smaller than 2xl'}
   </div>
 )
 ```
@@ -81,6 +82,14 @@ function Demo() {
   const smaller = useSmaller('tablet')
 }
 ```
+
+## Performance Optimization
+
+If you use the these `BreakPointHooks` a lot in your application, you run the risk of unnecessary performance loss by adding too many event listeners.
+A way to optimise is to setup all of these hooks in a `context provider`  and consume them with `React.useContext()`, thus you only setup media query event listeners only once.
+
+`React.useContext` causes re-renders in all components that consume that context, whether the consumed value is used or not,
+So you can further further optimise these contexts by using either [use-context-selector](https://github.com/dai-shi/use-context-selector) or [react-tracked](https://react-tracked.js.org/docs/quick-start/).
 
 ## Available Breakpoints
 
@@ -154,7 +163,6 @@ export const breakpointsSematic = {
 ## Type Declarations
 
 ```typescript
-declare type BreakPoints = Record<string, number>
 /**
  * Reactive hooks and utilities to be used with user provided breakpoints.
  *
@@ -163,64 +171,65 @@ declare type BreakPoints = Record<string, number>
  *
  * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
  */
-declare function BreakPointHooks(breakpoints: BreakPoints): {
-    /**
-     * Hook that returns a boolean if screen width is greater than given breakpoint.
-     *
-     * @param k {string} breakpoint
-     * @returns boolean
-     *
-     * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
-     **/
-    useGreater: (k: string) => boolean
-    /**
-     * Hook that returns a boolean if screen width is smaller than given breakpoint.
-     *
-     * @param k {string} breakpoint
-     * @param k {string} breakpoint
-     *
-     * @returns boolean
-     *
-     * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
-     **/
-    useSmaller: (k: string) => boolean
-    /**
-     * Hook that returns a boolean if screen width is between two given breakpoint.
-     *
-     * @param a {string} breakpoint
-     * @param b {string} breakpoint
-     *
-     * @returns boolean
-     *
-     * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
-     **/
-    useBetween: (a: string, b: string) => boolean
-    /**
-     * Utility function that returns a boolean if screen width is greater than given breakpoint.
-     *
-     * @param k {string} breakpoint
-     *
-     * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
-     **/
-    isGreater(k: string): boolean
-    /**
-     * Utility function that returns a boolean if screen width is smaller than given breakpoint.
-     *
-     * @param k {string} breakpoint
-     *
-     * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
-     **/
-    isSmaller(k: string): boolean
-    /**
-     * Utility function that returns a boolean if screen width is between two given breakpoint.
-     *
-     * @param k {string} breakpoint
-     *
-     * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
-     **/
-    isInBetween(a: string, b: string): boolean
+declare function BreakPointHooks<BreakPoints extends Record<string, number>>(
+  breakpoints: BreakPoints
+): {
+  /**
+   * Hook that returns a boolean if screen width is greater than given breakpoint.
+   *
+   * @param k {string} breakpoint
+   * @returns boolean
+   *
+   * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
+   **/
+  useGreater: (k: keyof BreakPoints) => boolean
+  /**
+   * Hook that returns a boolean if screen width is smaller than given breakpoint.
+   *
+   * @param k {string} breakpoint
+   * @param k {string} breakpoint
+   *
+   * @returns boolean
+   *
+   * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
+   **/
+  useSmaller: (k: keyof BreakPoints) => boolean
+  /**
+   * Hook that returns a boolean if screen width is between two given breakpoint.
+   *
+   * @param a {string} breakpoint
+   * @param b {string} breakpoint
+   *
+   * @returns boolean
+   *
+   * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
+   **/
+  useBetween: (a: keyof BreakPoints, b: keyof BreakPoints) => boolean
+  /**
+   * Utility function that returns a boolean if screen width is greater than given breakpoint.
+   *
+   * @param k {string} breakpoint
+   *
+   * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
+   **/
+  isGreater(k: keyof BreakPoints): boolean
+  /**
+   * Utility function that returns a boolean if screen width is smaller than given breakpoint.
+   *
+   * @param k {string} breakpoint
+   *
+   * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
+   **/
+  isSmaller(k: keyof BreakPoints): boolean
+  /**
+   * Utility function that returns a boolean if screen width is between two given breakpoint.
+   *
+   * @param k {string} breakpoint
+   *
+   * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
+   **/
+  isInBetween(a: keyof BreakPoints, b: keyof BreakPoints): boolean
 }
-
 declare type BreakPointHooksReturn = ReturnType<typeof BreakPointHooks>
 ```
 

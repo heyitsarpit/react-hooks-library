@@ -2,8 +2,6 @@ import { useMediaQuery } from '../useMediaQuery'
 export * from './breakpoints'
 import { _window } from '../_ssr.config'
 
-export type BreakPoints = Record<string, number>
-
 function match(query: string): boolean {
   if (!_window) return false
 
@@ -18,7 +16,11 @@ function match(query: string): boolean {
  *
  * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
  */
-export function BreakPointHooks(breakpoints: BreakPoints) {
+export function BreakPointHooks<BreakPoints extends Record<string, number>>(
+  breakpoints: BreakPoints
+) {
+  type BreakPointsKey = keyof BreakPoints
+
   return {
     /**
      * Hook that returns a boolean if screen width is greater than given breakpoint.
@@ -28,7 +30,7 @@ export function BreakPointHooks(breakpoints: BreakPoints) {
      *
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
-    useGreater: (k: string) => {
+    useGreater: (k: BreakPointsKey) => {
       return useMediaQuery(`(min-width: ${breakpoints[k]}px)`)
     },
 
@@ -42,7 +44,7 @@ export function BreakPointHooks(breakpoints: BreakPoints) {
      *
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
-    useSmaller: (k: string) => {
+    useSmaller: (k: BreakPointsKey) => {
       return useMediaQuery(`(max-width: ${breakpoints[k]}px)`)
     },
 
@@ -56,7 +58,7 @@ export function BreakPointHooks(breakpoints: BreakPoints) {
      *
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
-    useBetween: (a: string, b: string) => {
+    useBetween: (a: BreakPointsKey, b: BreakPointsKey) => {
       return useMediaQuery(
         `(min-width: ${breakpoints[a]}px) and (max-width: ${breakpoints[b]}px)`
       )
@@ -69,7 +71,7 @@ export function BreakPointHooks(breakpoints: BreakPoints) {
      *
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
-    isGreater(k: string) {
+    isGreater(k: BreakPointsKey) {
       return match(`(min-width: ${breakpoints[k]}px)`)
     },
 
@@ -80,7 +82,7 @@ export function BreakPointHooks(breakpoints: BreakPoints) {
      *
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
-    isSmaller(k: string) {
+    isSmaller(k: BreakPointsKey) {
       return match(`(max-width: ${breakpoints[k]}px)`)
     },
 
@@ -91,7 +93,7 @@ export function BreakPointHooks(breakpoints: BreakPoints) {
      *
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
-    isInBetween(a: string, b: string) {
+    isInBetween(a: BreakPointsKey, b: BreakPointsKey) {
       return match(
         `(min-width: ${breakpoints[a]}px) and (max-width: ${breakpoints[b]}px)`
       )

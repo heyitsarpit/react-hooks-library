@@ -94,7 +94,14 @@ export default function Home() {
       </div>
       <Features />
       <footer className="flex justify-center py-16 opacity-50">
-        MIT © 2021 | Arpit
+        MIT © 2021 | &nbsp;
+        <a
+          className="text-black dark:text-white"
+          href="https://www.arpit.one"
+          target="_blank"
+          rel="noreferrer noopener">
+          Arpit
+        </a>
       </footer>
     </div>
   )

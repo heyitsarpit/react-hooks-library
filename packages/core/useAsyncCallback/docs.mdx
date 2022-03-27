@@ -47,6 +47,12 @@ function Demo() {
 ## Type Declarations
 
 ```typescript
+declare type UseAsyncState<T> = {
+  data: T | undefined
+  error: boolean
+  isSuccess: boolean
+  isLoading: boolean
+}
 /**
  * Returns a current execution state of an async function.
  * Use it to orchestrate async actions in UI.

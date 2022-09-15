@@ -1,5 +1,10 @@
 import { useEffect, useRef } from 'react'
 
+type UseIntervalOptions = {
+  immediate: boolean
+  paused: boolean
+}
+
 /**
  * Run a function repeatedly at a specified interval.
  *
@@ -8,19 +13,28 @@ import { useEffect, useRef } from 'react'
 export function useInterval<T extends () => void>(
   callback: T,
   delay: number,
-  immediate = false
+  options?: Partial<UseIntervalOptions>
 ) {
+  const { immediate = false, paused = false } = options || {}
   const savedCallback = useRef(callback)
+  const tickId = useRef<NodeJS.Timer>()
 
   useEffect(() => {
     savedCallback.current = callback
 
-    immediate && callback()
-  }, [callback, immediate])
+    if (!paused && immediate) {
+      callback()
+    }
+  }, [callback, immediate, paused])
 
   useEffect(() => {
-    const id = setInterval(() => savedCallback.current(), delay)
+    if (tickId.current && paused) {
+      clearInterval(tickId.current)
+      return
+    }
 
-    return () => clearInterval(id)
-  }, [delay])
+    tickId.current = setInterval(() => savedCallback.current(), delay)
+
+    return () => tickId.current && clearInterval(tickId.current)
+  }, [delay, paused])
 }

@@ -31,9 +31,18 @@ function Demo() {
 }
 ```
 
+### Options
+
+- `immediate` - when true, the callback will execute on before setting a timer
+- `paused` - pause the execution of your callback
+
 ## Type Declarations
 
 ```typescript
+declare type UseIntervalOptions = {
+  immediate: boolean
+  paused: boolean
+}
 /**
  * Run a function repeatedly at a specified interval.
  *
@@ -42,7 +51,7 @@ function Demo() {
 declare function useInterval<T extends () => void>(
   callback: T,
   delay: number,
-  immediate?: boolean
+  options?: Partial<UseIntervalOptions>
 ): void
 ```
 

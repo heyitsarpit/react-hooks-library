@@ -15,7 +15,7 @@
     "name": "useAsyncCallback",
     "category": "state",
     "route": "/core/useAsyncCallback",
-    "description": "Listen for click outside an element, useful for modals and tooltips."
+    "description": "Returns a current execution state of an async function."
   },
   {
     "name": "useClickOutside",

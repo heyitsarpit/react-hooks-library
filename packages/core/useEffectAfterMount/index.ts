@@ -15,10 +15,14 @@ export function useEffectAfterMount(
   const isMounted = useRef(false)
 
   useEffect(() => {
+    let cleanup: void | (() => void) = undefined
+
     if (isMounted.current) {
-      effect()
+      cleanup = effect()
     }
 
     isMounted.current = true
+
+    return cleanup
   }, deps)
 }

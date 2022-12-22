@@ -13,6 +13,8 @@ export function Demo() {
 
   useEffectAfterMount(() => {
     setSecondEffect(true)
+
+    return () => console.log('run cleanup')
   }, [count])
 
   return (

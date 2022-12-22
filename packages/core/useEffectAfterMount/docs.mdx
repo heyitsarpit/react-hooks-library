@@ -14,6 +14,8 @@ import { Demo } from './demo.tsx'
 
 A useEffect hook that does not run on mount, but only on subsequent updates, useful for purely reactive effects.
 
+The effect can return a cleanup function just like `useEffect`, that has the same semantics to the native `useEffect`.
+
 ## Usage
 
 ```tsx
@@ -32,6 +34,8 @@ export function Demo() {
 
   useEffectAfterMount(() => {
     setSecondEffect(true)
+
+    return () => console.log('run cleanup')
   }, [count])
 
   return (

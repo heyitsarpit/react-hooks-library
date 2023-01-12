@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react'
 /**
  * A useEffect hook does that not run on mount, but only on subsequent updates.
  *
+ * @deprecated This hook breaks in React 18's strict mode, since it's not idempotent
+ *
  * @param effect
  * @param deps
  *

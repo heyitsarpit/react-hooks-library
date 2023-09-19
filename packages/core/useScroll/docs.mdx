@@ -48,11 +48,11 @@ export function Demo() {
   const box = useRef<HTMLDivElement | null>(null)
   const scrollProgress = useRef<HTMLDivElement | null>(null)
 
-  useScroll(box, ({ scrollX }) =>
-   if(!scrollProgress.current) return
+  useScroll(box, ({ scrollX }) => {
+    if(!scrollProgress.current) return
 
-   scrollProgress.current.style.width = `${scrollX * 100}%`
-  )
+    scrollProgress.current.style.width = `${scrollX * 100}%`
+  })
 
   return (
     <div ref={box}>

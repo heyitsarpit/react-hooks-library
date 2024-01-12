@@ -1,6 +1,6 @@
 {
   "name": "@react-hooks-library/core",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A collection of hooks and utilities for React",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -25,7 +25,7 @@
   "license": "MIT",
   "author": "Arpit<https://github.com/heyitsarpit>",
   "dependencies": {
-    "@react-hooks-library/shared": "0.5.1"
+    "@react-hooks-library/shared": "0.5.2"
   },
   "devDependencies": {
     "@types/css-font-loading-module": "^0.0.6"

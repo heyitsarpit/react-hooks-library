@@ -40,34 +40,30 @@ export function Demo() {
 ## Type Declarations
 
 ```typescript
-declare type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined
-
+declare type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined;
 interface NetworkInformation extends EventTarget {
-  readonly type?: ConnectionType
-  readonly effectiveType?: NetworkEffectiveType
-  readonly downlinkMax?: number
-  readonly downlink?: number
-  readonly rtt?: number
-  readonly saveData?: boolean
-  onchange?: EventListener
+    readonly effectiveType?: NetworkEffectiveType;
+    readonly downlinkMax?: number;
+    readonly downlink?: number;
+    readonly rtt?: number;
+    readonly saveData?: boolean;
+    onchange?: EventListener;
 }
-
 /**
  * Reactive Network status.
  *
  * @see https://react-hooks-library.vercel.app/core/useNetwork
  */
 declare function useNetwork(): {
-  isSupported: boolean
-  isOnline: boolean
-  offlineAt: number | undefined
-  saveData: boolean | undefined
-  rtt: number | undefined
-  downlink: number | undefined
-  downlinkMax: number | undefined
-  effectiveType: NetworkEffectiveType
-  type: ConnectionType
-}
+    isSupported: boolean;
+    isOnline: boolean;
+    offlineAt: number | undefined;
+    saveData: boolean | undefined;
+    rtt: number | undefined;
+    downlink: number | undefined;
+    downlinkMax: number | undefined;
+    effectiveType: NetworkEffectiveType;
+};
 ```
 
 ## Source

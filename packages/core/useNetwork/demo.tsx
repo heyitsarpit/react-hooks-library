@@ -5,9 +5,7 @@ import { NetworkEffectiveType, useNetwork } from '.'
 export function Demo() {
   const network = useNetwork()
 
-  const getClass = (
-    value: number | boolean | NetworkEffectiveType | ConnectionType
-  ) =>
+  const getClass = (value: number | boolean | NetworkEffectiveType) =>
     `pill ${
       value === undefined
         ? 'opacity-60'

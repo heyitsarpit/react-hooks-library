@@ -7,6 +7,19 @@ import { useMount } from '../useMount'
 
 export type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined
 
+type ConnectionType =
+  | 'cellular2g'
+  | 'cellular3g'
+  | 'cellular4g'
+  | 'bluetooth'
+  | 'ethernet'
+  | 'none'
+  | 'wifi'
+  | 'wimax'
+  | 'other'
+  | 'unknown'
+  | undefined
+
 export interface NetworkInformation extends EventTarget {
   readonly type?: ConnectionType
   readonly effectiveType?: NetworkEffectiveType
@@ -17,13 +30,21 @@ export interface NetworkInformation extends EventTarget {
   onchange?: EventListener
 }
 
+declare global {
+  interface TNavigator extends Navigator {
+    readonly connection: NetworkInformation
+  }
+}
+
 /**
  * Reactive Network status.
  *
  * @see https://react-hooks-library.vercel.app/core/useNetwork
  */
 export function useNetwork() {
-  const isSupported = useIsSupported(() => !!_navigator?.connection)
+  const isSupported = useIsSupported(
+    () => !!(_navigator as TNavigator)?.connection
+  )
   const [isOnline, setIsOnline] = useState(true)
   const [offlineAt, setOfflineAt] = useState<number | undefined>(undefined)
 
@@ -36,7 +57,8 @@ export function useNetwork() {
     setIsOnline(_navigator.onLine)
     setOfflineAt(isOnline ? undefined : Date.now())
 
-    const _connection = _navigator?.connection as NetworkInformation
+    const _connection = (_navigator as TNavigator)
+      ?.connection as NetworkInformation
     if (!_connection) return
 
     connection.current = _connection

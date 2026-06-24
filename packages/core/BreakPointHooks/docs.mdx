@@ -13,6 +13,8 @@ import { Demo } from './demo.tsx'
 # BreakPointHooks
 
 Reactive hooks and utilities to be used with user provided breakpoints.
+Number values are treated as pixel widths. String values are passed through
+unchanged, so values like `48rem` or `1024px` can be used directly.
 
 ## Functions
 
@@ -80,6 +82,24 @@ function Demo() {
 
   // smaller than tablet
   const smaller = useSmaller('tablet')
+}
+```
+
+```tsx
+import { BreakPointHooks } from '@react-hooks-library/core'
+
+const breakpoints = {
+  sm: '40rem',
+  md: '48rem',
+  lg: '64rem',
+  xl: '80rem',
+  '2xl': '96rem'
+}
+
+const { useGreater } = BreakPointHooks(breakpoints)
+
+function Demo() {
+  const greater = useGreater('md')
 }
 ```
 
@@ -171,7 +191,9 @@ export const breakpointsSematic = {
  *
  * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
  */
-declare function BreakPointHooks<BreakPoints extends Record<string, number>>(
+declare function BreakPointHooks<
+  BreakPoints extends Record<string, number | string>
+>(
   breakpoints: BreakPoints
 ): {
   /**

@@ -5,7 +5,7 @@ type Props = {
 
 export function Source({ name, pkg }: Props) {
   const baseUrl =
-    'https://github.com/react-hooks-library/react-hooks-library/blob/main/packages'
+    'https://github.com/heyitsarpit/react-hooks-library/blob/main/packages'
 
   const props = {
     target: '_blank',

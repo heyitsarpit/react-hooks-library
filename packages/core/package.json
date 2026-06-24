@@ -5,6 +5,11 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heyitsarpit/react-hooks-library",
+    "directory": "packages/core"
+  },
   "keywords": [
     "react",
     "react hooks",

@@ -36,7 +36,8 @@ pnpm add @react-hooks-library/core
 
 ## Contribution
 
-Contribution guide coming soon... 🤞🏽
+Read the [contribution guide](./CONTRIBUTING.md) to set up the project, run
+checks, and open focused pull requests.
 
 ## Credits
 

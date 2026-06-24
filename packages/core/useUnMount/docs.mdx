@@ -2,11 +2,17 @@
 category: lifecycle
 name: useUnMount
 description: Run a function when component is unmounted.
+deprecated: true
 ---
 
 # useUnMount
 
 Run a function when component is unmounted.
+
+<Callout type="warning">
+  This hook is deprecated because it is not idempotent in React 18 Strict Mode.
+  Prefer returning a cleanup function from `useEffect` directly.
+</Callout>
 
 ## Usage
 
@@ -27,6 +33,8 @@ function Demo() {
 ```typescript
 /**
  * Run a function when component is unmounted.
+ *
+ * @deprecated This hook breaks in React 18 Strict Mode, since it is not idempotent.
  *
  * @param callback function to be executed
  */

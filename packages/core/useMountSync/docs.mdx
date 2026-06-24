@@ -2,6 +2,7 @@
 category: lifecycle
 name: useMountSync
 description: Run a function synchronously when a component is mounted but after DOM is painted. 
+deprecated: true
 ---
 
 import { Demo } from './demo.tsx'
@@ -14,6 +15,11 @@ import { Demo } from './demo.tsx'
 
 Run a function synchronously when a component is mounted and after DOM is painted.
 Useful when accessing the DOM or creating event listeners.
+
+<Callout type="warning">
+  This hook is deprecated because it is not idempotent in React 18 Strict Mode.
+  Prefer using `useLayoutEffect` directly.
+</Callout>
 
 ## Usage
 
@@ -35,6 +41,8 @@ function Demo() {
 ```typescript
 /**
  * Run a function synchronously when a component is mounted and after DOM is painted.
+ *
+ * @deprecated This hook breaks in React 18 Strict Mode, since it is not idempotent.
  *
  * @param callback function to be executed
  */

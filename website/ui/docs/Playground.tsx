@@ -4,7 +4,7 @@ type Props = { children: React.ReactNode }
 
 export function Playground({ children }: Props) {
   return (
-    <div className="bleed min-h-[16rem] polka px-12 pt-10 pb-2 top-[-2rem] border-b border-b-coolGray-200 dark:border-b-coolGray-900">
+    <div className="bleed min-h-[16rem] polka px-12 pt-10 pb-2 top-[-2rem] border-b border-b-gray-200 dark:border-b-gray-900">
       <div className="absolute text-sm opacity-30 top-10 right-5 md:text-base">
         DEMO
       </div>

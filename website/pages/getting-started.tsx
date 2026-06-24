@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { getMDXComponent } from 'mdx-bundler/client'
+import { MDXContentProps } from 'mdx-bundler/client'
 import { InferGetStaticPropsType } from 'next'
 import { NextSeo } from 'next-seo'
 import path from 'path'
@@ -37,7 +38,9 @@ export default function GettingStarted({ code }: Props) {
         }}
       />
       <div className="py-8">
-        <CodeComponent components={mdxComponents as any} />
+        <CodeComponent
+          components={mdxComponents as MDXContentProps['components']}
+        />
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 {
   "name": "@react-hooks-library/shared",
-  "version": "0.6.2",
+  "version": "1.0.0",
   "description": "A collection of hooks and utilities for React",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -13,9 +13,9 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./index.esm.js",
-      "require": "./index.cjs.js",
-      "types": "./index.d.ts"
+      "require": "./index.cjs.js"
     },
     "./*": "./*"
   },

@@ -1,4 +1,5 @@
 import { getMDXComponent } from 'mdx-bundler/client'
+import { MDXContentProps } from 'mdx-bundler/client'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { NextSeo } from 'next-seo'
 import { useMemo } from 'react'
@@ -44,7 +45,9 @@ export default function Functions({ meta, code }: Props) {
         }}
       />
       <article className="pb-12">
-        <Component components={mdxComponents as any} />
+        <Component
+          components={mdxComponents as MDXContentProps['components']}
+        />
       </article>
     </>
   )

@@ -7,12 +7,20 @@ import { findFunctions } from './utils/findFunctions'
 
 const rootDir = resolve(__dirname, '..')
 const packagesDir = resolve(rootDir, 'packages')
+const deprecatedLifecycleHooks = new Set([
+  'useEffectAfterMount',
+  'useMount',
+  'useMountSync',
+  'useUnMount'
+])
 
 async function buildImports() {
   const packages = findFunctions(packagesDir)
 
   for (const pkg of packages) {
-    const functions = findFunctions(join(packagesDir, pkg)).sort()
+    const functions = findFunctions(join(packagesDir, pkg))
+      .filter((funcName) => !deprecatedLifecycleHooks.has(funcName))
+      .sort()
     const contents: string[] = [
       `// This file is auto generated. Do not edit manually.\n\n`
     ]
@@ -52,13 +60,13 @@ async function build() {
   consola.info('Running build')
 
   consola.info('Cleaning dist folders')
-  exec('npm run clean', { stdio: 'inherit' })
+  exec('yarn clean', { stdio: 'inherit' })
 
   consola.info('Building imports')
   await buildImports()
 
   consola.info('Running rollup')
-  exec('npm run build:rollup', { stdio: 'inherit' })
+  exec('yarn build:rollup', { stdio: 'inherit' })
 
   consola.info('Building package meta files')
   await buildMetaFiles()

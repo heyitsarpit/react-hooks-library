@@ -1,6 +1,6 @@
 // A minified version is inlined in _document.tsx
 
-!(function () {
+(function () {
   var b = document.body.classList;
   b.remove('dark'); // remove default theme
   var e = localStorage.getItem('theme');
@@ -10,6 +10,3 @@
     m.matches ? b.add('dark') : b.add('light');
   }
 })();
-
-
-  

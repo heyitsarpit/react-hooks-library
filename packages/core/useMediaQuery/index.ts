@@ -1,6 +1,11 @@
+import { isClient } from '@react-hooks-library/shared'
 import { useEffect, useState } from 'react'
 
-import { useMount } from '../useMount'
+function getMatches(query: string): boolean {
+  if (!isClient || !window.matchMedia) return false
+
+  return window.matchMedia(query).matches
+}
 
 /**
  * Reactive media query hook that returns the truthy value of the media query.
@@ -11,17 +16,17 @@ import { useMount } from '../useMount'
  * @see https://react-hooks-library.vercel.app/core/useMediaQuery
  */
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false)
-
-  useMount(() => {
-    setMatches(window.matchMedia(query).matches)
-  })
+  const [matches, setMatches] = useState(() => getMatches(query))
 
   useEffect(() => {
+    if (!isClient || !window.matchMedia) return
+
     const mediaQuery = window.matchMedia(query)
     const handler = (event: MediaQueryListEvent) => {
       setMatches(event.matches)
     }
+
+    setMatches(mediaQuery.matches)
 
     // Add event listener for old safari browsers
     'addEventListener' in mediaQuery

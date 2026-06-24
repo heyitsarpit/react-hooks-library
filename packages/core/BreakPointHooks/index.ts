@@ -2,10 +2,16 @@ import { useMediaQuery } from '../useMediaQuery'
 export * from './breakpoints'
 import { _window } from '../_ssr.config'
 
+type BreakPointValue = number | string
+
 function match(query: string): boolean {
   if (!_window) return false
 
   return _window.matchMedia(query).matches
+}
+
+function toWidth(value: BreakPointValue): string {
+  return typeof value === 'number' ? `${value}px` : value
 }
 
 /**
@@ -16,9 +22,9 @@ function match(query: string): boolean {
  *
  * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
  */
-export function BreakPointHooks<BreakPoints extends Record<string, number>>(
-  breakpoints: BreakPoints
-) {
+export function BreakPointHooks<
+  BreakPoints extends Record<string, BreakPointValue>
+>(breakpoints: BreakPoints) {
   type BreakPointsKey = keyof BreakPoints
 
   return {
@@ -31,7 +37,7 @@ export function BreakPointHooks<BreakPoints extends Record<string, number>>(
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
     useGreater: (k: BreakPointsKey) => {
-      return useMediaQuery(`(min-width: ${breakpoints[k]}px)`)
+      return useMediaQuery(`(min-width: ${toWidth(breakpoints[k])})`)
     },
 
     /**
@@ -45,7 +51,7 @@ export function BreakPointHooks<BreakPoints extends Record<string, number>>(
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
     useSmaller: (k: BreakPointsKey) => {
-      return useMediaQuery(`(max-width: ${breakpoints[k]}px)`)
+      return useMediaQuery(`(max-width: ${toWidth(breakpoints[k])})`)
     },
 
     /**
@@ -60,7 +66,9 @@ export function BreakPointHooks<BreakPoints extends Record<string, number>>(
      **/
     useBetween: (a: BreakPointsKey, b: BreakPointsKey) => {
       return useMediaQuery(
-        `(min-width: ${breakpoints[a]}px) and (max-width: ${breakpoints[b]}px)`
+        `(min-width: ${toWidth(breakpoints[a])}) and (max-width: ${toWidth(
+          breakpoints[b]
+        )})`
       )
     },
 
@@ -72,7 +80,7 @@ export function BreakPointHooks<BreakPoints extends Record<string, number>>(
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
     isGreater(k: BreakPointsKey) {
-      return match(`(min-width: ${breakpoints[k]}px)`)
+      return match(`(min-width: ${toWidth(breakpoints[k])})`)
     },
 
     /**
@@ -83,7 +91,7 @@ export function BreakPointHooks<BreakPoints extends Record<string, number>>(
      * @see https://react-hooks-library.vercel.app/core/BreakPointHooks
      **/
     isSmaller(k: BreakPointsKey) {
-      return match(`(max-width: ${breakpoints[k]}px)`)
+      return match(`(max-width: ${toWidth(breakpoints[k])})`)
     },
 
     /**
@@ -95,7 +103,9 @@ export function BreakPointHooks<BreakPoints extends Record<string, number>>(
      **/
     isInBetween(a: BreakPointsKey, b: BreakPointsKey) {
       return match(
-        `(min-width: ${breakpoints[a]}px) and (max-width: ${breakpoints[b]}px)`
+        `(min-width: ${toWidth(breakpoints[a])}) and (max-width: ${toWidth(
+          breakpoints[b]
+        )})`
       )
     }
   }

@@ -150,9 +150,7 @@ export default function Design({ code }: Props) {
 
         <section>
           <h2>Link</h2>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
+          <Link href="/">Home</Link>
         </section>
 
         <section>

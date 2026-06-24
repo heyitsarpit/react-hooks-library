@@ -52,17 +52,17 @@ function Version() {
 
 function Logo() {
   return (
-    <Link href="/">
-      <a
-        className="flex items-center gap-4 py-2 ml-2 h-[var(--header-height)]"
-        title="Go Home">
-        <img src="/logo.png" alt="Logo" className="w-8 h-8" />
-        <img
-          className="hidden w-32 md:inline-block"
-          src="/logo_text.png"
-          alt="React Hooks Library Text"
-        />
-      </a>
+    <Link
+      href="/"
+      passHref
+      className="flex items-center gap-4 py-2 ml-2 h-[var(--header-height)]"
+      title="Go Home">
+      <img src="/logo.png" alt="Logo" className="w-8 h-8" />
+      <img
+        className="hidden w-32 md:inline-block"
+        src="/logo_text.png"
+        alt="React Hooks Library Text"
+      />
     </Link>
   )
 }
@@ -111,15 +111,15 @@ export function NavLinks() {
   return (
     <>
       {links.map(({ href, label, isActive }) => (
-        <Link href={href} key={href}>
-          <a
-            className={`
+        <Link
+          href={href}
+          key={href}
+          className={`
             w-full md:w-max
             !no-underline
             pill hover:active
             ${isActive ? 'active text-brand' : 'text-txt-1'}`}>
-            {label}
-          </a>
+          {label}
         </Link>
       ))}
     </>

@@ -1,5 +1,5 @@
 import { useScrollIntoView } from '@react-hooks-library/core'
-import { AnimateSharedLayout, motion } from 'framer-motion'
+import { LayoutGroup, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment, useRef } from 'react'
@@ -43,13 +43,13 @@ function ListItem({ name, route, isActive }: ItemProps) {
           className="absolute w-full h-full active pill"
         />
       ) : null}
-      <Link href={route} passHref scroll={false}>
-        <a
-          className={`block w-full pl-4 hover:text-brand hover:no-underline ${
-            isActive ? 'font-semibold text-brand' : 'text-txt-1'
-          }`}>
-          {name}
-        </a>
+      <Link
+        href={route}
+        scroll={false}
+        className={`block w-full pl-4 hover:text-brand hover:no-underline ${
+          isActive ? 'font-semibold text-brand' : 'text-txt-1'
+        }`}>
+        {name}
       </Link>
     </li>
   )
@@ -63,7 +63,7 @@ export function FunctionList() {
   }
 
   return (
-    <AnimateSharedLayout>
+    <LayoutGroup>
       <motion.div layout>
         {Object.keys(groupedRoutes).map((category) => (
           <Fragment key={category}>
@@ -83,6 +83,6 @@ export function FunctionList() {
           </Fragment>
         ))}
       </motion.div>
-    </AnimateSharedLayout>
+    </LayoutGroup>
   )
 }

@@ -2,5 +2,6 @@
 **/out/*
 **/.next/*
 **/dist/*
+website/next-env.d.ts
 website/public/*.js
 website/public/*.js.map

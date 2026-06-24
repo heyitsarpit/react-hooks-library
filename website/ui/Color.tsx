@@ -4,10 +4,12 @@ import { useTheme } from './ThemeProvider'
 
 export const Color = ({ className = '', varName = '' }) => {
   const [color, setColor] = useState('')
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement | null>(null)
   const { theme } = useTheme()
 
   useEffect(() => {
+    if (!ref.current) return
+
     const color = getComputedStyle(ref.current).getPropertyValue(
       'background-color'
     )

@@ -17,7 +17,7 @@ export function useInterval<T extends () => void>(
 ) {
   const { immediate = false, paused = false } = options || {}
   const savedCallback = useRef(callback)
-  const tickId = useRef<NodeJS.Timer>()
+  const tickId = useRef<ReturnType<typeof setInterval> | undefined>(undefined)
 
   useEffect(() => {
     savedCallback.current = callback

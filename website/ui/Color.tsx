@@ -20,7 +20,7 @@ export const Color = ({ className = '', varName = '' }) => {
     <div className="flex items-center gap-5 font-mono text-sm">
       <div
         ref={ref}
-        className={`w-12 h-12 rounded-full ring-1 ring-trueGray-200 dark:ring-warmGray-800 ${className}`}></div>
+        className={`w-12 h-12 rounded-full ring-1 ring-neutral-200 dark:ring-stone-800 ${className}`}></div>
       <div>
         <div>{varName}</div>
         <div>{color}</div>

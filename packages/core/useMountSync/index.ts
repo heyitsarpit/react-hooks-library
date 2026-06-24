@@ -9,5 +9,6 @@ import { useLayoutEffect } from 'react'
  * @param callback function to be executed
  */
 export function useMountSync(callback: Fn) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(callback, [])
 }

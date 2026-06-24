@@ -10,8 +10,8 @@ export function Demo() {
       value === undefined
         ? 'opacity-60'
         : value || isNumber(value)
-        ? 'active'
-        : 'danger'
+          ? 'active'
+          : 'danger'
     }`
 
   return (

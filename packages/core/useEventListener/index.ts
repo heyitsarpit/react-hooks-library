@@ -11,8 +11,16 @@ import { useEffect, useRef } from 'react'
 import { _window } from '../_ssr.config'
 
 interface InferEventTarget<Events> {
-  addEventListener(event: Events, fn?: any, options?: any): any
-  removeEventListener(event: Events, fn?: any, options?: any): any
+  addEventListener(
+    event: Events,
+    fn?: EventListenerOrEventListenerObject | null,
+    options?: boolean | AddEventListenerOptions
+  ): void
+  removeEventListener(
+    event: Events,
+    fn?: EventListenerOrEventListenerObject | null,
+    options?: boolean | EventListenerOptions
+  ): void
 }
 
 export type WindowEventName = keyof WindowEventMap
@@ -37,7 +45,7 @@ export type GeneralEventListener<E = Event> = {
  */
 export function useEventListener<E extends keyof WindowEventMap>(
   event: E,
-  listener: (this: Window, ev: WindowEventMap[E]) => any,
+  listener: (this: Window, ev: WindowEventMap[E]) => void,
   options?: boolean | AddEventListenerOptions
 ): Fn
 
@@ -58,7 +66,7 @@ export function useEventListener<E extends keyof WindowEventMap>(
 export function useEventListener<E extends keyof WindowEventMap>(
   target: Window,
   event: E,
-  listener: (this: Window, ev: WindowEventMap[E]) => any,
+  listener: (this: Window, ev: WindowEventMap[E]) => void,
   options?: boolean | AddEventListenerOptions
 ): Fn
 
@@ -79,7 +87,7 @@ export function useEventListener<E extends keyof WindowEventMap>(
 export function useEventListener<E extends keyof DocumentEventMap>(
   target: Document,
   event: E,
-  listener: (this: Document, ev: DocumentEventMap[E]) => any,
+  listener: (this: Document, ev: DocumentEventMap[E]) => void,
   options?: boolean | AddEventListenerOptions
 ): Fn
 
@@ -125,15 +133,22 @@ export function useEventListener<EventType = Event>(
   options?: boolean | AddEventListenerOptions
 ): Fn
 
-export function useEventListener(...args: any[]) {
+export function useEventListener(...args: unknown[]) {
   let target: MaybeRef<EventTarget | null | undefined> = _window
   let event: string
   let listener: EventListener
-  let options: boolean | AddEventListenerOptions
+  let options: boolean | AddEventListenerOptions | undefined
 
-  isString(args[0])
-    ? ([event, listener, options] = args)
-    : ([target, event, listener, options] = args)
+  if (isString(args[0])) {
+    event = args[0]
+    listener = args[1] as EventListener
+    options = args[2] as boolean | AddEventListenerOptions | undefined
+  } else {
+    target = args[0] as MaybeRef<EventTarget | null | undefined>
+    event = args[1] as string
+    listener = args[2] as EventListener
+    options = args[3] as boolean | AddEventListenerOptions | undefined
+  }
 
   const savedListener = useRef<EventListener>(listener)
   const cleanup = useRef(noop)

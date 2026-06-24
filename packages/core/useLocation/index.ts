@@ -6,7 +6,7 @@ import { useMount } from '../useMount'
 
 export interface Location {
   trigger: string
-  state?: any
+  state?: unknown
   length?: number
   hash?: string
   host?: string

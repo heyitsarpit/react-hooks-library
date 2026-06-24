@@ -66,19 +66,19 @@ const CallToAction = () => (
   <>
     <div>
       <p className="mb-8">A collection of hooks and utilities for React</p>
-      <div className="p-4 font-mono text-sm font-light border-2 md:text-base logo-glow dark:border-trueGray-900/90 border-trueGray-200/90 border-opacity-20 rounded-3xl dark:bg-trueGray-900/50 bg-trueGray-200/50">
+      <div className="p-4 font-mono text-sm font-light border-2 md:text-base logo-glow dark:border-neutral-900/90 border-neutral-200/90 border-opacity-20 rounded-3xl dark:bg-neutral-900/50 bg-neutral-200/50">
         npm i @react-hooks-library/core
       </div>
     </div>
     <div className="flex gap-8">
       <Link
         href="/getting-started"
-        className="!no-underline font-light shadow-lg dark:shadow-white-lg dark:hover:shadow-white-xl hover:shadow-xl text-sm uppercase rounded-lg p-3 text-bg-2 bg-trueGray-900 dark:bg-white">
+        className="!no-underline font-light shadow-lg dark:shadow-white-lg dark:hover:shadow-white-xl hover:shadow-xl text-sm uppercase rounded-lg p-3 text-bg-2 bg-neutral-900 dark:bg-white">
         Get Started
       </Link>
       <Link
         href="/functions"
-        className="!no-underline bg-white dark:bg-trueGray-900 font-light text-sm uppercase border border-trueGray-900 dark:border-trueGray-100 p-3 rounded-lg text-trueGray-900 dark:text-white">
+        className="!no-underline bg-white dark:bg-neutral-900 font-light text-sm uppercase border border-neutral-900 dark:border-neutral-100 p-3 rounded-lg text-neutral-900 dark:text-white">
         All Functions
       </Link>
     </div>

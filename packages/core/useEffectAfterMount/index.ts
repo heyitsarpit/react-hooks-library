@@ -26,5 +26,6 @@ export function useEffectAfterMount(
     isMounted.current = true
 
     return cleanup
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
 }

@@ -9,6 +9,9 @@ module.exports = {
     }
   },
   settings: {
+    next: {
+      rootDir: 'website/'
+    },
     react: {
       version: 'detect'
     }
@@ -37,6 +40,13 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-unused-expressions': [
+      'error',
+      {
+        allowShortCircuit: true,
+        allowTernary: true
+      }
+    ],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -45,5 +55,13 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton']
       }
     ]
-  }
+  },
+  overrides: [
+    {
+      files: ['*.config.js'],
+      rules: {
+        '@typescript-eslint/no-require-imports': 'off'
+      }
+    }
+  ]
 }

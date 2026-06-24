@@ -8,10 +8,10 @@ export function Callout({ type, children }: CalloutProps) {
     type === 'info'
       ? '💡'
       : type === 'success'
-      ? '✅'
-      : type === 'warning'
-      ? '⚠️'
-      : '🚨'
+        ? '✅'
+        : type === 'warning'
+          ? '⚠️'
+          : '🚨'
 
   return (
     <blockquote

@@ -8,8 +8,8 @@
     --bg-1: #0C0C0C;
     --bg-2: #0F1011;
     --fg-1: #1b1b1e;
-    --txt-1: theme('colors.coolGray.300');
-    --txt-2: theme('colors.coolGray.200');
+    --txt-1: theme('colors.gray.300');
+    --txt-2: theme('colors.gray.200');
 
     --stx-primary: #c0caf5;
     --stx-key: #5ed2ff; 
@@ -31,9 +31,9 @@
     --brand: theme('colors.cyan.600');
     --bg-1: theme('colors.gray.50');
     --bg-2: theme('colors.white');
-    --fg-1: theme('colors.warmGray.100');
+    --fg-1: theme('colors.stone.100');
     --txt-1: theme('colors.gray.600');
-    --txt-2: theme('colors.trueGray.700');
+    --txt-2: theme('colors.neutral.700');
 
     --stx-primary: #a44065;
     --stx-key: #266888;
@@ -54,7 +54,7 @@
   html,
   body,
   #__next {
-    @apply w-full h-full p-0 m-0 text-gray-600 bg-bg-1 dark:text-coolGray-300;
+    @apply w-full h-full p-0 m-0 text-gray-600 bg-bg-1 dark:text-gray-300;
   }
 
   html {
@@ -103,16 +103,16 @@
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    --link-visibility: hidden;
-    @apply mb-5 text-trueGray-700 dark:text-coolGray-200;
+    --link-opacity: 0.7;
+    @apply mb-5 text-neutral-700 dark:text-gray-200;
   }
   
   :is(h1, h2, h3, h4, h5, h6):hover{
-    --link-visibility: visible;
+    --link-opacity: 1;
   }
   :is(h1, h2, h3, h4, h5, h6) > a{
-    visibility: var(--link-visibility);
-    @apply ml-2 !no-underline;
+    opacity: var(--link-opacity);
+    @apply !no-underline transition-opacity;
   }
 
   ::-moz-color-swatch{
@@ -184,7 +184,7 @@
     @apply text-brand bg-cyan-600/10 dark:bg-cyan-400/10;
   }
   .inactive{
-    @apply text-blueGray-400 dark:text-blueGray-300 bg-blueGray-400/10 dark:bg-blueGray-600/10;
+    @apply text-slate-400 dark:text-slate-300 bg-slate-400/10 dark:bg-slate-600/10;
   }
   .info{
     @apply text-sky-700 dark:text-sky-400 bg-sky-600/10;
@@ -231,11 +231,11 @@
   ol li::before {
     counter-increment: count;
     content: counter(count);
-    @apply absolute font-mono text-sm left-1 text-coolGray-400 dark:text-coolGray-500 top-[2.8px];
+    @apply absolute font-mono text-sm left-1 text-gray-400 dark:text-gray-500 top-[2.8px];
   }
 
   ul li::before {
     content: '';
-    @apply absolute bg-coolGray-400 dark:bg-coolGray-500  rounded-full w-1.5 h-1.5 left-1 top-2.5;
+    @apply absolute bg-gray-400 dark:bg-gray-500  rounded-full w-1.5 h-1.5 left-1 top-2.5;
   }
 }

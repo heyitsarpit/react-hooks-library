@@ -26,6 +26,7 @@ function findRootDir(base = __dirname) {
 
 const ROOT_DIR = findRootDir()
 const PACKAGES_DIR = join(ROOT_DIR, 'packages')
+const hiddenCategories = new Set(['lifecycle'])
 
 /**
  * Get meta data of all posts
@@ -44,11 +45,15 @@ export async function getAllFunctionsMeta() {
         'utf-8'
       )
       const meta = matter(post).data
-      allFunctions.push({
+      const postMeta = {
         ...meta,
         pkg,
         name
-      } as FunctionMeta)
+      } as FunctionMeta
+
+      if (!hiddenCategories.has(postMeta.category)) {
+        allFunctions.push(postMeta)
+      }
     }
   }
 
@@ -76,7 +81,7 @@ export async function loadMdx(source: string, cwd?: string) {
         rehypeSlug,
         [
           rehypeAutolink,
-          { content: { type: 'text', value: '#' }, behaviour: 'append' }
+          { content: { type: 'text', value: '# ' }, behaviour: 'append' }
         ]
       ]
       return options

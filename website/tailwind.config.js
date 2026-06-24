@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const colors = require('tailwindcss/colors')
-
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './pages/**/*.{jsx,tsx}',
     './ui/**/*.{jsx,tsx}',
     '../packages/**/demo.{jsx,tsx}'
@@ -12,8 +8,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // enable all tailwind colors (in jit mode)
-        ...colors,
         brand: 'var(--brand)',
         'bg-1': 'var(--bg-1)',
         'bg-2': 'var(--bg-2)',

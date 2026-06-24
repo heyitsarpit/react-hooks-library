@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
-
 /**
  * Check if we're on the server or client side
  */
@@ -15,19 +13,21 @@ export const isRef = (obj: unknown): boolean =>
 
 const toString = Object.prototype.toString
 
-export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
+export const isBoolean = (val: unknown): val is boolean =>
+  typeof val === 'boolean'
 
-export const isFunction = <T extends Function>(val: any): val is T =>
-  typeof val === 'function'
+export const isFunction = <T extends (...args: never[]) => unknown>(
+  val: unknown
+): val is T => typeof val === 'function'
 
-export const isNumber = (val: any): val is number => typeof val === 'number'
+export const isNumber = (val: unknown): val is number => typeof val === 'number'
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
 
-export const isObject = (val: any): val is object =>
+export const isObject = (val: unknown): val is object =>
   toString.call(val) === '[object Object]'
 
-export const isWindow = (val: any): val is Window =>
+export const isWindow = (val: unknown): val is Window =>
   typeof window !== 'undefined' && toString.call(val) === '[object Window]'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function

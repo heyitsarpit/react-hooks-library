@@ -16,13 +16,19 @@ export interface NetworkInformation extends EventTarget {
   onchange?: EventListener
 }
 
+type NavigatorWithConnection = Navigator & {
+  connection?: NetworkInformation
+}
+
 /**
  * Reactive Network status.
  *
  * @see https://react-hooks-library.vercel.app/core/useNetwork
  */
 export function useNetwork() {
-  const isSupported = useIsSupported(() => !!_navigator?.connection)
+  const isSupported = useIsSupported(
+    () => !!(_navigator as NavigatorWithConnection | undefined)?.connection
+  )
   const [isOnline, setIsOnline] = useState(true)
   const [offlineAt, setOfflineAt] = useState<number | undefined>(undefined)
 
@@ -35,7 +41,7 @@ export function useNetwork() {
     setIsOnline(_navigator.onLine)
     setOfflineAt(isOnline ? undefined : Date.now())
 
-    const _connection = _navigator?.connection as NetworkInformation
+    const _connection = (_navigator as NavigatorWithConnection).connection
     if (!_connection) return
 
     connection.current = _connection

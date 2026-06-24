@@ -1,6 +1,11 @@
 import { isClient } from '@react-hooks-library/shared'
 import { useEffect, useState } from 'react'
 
+type LegacyMediaQueryList = MediaQueryList & {
+  addListener: (listener: (event: MediaQueryListEvent) => void) => void
+  removeListener: (listener: (event: MediaQueryListEvent) => void) => void
+}
+
 function getMatches(query: string): boolean {
   if (!isClient || !window.matchMedia) return false
 
@@ -31,12 +36,12 @@ export function useMediaQuery(query: string): boolean {
     // Add event listener for old safari browsers
     'addEventListener' in mediaQuery
       ? mediaQuery.addEventListener('change', handler)
-      : mediaQuery.addListener(handler)
+      : (mediaQuery as LegacyMediaQueryList).addListener(handler)
 
     return () => {
       'addEventListener' in mediaQuery
         ? mediaQuery.removeEventListener('change', handler)
-        : mediaQuery.removeListener(handler)
+        : (mediaQuery as LegacyMediaQueryList).removeListener(handler)
     }
   }, [query])
 

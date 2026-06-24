@@ -39,9 +39,7 @@ export default function Functions() {
             <ul className="flex flex-col gap-3 list-none">
               {groupedRoutes[category].map(({ name, route, description }) => (
                 <li key={name}>
-                  <Link href={route}>
-                    <a>{name}</a>
-                  </Link>
+                  <Link href={route}>{name}</Link>
                   <p>{description}</p>
                 </li>
               ))}

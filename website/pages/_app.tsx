@@ -33,7 +33,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
         ) : (
           <>
             <SideBar />
-            <AnimatePresence initial={false} exitBeforeEnter>
+            <AnimatePresence initial={false} mode="wait">
               <motion.main
                 key={router.asPath.replace(/#.*/g, '')}
                 initial={{ opacity: 0 }}

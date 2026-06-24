@@ -16,7 +16,7 @@ export function ThemeSwitch() {
     <button
       onClick={switchTheme}
       className="flex items-center justify-center w-10 h-10 bg-transparent text-txt-1 hover:opacity-100 hover:bg-fg-1 hover:text-txt-2">
-      <AnimatePresence initial={false} exitBeforeEnter>
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={theme}
           style={{

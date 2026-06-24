@@ -62,9 +62,10 @@ export async function getAllFunctionsMeta() {
  * @returns bundled react component
  */
 export async function loadMdx(source: string, cwd?: string) {
-  const { code, frontmatter } = await bundleMDX(source, {
+  const { code, frontmatter } = await bundleMDX({
+    source,
     cwd,
-    xdmOptions(options) {
+    mdxOptions(options) {
       options.remarkPlugins = [
         ...(options?.remarkPlugins ?? []),
         remarkGfm,

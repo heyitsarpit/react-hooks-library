@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 import fs from 'fs/promises'
 import { join } from 'path'
 
@@ -18,27 +18,35 @@ describe(FunctionName, () => {
   })
 
   test('should update the value', async () => {
-    let value = 'Hello World'
-    let delay = 1000
-    const { result, rerender, waitForValueToChange } = renderHook(() =>
-      useDebounce(value, delay)
-    )
+    jest.useFakeTimers()
 
-    expect(result.current).toBe('Hello World')
+    try {
+      let value = 'Hello World'
+      let delay = 1000
+      const { result, rerender } = renderHook(() => useDebounce(value, delay))
 
-    value = 'Goodbye World'
-    rerender()
+      expect(result.current).toBe('Hello World')
 
-    expect(result.current).toBe('Hello World')
-    await waitForValueToChange(() => result.current, { timeout: delay + 10 })
-    expect(result.current).toBe('Goodbye World')
+      value = 'Goodbye World'
+      rerender()
 
-    value = 'Hello Again'
-    delay = 100
-    rerender()
+      expect(result.current).toBe('Hello World')
+      act(() => {
+        jest.advanceTimersByTime(delay)
+      })
+      expect(result.current).toBe('Goodbye World')
 
-    expect(result.current).toBe('Goodbye World')
-    await waitForValueToChange(() => result.current, { timeout: delay + 10 })
-    expect(result.current).toBe('Hello Again')
+      value = 'Hello Again'
+      delay = 100
+      rerender()
+
+      expect(result.current).toBe('Goodbye World')
+      act(() => {
+        jest.advanceTimersByTime(delay)
+      })
+      expect(result.current).toBe('Hello Again')
+    } finally {
+      jest.useRealTimers()
+    }
   })
 })

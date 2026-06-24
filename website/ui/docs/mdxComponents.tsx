@@ -10,10 +10,13 @@ export const mdxComponents = {
   Source,
   Callout,
   a({ href = '', ...props }) {
-    return (
-      <Link href={href} passHref>
-        <a {...props} />
-      </Link>
+    const external = /^(https?:)?\/\//.test(href)
+    const samePage = href.startsWith('#')
+
+    return external || samePage ? (
+      <a href={href} {...props} />
+    ) : (
+      <Link href={href} {...props} />
     )
   },
   p(props) {

@@ -22,6 +22,9 @@ jobs:
     name: Publish to NPM
     needs: test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -31,8 +34,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - run: yarn publish:packages
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
   release-github:
     name: Release To Github

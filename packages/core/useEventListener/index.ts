@@ -162,9 +162,12 @@ export function useEventListener(...args: unknown[]) {
 
     if (!isClient || !el) return
 
-    el.addEventListener(event, savedListener.current, options)
+    const eventListener = function (this: EventTarget, event: Event) {
+      savedListener.current.call(this, event)
+    }
+    el.addEventListener(event, eventListener, options)
     cleanup.current = () => {
-      el.removeEventListener(event, savedListener.current, options)
+      el.removeEventListener(event, eventListener, options)
     }
 
     return cleanup.current
